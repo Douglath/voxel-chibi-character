@@ -1,0 +1,4 @@
+interface:
+  display_name: "体素 Q 版角色"
+  short_description: "以银灰狼耳少女为唯一基准制作像素角色，按预算选择轻量动态并验证 GLB"
+  default_prompt: "使用 $voxel-chibi-character，根据我的参考图制作同风格低开销 3D 角色。"

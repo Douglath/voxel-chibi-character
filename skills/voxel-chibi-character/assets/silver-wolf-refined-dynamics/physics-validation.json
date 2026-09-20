@@ -1,0 +1,46 @@
+{
+  "results": [
+    {
+      "fps": 30,
+      "steps": 1920,
+      "maxLag": 0.22476424710593068,
+      "maxLengthError": 4.996003610813204e-16,
+      "minProxyClearance": 0.28401900613828823,
+      "finite": true,
+      "scope": "Rear hair endpoint torso collisions; bounded tail and coat springs, not full mesh collision",
+      "maxAngleRadians": 0.22669426828827066,
+      "settledAngleRadians": 0,
+      "disabledIdentity": true,
+      "pass": true
+    },
+    {
+      "fps": 60,
+      "steps": 1920,
+      "maxLag": 0.22520853588494827,
+      "maxLengthError": 4.996003610813204e-16,
+      "minProxyClearance": 0.2840654740995632,
+      "finite": true,
+      "scope": "Rear hair endpoint torso collisions; bounded tail and coat springs, not full mesh collision",
+      "maxAngleRadians": 0.22763556292446896,
+      "settledAngleRadians": 0,
+      "disabledIdentity": true,
+      "pass": true
+    },
+    {
+      "fps": 144,
+      "steps": 1919,
+      "maxLag": 0.22520857710345993,
+      "maxLengthError": 4.996003610813204e-16,
+      "minProxyClearance": 0.28407257320826573,
+      "finite": true,
+      "scope": "Rear hair endpoint torso collisions; bounded tail and coat springs, not full mesh collision",
+      "maxAngleRadians": 0.22763558426359912,
+      "settledAngleRadians": 0,
+      "disabledIdentity": true,
+      "pass": true
+    }
+  ],
+  "collisionRecovered": true,
+  "pass": true,
+  "scope": "30/60/144 FPS turn, impulse, settle, off/reset; endpoint collision only"
+}

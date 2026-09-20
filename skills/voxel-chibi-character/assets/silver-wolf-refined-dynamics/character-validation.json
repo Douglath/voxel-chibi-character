@@ -1,0 +1,135 @@
+{
+  "chains": [
+    {
+      "bones": [
+        "hair_L_1",
+        "hair_L_2"
+      ],
+      "maxAngle": 0.24000000000000002,
+      "settledAngle": 0,
+      "pass": true
+    },
+    {
+      "bones": [
+        "hair_R_1",
+        "hair_R_2"
+      ],
+      "maxAngle": 0.24000000000000002,
+      "settledAngle": 0,
+      "pass": true
+    },
+    {
+      "bones": [
+        "coat_L"
+      ],
+      "maxAngle": 0.0782478718874577,
+      "settledAngle": 0,
+      "pass": true
+    },
+    {
+      "bones": [
+        "coat_R"
+      ],
+      "maxAngle": 0.07824787188746338,
+      "settledAngle": 0,
+      "pass": true
+    },
+    {
+      "bones": [
+        "side_hair_L_1",
+        "side_hair_L_2"
+      ],
+      "maxAngle": 0.07500000000000372,
+      "settledAngle": 0,
+      "pass": true
+    },
+    {
+      "bones": [
+        "outer_hair_L"
+      ],
+      "maxAngle": 0.11515271422963844,
+      "settledAngle": 0,
+      "pass": true
+    },
+    {
+      "bones": [
+        "ear_L"
+      ],
+      "maxAngle": 0.024999999999991765,
+      "settledAngle": 0,
+      "pass": true
+    },
+    {
+      "bones": [
+        "sleeve_soft_L"
+      ],
+      "maxAngle": 0.07439064253919456,
+      "settledAngle": 0,
+      "pass": true
+    },
+    {
+      "bones": [
+        "coat_back_L"
+      ],
+      "maxAngle": 0.059458447175395654,
+      "settledAngle": 0,
+      "pass": true
+    },
+    {
+      "bones": [
+        "side_hair_R_1",
+        "side_hair_R_2"
+      ],
+      "maxAngle": 0.07306767725995743,
+      "settledAngle": 0,
+      "pass": true
+    },
+    {
+      "bones": [
+        "outer_hair_R"
+      ],
+      "maxAngle": 0.11515245452970717,
+      "settledAngle": 0,
+      "pass": true
+    },
+    {
+      "bones": [
+        "ear_R"
+      ],
+      "maxAngle": 0.024999999999991765,
+      "settledAngle": 0,
+      "pass": true
+    },
+    {
+      "bones": [
+        "sleeve_soft_R"
+      ],
+      "maxAngle": 0.07458659668807192,
+      "settledAngle": 0,
+      "pass": true
+    },
+    {
+      "bones": [
+        "coat_back_R"
+      ],
+      "maxAngle": 0.059458447175395654,
+      "settledAngle": 0,
+      "pass": true
+    },
+    {
+      "bones": [
+        "chest_ribbon_1",
+        "chest_ribbon_2"
+      ],
+      "maxAngle": 0.12365108577905702,
+      "settledAngle": 0,
+      "pass": true
+    }
+  ],
+  "finite": true,
+  "off": true,
+  "reset": true,
+  "whiteHighlightVertices": 8,
+  "pass": true,
+  "scope": "Actual GLB, 15 refined spring chains (tail tested separately in test-tail.mjs) under body turn/bounce/impulse, settling, disable and long-pause reset; exported white eye highlights"
+}

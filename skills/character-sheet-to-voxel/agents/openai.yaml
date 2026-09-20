@@ -1,0 +1,4 @@
+interface:
+  display_name: "设定图转动态像素模型"
+  short_description: "依据四视图制作保留角色身份的像素模型，交付骨骼动画与可运行的附加动态预览"
+  default_prompt: "使用 $character-sheet-to-voxel 根据我的角色设定图制作带动效的像素模型并验证实际预览。"

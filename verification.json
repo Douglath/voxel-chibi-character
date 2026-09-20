@@ -1,0 +1,55 @@
+{
+  "exactBaselineReproduction": true,
+  "renamedScaffoldBuild": true,
+  "labScaffold": true,
+  "triangles": 3182,
+  "bones": 43,
+  "results": [
+    {
+      "test": "test-character.mjs",
+      "pass": true
+    },
+    {
+      "test": "test-refined.mjs",
+      "pass": true
+    },
+    {
+      "test": "test-drop.mjs",
+      "pass": true
+    },
+    {
+      "test": "test-tail.mjs",
+      "pass": true
+    },
+    {
+      "test": "test-chest-ribbon.mjs",
+      "pass": true
+    },
+    {
+      "test": "test-head-closure.mjs",
+      "pass": true
+    },
+    {
+      "test": "test-knees.mjs",
+      "pass": true
+    },
+    {
+      "test": "test-physics.mjs",
+      "pass": true
+    }
+  ],
+  "scaffold": ".smoke/1789890178650/renamed",
+  "lab": ".smoke/1789890178650/lab",
+  "scope": "Actual GLB and production physics in Node; browser checked separately. No full self collision or load benchmark.",
+  "skillFormatValidation": {
+    "voxel-chibi-character": true,
+    "character-sheet-to-voxel": true
+  },
+  "browser": {
+    "renamedCharacterLoaded": true,
+    "runControl": true,
+    "twoIndependentLabInstancesLoaded": true,
+    "labRunControl": true,
+    "scope": "Visual smoke only; not a stress benchmark"
+  }
+}

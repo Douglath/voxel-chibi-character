@@ -1,0 +1,12 @@
+{
+  "name": "voxel-chibi-character-skill-silver-wolf",
+  "version": "2.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node scripts/verify-examples.mjs"
+  },
+  "dependencies": {
+    "three": "0.180.0"
+  }
+}

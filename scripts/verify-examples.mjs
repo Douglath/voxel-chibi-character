@@ -1,0 +1,23 @@
+import fs from 'node:fs';
+import path from 'node:path';
+import {execFileSync} from 'node:child_process';
+import {fileURLToPath} from 'node:url';
+const root=fileURLToPath(new URL('../',import.meta.url)),work=path.join(root,'.smoke',String(Date.now()));
+fs.mkdirSync(work,{recursive:true});
+const src=path.join(root,'skills/voxel-chibi-character/assets/silver-wolf-refined-dynamics'),out=path.join(work,'baseline');
+const run=(file,args=[])=>execFileSync(process.execPath,[file,...args],{stdio:'pipe'});
+fs.cpSync(src,out,{recursive:true});
+for(const f of ['export.mjs','rig-export.mjs'])run(path.join(out,f));
+for(const f of ['silver-wolf.glb','silver-wolf-rigged.glb'])if(!fs.readFileSync(path.join(out,f)).equals(fs.readFileSync(path.join(src,f))))throw Error('Baseline reproduction differs: '+f);
+const scaffold=path.join(work,'renamed');run(path.join(root,'skills/voxel-chibi-character/scripts/scaffold.mjs'),[scaffold,'test-wolf','测试角色','4217']);
+for(const f of ['export.mjs','rig-export.mjs'])run(path.join(scaffold,'character',f));
+if(!fs.existsSync(path.join(scaffold,'character/test-wolf-rigged.glb')))throw Error('Renamed output missing');
+const stats=JSON.parse(fs.readFileSync(path.join(scaffold,'character/stats.json'))),info=JSON.parse(fs.readFileSync(path.join(scaffold,'character/rig-info.json')));
+if(stats.triangles!==3182||info.bones.length!==43||info.maxWeightError>1e-6)throw Error('Unexpected baseline structure');
+const tests=['test-character.mjs','test-refined.mjs','test-drop.mjs','test-tail.mjs','test-chest-ribbon.mjs','test-head-closure.mjs','test-knees.mjs','test-physics.mjs'];
+const results=[];
+for(const test of tests){try{run(path.join(scaffold,'character',test));results.push({test,pass:true});}catch(e){console.error(test,String(e.stdout),String(e.stderr));throw e;}}
+const lab=path.join(work,'lab');run(path.join(root,'skills/voxel-chibi-character/scripts/scaffold-lab.mjs'),[lab,'4218']);
+if(!fs.existsSync(path.join(lab,'silver-wolf-dynamics/silver-wolf-rigged.glb')))throw Error('Lab baseline missing');
+const report={exactBaselineReproduction:true,renamedScaffoldBuild:true,labScaffold:true,triangles:stats.triangles,bones:43,results,scaffold,lab,scope:'Actual GLB and production physics in Node; browser checked separately. No full self collision or load benchmark.'};
+fs.writeFileSync(path.join(root,'verification.json'),JSON.stringify(report,null,2));console.log(JSON.stringify(report));
