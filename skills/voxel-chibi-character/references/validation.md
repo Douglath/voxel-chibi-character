@@ -23,3 +23,7 @@
 交付源码、Three.js 0.180.0依赖、静态/骨骼GLB、多视图、预览、动态选择及参数、实际统计和限制。GLB只内嵌基础动画；附加动态需要 hair-physics.mjs 与 tail-dynamics.mjs，跑动/拖动需要 motion-demo.mjs，掉落需要 drop-demo.mjs。使用通用配件时一并交付 accessories 实现规格及其构件/运行时代码。未验证其他引擎自动恢复物理。
 
 仓库根运行 `node scripts/verify-examples.mjs`，验证母版重建、改名脚手架和相关回归；运行 skill-creator 的 quick_validate.py 检查入口。证据图片来自实际浏览器，不把旧报告当新验证。当前母版完整自碰撞、多角色压力、其他引擎均未验证。
+
+## 表情模板验收
+
+按 [表情模板](expressions.md) 运行 test-expressions.mjs，检查八预设、独立符号、换色隔离、Normal 自动眨眼、暂停/恢复及离开普通模式时复位。浏览器观察半闭时上眼皮落下、高光被遮挡、闭合眼线平直且一像素粗，不能混入笑眼。GLB 未嵌入表情系统，交付 expressions.mjs 与 runtime 控件；表情几何和 draw calls 另行计数。

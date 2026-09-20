@@ -6,6 +6,10 @@
   "bones": 43,
   "results": [
     {
+      "test": "test-expressions.mjs",
+      "pass": true
+    },
+    {
       "test": "test-character.mjs",
       "pass": true
     },
@@ -38,7 +42,7 @@
       "pass": true
     }
   ],
-  "scaffold": "D:\\Documents\\ChatGPT\\pixelChar\\voxel-chibi-character-skill-silver-wolf\\.smoke\\1789896677048\\renamed",
-  "lab": "D:\\Documents\\ChatGPT\\pixelChar\\voxel-chibi-character-skill-silver-wolf\\.smoke\\1789896677048\\lab",
+  "scaffold": "D:\\Documents\\ChatGPT\\pixelChar\\voxel-chibi-character-skill-silver-wolf\\.smoke\\1789899900091\\renamed",
+  "lab": "D:\\Documents\\ChatGPT\\pixelChar\\voxel-chibi-character-skill-silver-wolf\\.smoke\\1789899900091\\lab",
   "scope": "Actual GLB and production physics in Node; browser checked separately. No full self collision or load benchmark."
 }

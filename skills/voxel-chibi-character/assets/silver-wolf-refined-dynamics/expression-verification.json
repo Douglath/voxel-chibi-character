@@ -1,0 +1,196 @@
+{
+  "pass": true,
+  "blinkResults": [
+    {
+      "fps": 30,
+      "pass": true,
+      "frames": [
+        "half",
+        "shut",
+        "open"
+      ],
+      "geometryAllocationsDuringBlink": 0
+    },
+    {
+      "fps": 60,
+      "pass": true,
+      "frames": [
+        "half",
+        "shut",
+        "open"
+      ],
+      "geometryAllocationsDuringBlink": 0
+    },
+    {
+      "fps": 144,
+      "pass": true,
+      "frames": [
+        "half",
+        "shut",
+        "open"
+      ],
+      "geometryAllocationsDuringBlink": 0
+    }
+  ],
+  "sourceSHA256": "272765ec896df061184c9ab3400be1851dd7b097783b7ecef307aaf770aa8225",
+  "baseline": {
+    "triangles": 3186,
+    "vertices": 6800,
+    "meshes": 38,
+    "materials": 1,
+    "bones": 43
+  },
+  "states": {
+    "Normal": {
+      "addedMeshes": 9,
+      "visibleAddedMeshes": 0,
+      "addedVertices": 656,
+      "visibleAddedTriangles": 0,
+      "residentAddedTriangles": 328,
+      "addedMaterials": 0,
+      "addedBones": 0,
+      "addedDynamicParticles": 0,
+      "perFrameBlinkTimer": 1,
+      "perFrameGeometryRebuilds": 0,
+      "skinCloneVertices": 60,
+      "layers": []
+    },
+    "Happy": {
+      "addedMeshes": 9,
+      "visibleAddedMeshes": 2,
+      "addedVertices": 560,
+      "visibleAddedTriangles": 24,
+      "residentAddedTriangles": 280,
+      "addedMaterials": 0,
+      "addedBones": 0,
+      "addedDynamicParticles": 0,
+      "perFrameBlinkTimer": 0,
+      "perFrameGeometryRebuilds": 0,
+      "skinCloneVertices": 60,
+      "layers": [
+        "blush"
+      ]
+    },
+    "Angry": {
+      "addedMeshes": 9,
+      "visibleAddedMeshes": 2,
+      "addedVertices": 592,
+      "visibleAddedTriangles": 112,
+      "residentAddedTriangles": 296,
+      "addedMaterials": 0,
+      "addedBones": 0,
+      "addedDynamicParticles": 0,
+      "perFrameBlinkTimer": 0,
+      "perFrameGeometryRebuilds": 0,
+      "skinCloneVertices": 60,
+      "layers": [
+        "anger"
+      ]
+    },
+    "Crying": {
+      "addedMeshes": 9,
+      "visibleAddedMeshes": 1,
+      "addedVertices": 656,
+      "visibleAddedTriangles": 24,
+      "residentAddedTriangles": 328,
+      "addedMaterials": 0,
+      "addedBones": 0,
+      "addedDynamicParticles": 0,
+      "perFrameBlinkTimer": 0,
+      "perFrameGeometryRebuilds": 0,
+      "skinCloneVertices": 60,
+      "layers": [
+        "tears"
+      ]
+    },
+    "Scared": {
+      "addedMeshes": 9,
+      "visibleAddedMeshes": 2,
+      "addedVertices": 656,
+      "visibleAddedTriangles": 108,
+      "residentAddedTriangles": 328,
+      "addedMaterials": 0,
+      "addedBones": 0,
+      "addedDynamicParticles": 0,
+      "perFrameBlinkTimer": 0,
+      "perFrameGeometryRebuilds": 0,
+      "skinCloneVertices": 60,
+      "layers": [
+        "sweat"
+      ]
+    },
+    "Confused": {
+      "addedMeshes": 9,
+      "visibleAddedMeshes": 1,
+      "addedVertices": 752,
+      "visibleAddedTriangles": 112,
+      "residentAddedTriangles": 376,
+      "addedMaterials": 0,
+      "addedBones": 0,
+      "addedDynamicParticles": 0,
+      "perFrameBlinkTimer": 0,
+      "perFrameGeometryRebuilds": 0,
+      "skinCloneVertices": 60,
+      "layers": []
+    },
+    "Hungry": {
+      "addedMeshes": 9,
+      "visibleAddedMeshes": 3,
+      "addedVertices": 592,
+      "visibleAddedTriangles": 96,
+      "residentAddedTriangles": 296,
+      "addedMaterials": 0,
+      "addedBones": 0,
+      "addedDynamicParticles": 0,
+      "perFrameBlinkTimer": 0,
+      "perFrameGeometryRebuilds": 0,
+      "skinCloneVertices": 60,
+      "layers": [
+        "spark",
+        "drool"
+      ]
+    },
+    "Closed": {
+      "addedMeshes": 9,
+      "visibleAddedMeshes": 1,
+      "addedVertices": 560,
+      "visibleAddedTriangles": 16,
+      "residentAddedTriangles": 280,
+      "addedMaterials": 0,
+      "addedBones": 0,
+      "addedDynamicParticles": 0,
+      "perFrameBlinkTimer": 0,
+      "perFrameGeometryRebuilds": 0,
+      "skinCloneVertices": 60,
+      "layers": []
+    },
+    "BlinkShut": {
+      "addedMeshes": 9,
+      "visibleAddedMeshes": 1,
+      "addedVertices": 656,
+      "visibleAddedTriangles": 12,
+      "residentAddedTriangles": 328,
+      "addedMaterials": 0,
+      "addedBones": 0,
+      "addedDynamicParticles": 0,
+      "perFrameBlinkTimer": 1,
+      "perFrameGeometryRebuilds": 0,
+      "skinCloneVertices": 60
+    }
+  },
+  "checks": [
+    "Eight templates load on actual packaged GLB",
+    "v5 base generates exact approved iris colors",
+    "Iris recolor preserves pixel geometry",
+    "All optional layers independently toggle",
+    "All layers share original vertex-color material",
+    "Normal restores original Face geometry exactly",
+    "All original geometry and colors unchanged",
+    "Emblems inherit head transform"
+  ],
+  "limits": [
+    "Runtime expression geometry is not embedded in the unchanged baseline GLB",
+    "No other character head topology or engine tested",
+    "No full self-collision or performance stress benchmark"
+  ]
+}

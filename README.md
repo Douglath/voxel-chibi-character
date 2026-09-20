@@ -18,6 +18,12 @@ node scripts/verify-examples.mjs
 
 生成工程路径见配件报告。在工程运行 `node character/server.mjs` 后可查看；端口占用时先换端口，已有 localhost 页面不代表刚生成的工程。测试工程复用本仓库的 Three.js 依赖。基础 GLB 动画与运行时配件弹簧分开交付。
 
+## 已认可的表情模板
+
+默认复用 [v5 八表情与自然眨眼](skills/voxel-chibi-character/references/expressions.md)。新角色保持眼型、像素排列、眼线与高光，仅改 palette.iris 自动生成上暗 / 原色 / 下微亮色阶。Normal 的眨眼采用上眼皮下降、遮住高光、平直一像素粗闭合线，避免笑眼。腮红、眼泪、汗滴、怒气、饥饿闪光和口水独立开关；右上符号已放大并描边。
+
+桌面脚手架和网页离线包均包含生产代码与控件。GLB 基础资产保持不变，表情/眨眼依赖 expressions.mjs 运行时。原身体、头发、服装与附加动态保留；开销另计。
+
 ## 网页版适配包
 
 [使用说明](web/voxel-character-web/README.md) · [网页版 Skill](web/voxel-character-web/skills/voxel-character-web/SKILL.md) · [Skill 上传包](web/dist/voxel-character-web-skill.zip) · [完整插件包](web/dist/voxel-character-web-plugin.zip) · [自包含 HTML](web/dist/character-preview.html) · [GLB](web/dist/character-rigged.glb) · [适配验证](web/verification.json)

@@ -1,27 +1,27 @@
 {
   "character-preview.html": {
-    "bytes": 4106717,
-    "sha256": "d311df6eadfb3eef095aecb51f9b3da29338991063b88bce75bbd3e078404964"
+    "bytes": 4151134,
+    "sha256": "6c80346b25063307f0645b650ccb6e3f37ebd7819e4ce393e791403b4fda38cb"
   },
   "character-rigged.glb": {
     "bytes": 520464,
     "sha256": "272765ec896df061184c9ab3400be1851dd7b097783b7ecef307aaf770aa8225"
   },
   "technical-kit-preview.html": {
-    "bytes": 4446039,
-    "sha256": "1f92499e25fca33611573a2d99e3b177c76d410c32eefaed2e840c06dbcbbcb9"
+    "bytes": 4490456,
+    "sha256": "ff8308b4f436e7f31aac27dccf21c4d8ceafb6bc1635bda5b2ee87c6191c217b"
   },
   "technical-kit-rigged.glb": {
     "bytes": 670400,
     "sha256": "c9837e30edfee0ac723428742a7c9d310c0a5e08be25a1e50377dd966620f6e6"
   },
   "voxel-character-web-plugin.zip": {
-    "bytes": 6637372,
-    "sha256": "9fadd7e567e52ea3d431230db54e26a7268eaaf3e6bb7519ea061d3202986b86"
+    "bytes": 6666224,
+    "sha256": "0a849fa114c061a72984937ae9891a708834201a58bd3b4369b6b3cf9b99a873"
   },
   "voxel-character-web-skill.zip": {
-    "bytes": 6633370,
-    "sha256": "0b64cf60ce978150089d7df10b9b061842bb453ba4742c19b20a323e1c1952e1"
+    "bytes": 6662180,
+    "sha256": "7b3303f77976c5fd56320d2d5c78c3828c871a11dd21d18aca3acd76a01b82a6"
   },
   "使用说明.md": {
     "bytes": 3095,

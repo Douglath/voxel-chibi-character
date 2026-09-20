@@ -1,8 +1,11 @@
+import {irisPalette} from './expressions.mjs';
 import * as THREE from '../three/build/three.module.js';
 import {CHARACTER_BASELINE} from './character-baseline.mjs';
 import {applyTonalColors} from './tonal-colors.mjs';
 import {applyHairColors} from './hair-colors.mjs';
 export const palette={skin:'#f3d9cb',hair:'#bac3c9',hairLight:'#e4e7e6',hairShade:'#82909e',backHairLight:'#919eaa',backHairDeep:'#798793',sideHairShade:'#aeb9c2',hairSoftLight:'#d4dadd',hairSoftShade:'#a1aeb9',coat:'#20242b',coatLight:'#30353c',lining:'#192c43',trim:'#9fa4a4',eyeWhite:'#f5f4ed',eyeHighlight:'#ffffff',irisUpper:'#6b807a',iris:'#788c86',irisLower:'#82968f',dark:'#24282e',sole:'#151a20',ear:'#505b66'};
+const irisTones=irisPalette(palette.iris);
+Object.assign(palette,{irisUpper:irisTones.U,irisLower:irisTones.L});
 export function createCharacter(){
  const vox=new Map(),s=.085;
  const headParts=new Set(['Head','Hair','Fringe','Face','Bow','Ribbon_L','Ribbon_R','BowWing_L','BowWing_R','SideHair_L','SideHair_R','HairBand_L','HairBand_R','Ears','Clips']);

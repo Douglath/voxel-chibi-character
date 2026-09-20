@@ -1,0 +1,32 @@
+{
+  "limits": [
+    "Expressions and blink are runtime only, not baked into GLB",
+    "Other head topology and engines not tested"
+  ],
+  "offlineHtmlBrowserPass": true,
+  "blinkFrameRates": [
+    30,
+    60,
+    144
+  ],
+  "approvedTemplate": "v5-eight-neutral-blink",
+  "baselineGlbUnchanged": true,
+  "skillValidation": [
+    "voxel-chibi-character",
+    "character-sheet-to-voxel",
+    "voxel-character-web"
+  ],
+  "regressionTests": 9,
+  "installedSync": {
+    "voxelChibiFiles": 70,
+    "hashMatch": true,
+    "characterSheetFiles": 12
+  },
+  "newCharacterPalette": {
+    "iris": "#ae608b",
+    "skin": "#d9aa8c",
+    "runtimeSkin": true,
+    "actualGlbColors": true,
+    "browserPass": true
+  }
+}

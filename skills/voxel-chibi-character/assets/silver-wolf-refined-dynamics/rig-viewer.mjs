@@ -1,3 +1,5 @@
+import {setupExpressionUI} from './expressions.mjs';
+import {palette} from './model.mjs';
 import {setupDropDemo} from './drop-demo.mjs';
 import {setupMotionDemo} from './motion-demo.mjs';
 import {HairPhysics} from './hair-physics.mjs';
@@ -15,7 +17,7 @@ function resize(){renderer.setSize(host.clientWidth,host.clientHeight,false);fra
 function view(name){camera.position.copy(center).add(new THREE.Vector3(...directions[name]));camera.lookAt(center);controls.target.copy(center);controls.update();}
 document.querySelectorAll('[data-view]').forEach(b=>b.onclick=()=>{controls.autoRotate=false;document.getElementById('rotate').textContent='自动旋转';view(b.dataset.view);});document.getElementById('rotate').onclick=()=>{controls.autoRotate=!controls.autoRotate;document.getElementById('rotate').textContent=controls.autoRotate?'停止旋转':'自动旋转';};
 const errors=[];window.addEventListener('error',e=>errors.push(e.message));
-let followCamera,drop,physicsClock=0,motion,hair,hairDemo=false,hairTime=0,hairSaved=false,mixer,action,rig,meshes=[],skeleton,paused=false,frames=0,loops=0,report,saved=false,previous=performance.now();
+let expression,followCamera,drop,physicsClock=0,motion,hair,hairDemo=false,hairTime=0,hairSaved=false,mixer,action,rig,meshes=[],skeleton,paused=false,frames=0,loops=0,report,saved=false,previous=performance.now();
 function sample(){rig.updateMatrixWorld(true);return meshes.flatMap(m=>{m.skeleton.update();return Array.from({length:m.geometry.attributes.position.count},(_,i)=>m.getVertexPosition(i,new THREE.Vector3()).applyMatrix4(m.matrixWorld).toArray());});}
 function delta(a,b){return Math.max(...a.map((p,i)=>new THREE.Vector3(...p).distanceTo(new THREE.Vector3(...b[i]))));}
 async function save(){await fetch('/evidence',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({report})});}
@@ -76,6 +78,7 @@ try{
  mixer.setTime(0);hair.reset();for(const name of ['front','side','back','three']){view(name);renderer.render(scene,camera);images[name]=renderer.domElement.toDataURL('image/png');}await fetch('/evidence',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({images,report})});view('three');
 
 
+expression=setupExpressionUI(rig,palette);
 }catch(e){document.getElementById('status').textContent=String(e);console.error(e);}
 renderer.setAnimationLoop(()=>{
  const now=performance.now(),raw=(now-previous)/1000;previous=now;
@@ -87,6 +90,7 @@ renderer.setAnimationLoop(()=>{
  drop?.renderStatus();document.getElementById('hairStatus').textContent='附加动态 '+(hair.enabled?'开启':'关闭')+' · 转头 '+(hairDemo?'演示中':'跟随原动画');
  if(hairTime>12&&!hairSaved){hairSaved=true;fetch('/hair-evidence',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(hair.metrics)});}
  }
+ if(expression&&!paused)expression.update(Math.min(raw,.05));
  followCamera?.();controls.update();renderer.render(scene,camera);
  if(report&&!saved&&loops>=3){saved=true;report.live={frames,loops,drawCalls:renderer.info.render.calls,activeParticles:hair.chains.reduce((n,c)=>n+c.p.length-1,0)+3,webglError:renderer.getContext().getError()};report.pass=report.numericPass&&report.live.webglError===0&&errors.length===0;save();document.getElementById('status').textContent=report.pass?'通过 · 43 根骨骼 · 待机 / 关节测试 · T-pose 绑定姿势':'检查未通过';}
 });
