@@ -22,7 +22,8 @@ const results=[];
 for(const [name,spec,port] of [['technical-kit',technicalKit(),4237],['wrist-kit',wristKit(),4238]]) {
   const project=path.join(work,name);
   run(scaffold,[project,name,name==='technical-kit'?'配件组合测试':'腕部设备测试',String(port)]);
-  fs.symlinkSync(path.join(root,'node_modules'),path.join(project,'node_modules'),'junction');
+  // The unified scaffold supplies its own offline dependencies.
+  assert(fs.existsSync(path.join(project,'node_modules/three/build/three.module.js')));
   const specFile=path.join(project,'character-spec.json');
   const characterSpec=JSON.parse(fs.readFileSync(specFile));
   characterSpec.accessories=spec;

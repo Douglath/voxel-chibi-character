@@ -1,0 +1,13 @@
+{
+  "baselineTriangles": 3186,
+  "archiveRoundTrip": true,
+  "isolatedBuildWithoutNpm": true,
+  "driveAccountExecutionVerified": false,
+  "driveUpload": false,
+  "singleSkill": true,
+  "oldWebFilesRemaining": 0,
+  "baselineBones": 43,
+  "externalDependencies": 0,
+  "offlineHtmlModules": 16,
+  "expressionRegression": true
+}

@@ -1,12 +1,12 @@
 {
   "pass": true,
-  "createdAt": "2026-09-20T10:26:21.944Z",
+  "createdAt": "2026-09-20T10:35:39.839Z",
   "results": [
     {
       "name": "technical-kit",
-      "project": "D:\\Documents\\ChatGPT\\pixelChar\\voxel-chibi-character-skill-silver-wolf\\.smoke\\accessories\\1789899980569\\technical-kit",
+      "project": "D:\\Documents\\ChatGPT\\pixelChar\\voxel-chibi-character-skill-silver-wolf\\.smoke\\accessories\\1789900536538\\technical-kit",
       "preview": "http://localhost:4237/character/rig.html",
-      "glb": "D:\\Documents\\ChatGPT\\pixelChar\\voxel-chibi-character-skill-silver-wolf\\.smoke\\accessories\\1789899980569\\technical-kit\\character\\technical-kit-rigged.glb",
+      "glb": "D:\\Documents\\ChatGPT\\pixelChar\\voxel-chibi-character-skill-silver-wolf\\.smoke\\accessories\\1789900536538\\technical-kit\\character\\technical-kit-rigged.glb",
       "sha256": "4feca8f2ca3461d56882eb1a9c4aa005fe4a08039fbc0584108e5cfdb49b0b1c",
       "parts": 17,
       "bones": 46,
@@ -47,9 +47,9 @@
     },
     {
       "name": "wrist-kit",
-      "project": "D:\\Documents\\ChatGPT\\pixelChar\\voxel-chibi-character-skill-silver-wolf\\.smoke\\accessories\\1789899980569\\wrist-kit",
+      "project": "D:\\Documents\\ChatGPT\\pixelChar\\voxel-chibi-character-skill-silver-wolf\\.smoke\\accessories\\1789900536538\\wrist-kit",
       "preview": "http://localhost:4238/character/rig.html",
-      "glb": "D:\\Documents\\ChatGPT\\pixelChar\\voxel-chibi-character-skill-silver-wolf\\.smoke\\accessories\\1789899980569\\wrist-kit\\character\\wrist-kit-rigged.glb",
+      "glb": "D:\\Documents\\ChatGPT\\pixelChar\\voxel-chibi-character-skill-silver-wolf\\.smoke\\accessories\\1789900536538\\wrist-kit\\character\\wrist-kit-rigged.glb",
       "sha256": "1cd5b706daf4825e40236bdf374410e8949a64cd9a572b73ac5c1c9646012380",
       "parts": 3,
       "bones": 43,

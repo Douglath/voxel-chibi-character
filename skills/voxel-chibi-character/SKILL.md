@@ -25,11 +25,15 @@ description: 以银灰狼耳少女为唯一基准，制作或迭代低开销体�
 node <skill目录>/scripts/scaffold.mjs <新工程路径> <角色英文标识> <中文名称> <端口>
 ```
 
-4. 复用兼容 Three.js，缺依赖才安装。`npm run build` 导出，`npm start` 预览。按 [验证与交付](references/validation.md) 查看实际 GLB 及变更相关检查。
+4. 脚手架已携带本工作流所需 Three.js，无需联网安装。`npm run build` 导出，`npm start` 预览。按 [验证与交付](references/validation.md) 查看实际 GLB 及变更相关检查。
 
 默认验收必须看到待机/基础关节动作，以及所选发饰或衣物在转动、轻推或跑动展示中的轻微跟随与回弹。提供可运行预览、角色专用绑定和运行时代码；只有20骨基础动画、仅有未使用的物理文件，或只交付GLB，均不算完成默认附加动态要求。表情模板和眨眼随预览交付；默认不增加 IK、完整布料碰撞或正式动作库。
 
 需要多模型对照、导入或负载测试时，按需读 [多模型与交互验收](references/model-lab.md)，使用可复制的试验室。默认已有单角色动态预览，无需额外交付多模型网站。
+
+## 跨环境使用
+
+本地与网页版共用本 skill，不另维护网页版入口。通过 Google Drive 读取或交付自包含 HTML 时，读取 [跨环境使用与离线打包](references/portable-use.md)。脚手架自动携带所需依赖和 build_html.py；规则、母版、表情、配件与运行时代码均来自同一来源。
 
 ## 控制开销
 

@@ -1,0 +1,1 @@
+{"name":"three","version":"0.180.0","type":"module","license":"MIT","main":"./build/three.module.js","exports":{".":"./build/three.module.js","./addons/*":"./examples/jsm/*"}}

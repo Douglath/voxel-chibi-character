@@ -22,15 +22,15 @@ node scripts/verify-examples.mjs
 
 默认复用 [v5 八表情与自然眨眼](skills/voxel-chibi-character/references/expressions.md)。新角色保持眼型、像素排列、眼线与高光，仅改 palette.iris 自动生成上暗 / 原色 / 下微亮色阶。Normal 的眨眼采用上眼皮下降、遮住高光、平直一像素粗闭合线，避免笑眼。腮红、眼泪、汗滴、怒气、饥饿闪光和口水独立开关；右上符号已放大并描边。
 
-桌面脚手架和网页离线包均包含生产代码与控件。GLB 基础资产保持不变，表情/眨眼依赖 expressions.mjs 运行时。原身体、头发、服装与附加动态保留；开销另计。
+统一脚手架和离线 HTML 均包含生产代码与控件。GLB 基础资产保持不变，表情/眨眼依赖 expressions.mjs 运行时。原身体、头发、服装与附加动态保留；开销另计。
 
-## 网页版适配包
+## 统一 skill 与跨环境使用
 
-[使用说明](web/voxel-character-web/README.md) · [网页版 Skill](web/voxel-character-web/skills/voxel-character-web/SKILL.md) · [Skill 上传包](web/dist/voxel-character-web-skill.zip) · [完整插件包](web/dist/voxel-character-web-plugin.zip) · [自包含 HTML](web/dist/character-preview.html) · [GLB](web/dist/character-rigged.glb) · [适配验证](web/verification.json)
+本地和网页版均使用 [同一个 skill](skills/voxel-chibi-character/SKILL.md)，规则、模型、表情、动态只维护一份。[完整 skill ZIP](dist/voxel-chibi-character.zip) 可保存到 Google Drive；保留整个文件夹结构，由会话读取 SKILL.md 并按需获取引用文档、脚本和资源。云盘账号中的实际读取和执行尚未验证。
 
-[确认版完整配件预览](web/dist/technical-kit-preview.html) · [确认版配件 GLB](web/dist/technical-kit-rigged.glb)。网页版默认项目使用基础母版，完整配件范例通过 `create_project.py --accessory-example technical-kit` 选用。
+[跨环境说明](skills/voxel-chibi-character/references/portable-use.md) · [统一脚手架](skills/voxel-chibi-character/scripts/scaffold.mjs) · [离线 HTML 打包](skills/voxel-chibi-character/scripts/build_html.py)。脚手架自带工作流所需 Three.js；生成项目内运行 python scripts/build_html.py --project . --output character.html，即可输出内嵌模型、动态、表情及依赖的 HTML。
 
-HTML 中已内嵌 Three.js、模型与动效，无 CDN 和本地服务依赖。GitHub 上请下载 HTML 后打开。独立网页验证通过；网页版 ChatGPT 的安装和内嵌预览取决于账号能力，尚未在用户账号实测。
+独立网页版 skill、插件清单和重复安装包已退役；历史可从 Git 提交 0ba7424 恢复。需要更新主 skill ZIP 时运行 python scripts/package-skill.py。
 
 ## 快速入口
 
