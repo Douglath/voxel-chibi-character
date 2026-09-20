@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "voxel-character-web",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Voxel character modeling guidance and self-contained Three.js previews for ChatGPT web.",
   "author": {
     "name": "Douglath"

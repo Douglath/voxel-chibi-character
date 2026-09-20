@@ -1,6 +1,8 @@
 import {setupDropDemo} from './drop-demo.mjs';
 import {setupMotionDemo} from './motion-demo.mjs';
 import {HairPhysics} from './hair-physics.mjs';
+import {AccessoryDynamics} from './accessories/accessory-dynamics.mjs';
+let accessoryDynamics;
 import * as THREE from '../three/build/three.module.js';
 import {GLTFLoader} from '../three/examples/jsm/loaders/GLTFLoader.js';
 import {OrbitControls} from '../three/examples/jsm/controls/OrbitControls.js';
@@ -56,9 +58,14 @@ try{
  document.getElementById('bones').onclick=()=>{skeleton.visible=!skeleton.visible;document.getElementById('bones').textContent=skeleton.visible?'隐藏骨骼':'显示骨骼';};
  mixer.stopAllAction();action=mixer.clipAction(gltf.animations.find(c=>c.name==='Idle'));action.reset().play();mixer.setTime(0);for(const name of ['front','side','back','three']){view(name);renderer.render(scene,camera);images[name]=renderer.domElement.toDataURL('image/png');}
  const response=await fetch('/evidence',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({images,report})});if(!response.ok)throw Error('Could not save verification');
- document.getElementById('status').textContent=`${triangles.toLocaleString()} 个三角面 · 43 根骨骼 · 正在验证实时播放`;
+ document.getElementById('status').textContent=`${triangles.toLocaleString()} 个三角面 · ${meshes[0].skeleton.bones.length} 根骨骼 · 正在验证实时播放`;
  renderer.setPixelRatio(Math.min(devicePixelRatio,2));resize();view('three');
  hair=new HairPhysics(rig);scene.add(hair.helpers);
+ accessoryDynamics=new AccessoryDynamics(rig);
+ const baseHairUpdate=hair.update.bind(hair),baseHairReset=hair.reset.bind(hair),baseHairKick=hair.kick.bind(hair);
+ hair.update=dt=>{baseHairUpdate(dt);accessoryDynamics.enabled=hair.enabled;accessoryDynamics.update(dt);};
+ hair.reset=(...args)=>{baseHairReset(...args);accessoryDynamics.reset();};
+ hair.kick=(...args)=>{baseHairKick(...args);accessoryDynamics.kick();};
  const clothButton=document.createElement('button');clothButton.textContent='关闭衣摆袖口动态';clothButton.id='clothToggle';document.getElementById('proxies').after(clothButton);clothButton.onclick=()=>{hair.clothEnabled=!hair.clothEnabled;clothButton.textContent=hair.clothEnabled?'关闭衣摆袖口动态':'开启衣摆袖口动态';};motion=setupMotionDemo(rig,hair,renderer.domElement,controls,()=>paused);
  const normalCenter=center.clone(),normalHeight=height;const ground=new THREE.GridHelper(6,6,0x7da1be,0x304859);ground.visible=false;scene.add(ground);
  followCamera=()=>{if(drop?.testing&&drop.follow){const wanted=normalCenter.clone().add(rig.position),shift=wanted.clone().sub(center);camera.position.add(shift);center.copy(wanted);controls.target.copy(center);}};
@@ -88,7 +95,7 @@ renderer.setAnimationLoop(()=>{
  if(hairTime>12&&!hairSaved){hairSaved=true;fetch('/hair-evidence',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(hair.metrics)});}
  }
  followCamera?.();controls.update();renderer.render(scene,camera);
- if(report&&!saved&&loops>=3){saved=true;report.live={frames,loops,drawCalls:renderer.info.render.calls,activeParticles:hair.chains.reduce((n,c)=>n+c.p.length-1,0)+3,webglError:renderer.getContext().getError()};report.pass=report.numericPass&&report.live.webglError===0&&errors.length===0;save();document.getElementById('status').textContent=report.pass?'通过 · 43 根骨骼 · 待机 / 关节测试 · T-pose 绑定姿势':'检查未通过';}
+ if(report&&!saved&&loops>=3){saved=true;report.live={frames,loops,drawCalls:renderer.info.render.calls,activeParticles:hair.chains.reduce((n,c)=>n+c.p.length-1,0)+3+(accessoryDynamics?.states.length??0),webglError:renderer.getContext().getError()};report.pass=report.numericPass&&report.live.webglError===0&&errors.length===0;save();document.getElementById('status').textContent=report.pass?`通过 · ${meshes[0].skeleton.bones.length} 根骨骼 · 待机 / 关节测试 · T-pose 绑定姿势`:'检查未通过';}
 });
 
-window.characterDebug=()=>({rig,hair,motion,drop,renderer,report,paused,loops});
+window.characterDebug=()=>({rig,hair,accessoryDynamics,motion,drop,renderer,report,paused,loops});

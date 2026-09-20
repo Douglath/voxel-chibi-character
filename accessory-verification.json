@@ -1,0 +1,95 @@
+{
+  "pass": true,
+  "createdAt": "2026-09-20T09:31:47.675Z",
+  "results": [
+    {
+      "name": "technical-kit",
+      "project": "D:\\Documents\\ChatGPT\\pixelChar\\voxel-chibi-character-skill-silver-wolf\\.smoke\\accessories\\1789896706277\\technical-kit",
+      "preview": "http://localhost:4237/character/rig.html",
+      "glb": "D:\\Documents\\ChatGPT\\pixelChar\\voxel-chibi-character-skill-silver-wolf\\.smoke\\accessories\\1789896706277\\technical-kit\\character\\technical-kit-rigged.glb",
+      "sha256": "4feca8f2ca3461d56882eb1a9c4aa005fe4a08039fbc0584108e5cfdb49b0b1c",
+      "parts": 17,
+      "bones": 46,
+      "triangles": 4026,
+      "preservedMeshes": 38,
+      "clips": [
+        "Idle",
+        "Rig_Test"
+      ],
+      "fpsResults": [
+        {
+          "fps": 30,
+          "rigidityError": 1.3740455456588619e-15,
+          "endpointError": 1.117140368961273e-15,
+          "response": 0.0378956015124391,
+          "settled": 0,
+          "pass": true
+        },
+        {
+          "fps": 60,
+          "rigidityError": 1.3426356273935429e-15,
+          "endpointError": 9.036560719766055e-16,
+          "response": 0.037970646233978354,
+          "settled": 0,
+          "pass": true
+        },
+        {
+          "fps": 144,
+          "rigidityError": 1.7774407109022855e-15,
+          "endpointError": 9.036560719766055e-16,
+          "response": 0.037916269990523624,
+          "settled": 0,
+          "pass": true
+        }
+      ],
+      "runResponse": 0.0012049820366302265,
+      "pass": true
+    },
+    {
+      "name": "wrist-kit",
+      "project": "D:\\Documents\\ChatGPT\\pixelChar\\voxel-chibi-character-skill-silver-wolf\\.smoke\\accessories\\1789896706277\\wrist-kit",
+      "preview": "http://localhost:4238/character/rig.html",
+      "glb": "D:\\Documents\\ChatGPT\\pixelChar\\voxel-chibi-character-skill-silver-wolf\\.smoke\\accessories\\1789896706277\\wrist-kit\\character\\wrist-kit-rigged.glb",
+      "sha256": "1cd5b706daf4825e40236bdf374410e8949a64cd9a572b73ac5c1c9646012380",
+      "parts": 3,
+      "bones": 43,
+      "triangles": 3310,
+      "preservedMeshes": 38,
+      "clips": [
+        "Idle",
+        "Rig_Test"
+      ],
+      "fpsResults": [
+        {
+          "fps": 30,
+          "rigidityError": 1.3472180148700993e-15,
+          "endpointError": 0,
+          "response": 0,
+          "settled": 0,
+          "pass": true
+        },
+        {
+          "fps": 60,
+          "rigidityError": 1.5622222714862009e-15,
+          "endpointError": 0,
+          "response": 0,
+          "settled": 0,
+          "pass": true
+        },
+        {
+          "fps": 144,
+          "rigidityError": 1.5622222714862009e-15,
+          "endpointError": 0,
+          "response": 0,
+          "settled": 0,
+          "pass": true
+        }
+      ],
+      "runResponse": 0,
+      "pass": true
+    }
+  ],
+  "invalidAnchorRejected": true,
+  "browser": "unverified",
+  "scope": "Actual exported GLBs; unchanged baseline meshes and colors; accessory presence, metadata and normalized skin; full rigid vertices and two-end path attachment under torso/thigh/forearm movement; bounded secondary response and settling at 30/60/144 FPS; production run yaw/bob without kick. Browser appearance, seam contact and collision require separate review; no full cloth or self collision."
+}

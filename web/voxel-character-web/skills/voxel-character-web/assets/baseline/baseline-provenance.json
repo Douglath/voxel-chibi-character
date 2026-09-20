@@ -1,17 +1,20 @@
 {
   "baseline": "silver-wolf-refined-dynamics",
-  "source": "User-approved current silver-wolf character, after broad rear-hair tone iteration",
+  "source": "User-approved technical-kit-eyes-v5; base clothing/hair/eyes retained, optional technical equipment composed separately",
   "previousSkill": {
     "repository": "https://github.com/Douglath/voxel-chibi-character-skill",
     "commit": "31d6e56"
   },
-  "geometry": "Preserved from current model; metadata and portable fixture packaging updated",
+  "geometry": "Existing occupied geometry and rig preserved; three iris rows add four triangles and eight vertices; clothing/hair recolor preserves topology",
   "originalSourceGlbSHA256": "4f3cd13666b82879a44072ddc9135a68872267ca3b238f6862f968d0a7edcfb7",
-  "browserEvidence": "rig-*.png and rig-validation.json copied from actual current model browser; scaffold browser tested separately in repository verification",
+  "browserEvidence": "rig-*.png and rig-validation.json from regenerated default GLB, identical SHA256 to packaged base; numeric test reports from byte-equivalent generated scaffold",
   "limits": [
     "No full mesh self collision",
     "No multi-character stress benchmark",
     "No automatic LOD",
     "Physics not baked into GLB"
-  ]
+  ],
+  "approvedVersion": "technical-kit-eyes-v5",
+  "packagedGlbSHA256": "272765ec896df061184c9ab3400be1851dd7b097783b7ecef307aaf770aa8225",
+  "approvedTechnicalGlbSHA256": "4feca8f2ca3461d56882eb1a9c4aa005fe4a08039fbc0584108e5cfdb49b0b1c"
 }

@@ -1,6 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
+import {installAccessorySupport} from './accessory-scaffold.mjs';
 const [target,id,label,port='4192']=process.argv.slice(2),template='silver-wolf';
 if(!target||!id||!label||!/^[a-z][a-z0-9-]*$/.test(id)||!/^\d+$/.test(port)||+port<1024||+port>65535)throw Error('Usage: scaffold.mjs <new-project> <slug> <display-name> [port 1024..65535]');
 const out=path.resolve(target);if(fs.existsSync(out))throw Error('Target already exists; choose a new directory');
@@ -17,5 +18,6 @@ for(const f of fs.readdirSync(src).filter(f=>f.endsWith('.mjs')||f.endsWith('.ht
  fs.writeFileSync(path.join(out,'character',f),t);
 }
 fs.writeFileSync(path.join(out,'package.json'),JSON.stringify({name:id+'-voxel',private:true,type:'module',scripts:{build:'node character/export.mjs && node character/rig-export.mjs',start:'node character/server.mjs'},dependencies:{three:'0.180.0'}},null,2));
-fs.writeFileSync(path.join(out,'character-spec.json'),JSON.stringify({id,label,styleBaseline:'silver-wolf-refined-dynamics',template,reference:null,identityFeatures:[],sleeveDesign:'review-reference',dynamics:{requiredByDefault:true,optOut:'Only explicit user request for static/no animation',selected:[],omitted:[],targetCategories:[2,3],targetAddedBones:[4,8],requiredDelivery:['Basic animation','Character-appropriate secondary motion','Working runtime preview','Motion and settling validation'],status:'Full 43-bone reference copied; choose appropriate parts and adapt bindings/runtime/tests. Empty selection is unfinished, not permission to omit secondary motion.'},limitations:['Template copied; character geometry not yet customized','Runtime secondary motion is not baked into GLB']},null,2));
+installAccessorySupport(out);
+fs.writeFileSync(path.join(out,'character-spec.json'),JSON.stringify({id,label,styleBaseline:'silver-wolf-refined-dynamics',template,reference:null,identityFeatures:[],accessories:{version:1,palette:{},anchors:{},bones:[],dynamics:[],parts:[]},sleeveDesign:'review-reference',dynamics:{requiredByDefault:true,optOut:'Only explicit user request for static/no animation',selected:[],omitted:[],targetCategories:[2,3],targetAddedBones:[4,8],requiredDelivery:['Basic animation','Character-appropriate secondary motion','Working runtime preview','Motion and settling validation'],status:'Full 43-bone reference copied; choose appropriate parts and adapt bindings/runtime/tests. Empty selection is unfinished, not permission to omit secondary motion.'},limitations:['Template copied; character geometry not yet customized','Runtime secondary motion is not baked into GLB']},null,2));
 console.log(JSON.stringify({project:out,preview:'http://localhost:'+port+'/character/rig.html',next:'Customize geometry and bindings, npm install, npm run build, npm start'}));

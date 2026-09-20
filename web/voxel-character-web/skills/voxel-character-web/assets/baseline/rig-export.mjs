@@ -1,4 +1,5 @@
 import fs from 'node:fs';
+import {addAccessoryBones,accessoryWeights} from './accessories/accessory-kit.mjs';
 import {Quaternion,Vector3,Matrix4} from '../three/build/three.module.js';
 const b=fs.readFileSync(new URL('silver-wolf.glb',import.meta.url)),jl=b.readUInt32LE(12),j=JSON.parse(b.subarray(20,20+jl));
 let bin=Buffer.from(b.subarray(28+jl,28+jl+b.readUInt32LE(20+jl)));
@@ -20,13 +21,16 @@ for(const [s,sign]of [['L',1],['R',-1]]){
  bone('coat_back_'+s,hips,[sign*.25,1.615,-.30]);
 }
 const chestRibbon=bone('chest_ribbon_1',chest,[.255,2.125,.4725]);bone('chest_ribbon_2',chestRibbon,[.255,1.785,.4725]);
+addAccessoryBones(j.nodes[0].extras.accessoryRig,bone,bones);
 const id=name=>{const i=bones.findIndex(b=>b.name===name);if(i<0)throw Error(name);return i;};
+for(const anchor of Object.values(j.nodes[0].extras.accessories?.anchors??{}))id(anchor.bone);
 const clamp=v=>Math.max(0,Math.min(1,v));
 let vertices=0,maxWeightError=0;
 for(const node of j.nodes){if(node.mesh===undefined)continue;node.skin=0;
  for(const p of j.meshes[node.mesh].primitives){const a=j.accessors[p.attributes.POSITION],v=j.bufferViews[a.bufferView],joints=[],weights=[];
   for(let k=0;k<a.count;k++){const off=(v.byteOffset??0)+(a.byteOffset??0)+k*12,x=bin.readFloatLE(off),y=bin.readFloatLE(off+4),z=bin.readFloatLE(off+8),name=node.name,s=name.endsWith('_L')?'L':'R';let w;
-   if(name==='ChestRibbon'){const a=clamp((2.125-y)/.17),b=clamp((1.785-y)/.17);w=[[chest,1-a],[id('chest_ribbon_1'),a*(1-b)],[id('chest_ribbon_2'),a*b]];}
+   if(node.extras?.accessory){const ta=p.attributes._PATH_T===undefined?null:j.accessors[p.attributes._PATH_T],tv=ta?j.bufferViews[ta.bufferView]:null;const t=ta?bin.readFloatLE((tv.byteOffset??0)+(ta.byteOffset??0)+k*4):0;w=accessoryWeights(node.extras.accessory.binding,t,id);}
+   else if(name==='ChestRibbon'){const a=clamp((2.125-y)/.17),b=clamp((1.785-y)/.17);w=[[chest,1-a],[id('chest_ribbon_1'),a*(1-b)],[id('chest_ribbon_2'),a*b]];}
    else if(name.startsWith('SideHair_')){const a=clamp((2.89-y)/.17),b=clamp((2.465-y)/.2);w=[[head,1-a],[id('side_hair_'+s+'_1'),a*(1-b)*.75],[id('side_hair_'+s+'_2'),a*b*.75],[id('outer_hair_'+s),a*.25]];}
    else if(name==='Hair'&&Math.abs(x)>.63&&z>-.40&&y<2.89){const a=clamp((2.89-y)/.42);w=[[head,1-a],[id('outer_hair_'+(x>0?'L':'R')),a]];}
    else if(name==='Ears')w=[[id('ear_'+(x>0?'L':'R')),1]];

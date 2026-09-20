@@ -27,8 +27,28 @@
 
 phase 为 concept / standardized；status 为 ready / needs_revision。ready 必须有实际视觉评审，review 覆盖 body、pose_camera、identity、structure、layout_material 五项，有阻断项时不能 ready。concept 可作为直接建模输入但不是标准化结果；只有用户接受该范围时继续。
 
-parts 的 motion 为 rigid / secondary / skinned，evidence 为 observed / inferred。发带等刚性附件记录挂在哪束头发上，不能只写 head 而丢失随动关系。palette 使用独立语义键，即使色值一样也不合并眼睛与服装用途。
+parts 的旧字段 motion 为 rigid / secondary / skinned，evidence 为 observed / inferred。发带等刚性附件记录挂在哪束头发上，不能只写 head 而丢失随动关系。palette 使用独立语义键，即使色值一样也不合并眼睛与服装用途。
+
+## 复杂部件的可选描述
+
+继续使用 schema_version: 1，旧交接保持有效；按实际复杂度给 parts 添加以下可选字段，不要求简单角色填满所有字段：
+
+| 字段 | 设计阶段的含义 |
+|---|---|
+| shapeMode | rigid 保持自身形状；deformable 可沿长度或承载面弯曲 |
+| motionMode | follow 跟随承载物；secondary 有独立附加运动 |
+| attachments | 多个连接描述，每项记录 owner、location、role 和 evidence；如缝合端、过扣点、包侧端 |
+| path | 从起点到终点的有序描述，区分固定、过渡和自由段；无需在图片阶段猜三维坐标 |
+| priority | identity / structure / detail：身份锚点、承载连接、可简化微细节 |
+
+例如卡套可为 rigid + secondary，贴身肩带可为 deformable + follow，带尾可为 deformable + secondary。刚性和独立摆动不是互斥选项。父部件仍记录承载关系；attachments 记录跨部件连接，不将其强行压成单父节点。图片位置使用角色自身左右。
+
+旧 motion 在模型适配阶段结合参考转换：rigid 通常为 rigid + follow；skinned 通常为 deformable + follow；secondary 指独立运动，自身是否变形由材质/形状判断。若已提供新字段，以显式新字段为准，并记录旧字段矛盾；不能把所有旧 secondary 都当软带。此转换是建模适配工作，构件包不自动解释设计交接。
+
+## 映射到模型实现
 
 建模 skill 将这些设计字段映射到其 scaffold 生成的 character-spec.json，保留后者的绑定、动态预算与交付字段。不要直接用此文件覆盖模型 spec，也不要把图片“看起来可动”标为模型已测试。
+
+需要通用配件时，按底层 [配件构造与连接](../../../voxel-chibi-character/references/accessories.md) 将设计 parts 转换为工程根 character-spec.json 的 accessories 实现对象：实际尺寸、模型坐标、命名挂点、骨骼、路径权重与动态参数均在建模阶段确定。设计 attachments 中的 owner/location 描述不等于实现 attachments 的 anchor/at 数值字段。无法表达的结构由角色源码适配，不把尚未实现的描述标为完成。
 
 用户仅提供现成四视图时，模型 skill 自行提取同等信息即可；未知原图/母版写入限制，不补造哈希，不强迫回到出图流程。

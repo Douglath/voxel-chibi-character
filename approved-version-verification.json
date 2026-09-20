@@ -1,0 +1,1733 @@
+{
+  "createdAt": "2026-09-20T09:33:29.878Z",
+  "method": "Independent approved-v5 versus freshly rebuilt sample comparison. Exact named mesh indices and every attribute including colors/normals/weights/joints; all accessor payloads, entire BIN, structural nodes, skins/animations/materials and runtime source bytes. GLB metadata differences recorded separately. Default baseline inspected from actual rigged GLB.",
+  "pass": true,
+  "approved": {
+    "path": "D:/Documents/ChatGPT/pixelChar/local-iterations/technical-kit-eyes-v5/character/technical-kit-rigged.glb",
+    "sha256": "4feca8f2ca3461d56882eb1a9c4aa005fe4a08039fbc0584108e5cfdb49b0b1c",
+    "fileBytes": 670396,
+    "jsonBytes": 88160,
+    "binBytes": 582208,
+    "meshes": 55,
+    "primitives": 55,
+    "vertices": 8480,
+    "triangles": 4026,
+    "bones": 46,
+    "materials": 1,
+    "images": 0,
+    "textures": 0,
+    "samplers": 0,
+    "animations": [
+      "Idle",
+      "Rig_Test"
+    ]
+  },
+  "rebuilt": {
+    "path": "D:/Documents/ChatGPT/pixelChar/voxel-chibi-character-skill-silver-wolf/.smoke/accessories/1789896706277/technical-kit/character/technical-kit-rigged.glb",
+    "sha256": "4feca8f2ca3461d56882eb1a9c4aa005fe4a08039fbc0584108e5cfdb49b0b1c",
+    "fileBytes": 670396,
+    "jsonBytes": 88160,
+    "binBytes": 582208,
+    "meshes": 55,
+    "primitives": 55,
+    "vertices": 8480,
+    "triangles": 4026,
+    "bones": 46,
+    "materials": 1,
+    "images": 0,
+    "textures": 0,
+    "samplers": 0,
+    "animations": [
+      "Idle",
+      "Rig_Test"
+    ]
+  },
+  "checks": {
+    "meshesExact": true,
+    "meshCount": 55,
+    "nodesStructurallyExact": true,
+    "sectionsExact": {
+      "skins": true,
+      "animations": true,
+      "materials": true,
+      "images": true,
+      "textures": true,
+      "samplers": true
+    },
+    "allAccessorsExact": true,
+    "accessorCount": 366,
+    "entireBinExact": true,
+    "runtimeSourcesExact": true,
+    "defaultBaselineCountsExpected": true
+  },
+  "meshChecks": [
+    {
+      "name": "Head",
+      "primitiveCountExact": true,
+      "indicesExact": true,
+      "attributes": [
+        {
+          "semantic": "POSITION",
+          "exact": true
+        },
+        {
+          "semantic": "NORMAL",
+          "exact": true
+        },
+        {
+          "semantic": "COLOR_0",
+          "exact": true
+        },
+        {
+          "semantic": "JOINTS_0",
+          "exact": true
+        },
+        {
+          "semantic": "WEIGHTS_0",
+          "exact": true
+        }
+      ],
+      "pass": true
+    },
+    {
+      "name": "Face",
+      "primitiveCountExact": true,
+      "indicesExact": true,
+      "attributes": [
+        {
+          "semantic": "POSITION",
+          "exact": true
+        },
+        {
+          "semantic": "NORMAL",
+          "exact": true
+        },
+        {
+          "semantic": "COLOR_0",
+          "exact": true
+        },
+        {
+          "semantic": "JOINTS_0",
+          "exact": true
+        },
+        {
+          "semantic": "WEIGHTS_0",
+          "exact": true
+        }
+      ],
+      "pass": true
+    },
+    {
+      "name": "Neck",
+      "primitiveCountExact": true,
+      "indicesExact": true,
+      "attributes": [
+        {
+          "semantic": "POSITION",
+          "exact": true
+        },
+        {
+          "semantic": "NORMAL",
+          "exact": true
+        },
+        {
+          "semantic": "COLOR_0",
+          "exact": true
+        },
+        {
+          "semantic": "JOINTS_0",
+          "exact": true
+        },
+        {
+          "semantic": "WEIGHTS_0",
+          "exact": true
+        }
+      ],
+      "pass": true
+    },
+    {
+      "name": "SideHair_R",
+      "primitiveCountExact": true,
+      "indicesExact": true,
+      "attributes": [
+        {
+          "semantic": "POSITION",
+          "exact": true
+        },
+        {
+          "semantic": "NORMAL",
+          "exact": true
+        },
+        {
+          "semantic": "COLOR_0",
+          "exact": true
+        },
+        {
+          "semantic": "JOINTS_0",
+          "exact": true
+        },
+        {
+          "semantic": "WEIGHTS_0",
+          "exact": true
+        }
+      ],
+      "pass": true
+    },
+    {
+      "name": "Hair",
+      "primitiveCountExact": true,
+      "indicesExact": true,
+      "attributes": [
+        {
+          "semantic": "POSITION",
+          "exact": true
+        },
+        {
+          "semantic": "NORMAL",
+          "exact": true
+        },
+        {
+          "semantic": "COLOR_0",
+          "exact": true
+        },
+        {
+          "semantic": "JOINTS_0",
+          "exact": true
+        },
+        {
+          "semantic": "WEIGHTS_0",
+          "exact": true
+        }
+      ],
+      "pass": true
+    },
+    {
+      "name": "Ears",
+      "primitiveCountExact": true,
+      "indicesExact": true,
+      "attributes": [
+        {
+          "semantic": "POSITION",
+          "exact": true
+        },
+        {
+          "semantic": "NORMAL",
+          "exact": true
+        },
+        {
+          "semantic": "COLOR_0",
+          "exact": true
+        },
+        {
+          "semantic": "JOINTS_0",
+          "exact": true
+        },
+        {
+          "semantic": "WEIGHTS_0",
+          "exact": true
+        }
+      ],
+      "pass": true
+    },
+    {
+      "name": "LongHair_R",
+      "primitiveCountExact": true,
+      "indicesExact": true,
+      "attributes": [
+        {
+          "semantic": "POSITION",
+          "exact": true
+        },
+        {
+          "semantic": "NORMAL",
+          "exact": true
+        },
+        {
+          "semantic": "COLOR_0",
+          "exact": true
+        },
+        {
+          "semantic": "JOINTS_0",
+          "exact": true
+        },
+        {
+          "semantic": "WEIGHTS_0",
+          "exact": true
+        }
+      ],
+      "pass": true
+    },
+    {
+      "name": "Fringe",
+      "primitiveCountExact": true,
+      "indicesExact": true,
+      "attributes": [
+        {
+          "semantic": "POSITION",
+          "exact": true
+        },
+        {
+          "semantic": "NORMAL",
+          "exact": true
+        },
+        {
+          "semantic": "COLOR_0",
+          "exact": true
+        },
+        {
+          "semantic": "JOINTS_0",
+          "exact": true
+        },
+        {
+          "semantic": "WEIGHTS_0",
+          "exact": true
+        }
+      ],
+      "pass": true
+    },
+    {
+      "name": "LongHair_L",
+      "primitiveCountExact": true,
+      "indicesExact": true,
+      "attributes": [
+        {
+          "semantic": "POSITION",
+          "exact": true
+        },
+        {
+          "semantic": "NORMAL",
+          "exact": true
+        },
+        {
+          "semantic": "COLOR_0",
+          "exact": true
+        },
+        {
+          "semantic": "JOINTS_0",
+          "exact": true
+        },
+        {
+          "semantic": "WEIGHTS_0",
+          "exact": true
+        }
+      ],
+      "pass": true
+    },
+    {
+      "name": "SideHair_L",
+      "primitiveCountExact": true,
+      "indicesExact": true,
+      "attributes": [
+        {
+          "semantic": "POSITION",
+          "exact": true
+        },
+        {
+          "semantic": "NORMAL",
+          "exact": true
+        },
+        {
+          "semantic": "COLOR_0",
+          "exact": true
+        },
+        {
+          "semantic": "JOINTS_0",
+          "exact": true
+        },
+        {
+          "semantic": "WEIGHTS_0",
+          "exact": true
+        }
+      ],
+      "pass": true
+    },
+    {
+      "name": "Clips",
+      "primitiveCountExact": true,
+      "indicesExact": true,
+      "attributes": [
+        {
+          "semantic": "POSITION",
+          "exact": true
+        },
+        {
+          "semantic": "NORMAL",
+          "exact": true
+        },
+        {
+          "semantic": "COLOR_0",
+          "exact": true
+        },
+        {
+          "semantic": "JOINTS_0",
+          "exact": true
+        },
+        {
+          "semantic": "WEIGHTS_0",
+          "exact": true
+        }
+      ],
+      "pass": true
+    },
+    {
+      "name": "Bodice",
+      "primitiveCountExact": true,
+      "indicesExact": true,
+      "attributes": [
+        {
+          "semantic": "POSITION",
+          "exact": true
+        },
+        {
+          "semantic": "NORMAL",
+          "exact": true
+        },
+        {
+          "semantic": "COLOR_0",
+          "exact": true
+        },
+        {
+          "semantic": "JOINTS_0",
+          "exact": true
+        },
+        {
+          "semantic": "WEIGHTS_0",
+          "exact": true
+        }
+      ],
+      "pass": true
+    },
+    {
+      "name": "Collar",
+      "primitiveCountExact": true,
+      "indicesExact": true,
+      "attributes": [
+        {
+          "semantic": "POSITION",
+          "exact": true
+        },
+        {
+          "semantic": "NORMAL",
+          "exact": true
+        },
+        {
+          "semantic": "COLOR_0",
+          "exact": true
+        },
+        {
+          "semantic": "JOINTS_0",
+          "exact": true
+        },
+        {
+          "semantic": "WEIGHTS_0",
+          "exact": true
+        }
+      ],
+      "pass": true
+    },
+    {
+      "name": "Coat_R",
+      "primitiveCountExact": true,
+      "indicesExact": true,
+      "attributes": [
+        {
+          "semantic": "POSITION",
+          "exact": true
+        },
+        {
+          "semantic": "NORMAL",
+          "exact": true
+        },
+        {
+          "semantic": "COLOR_0",
+          "exact": true
+        },
+        {
+          "semantic": "JOINTS_0",
+          "exact": true
+        },
+        {
+          "semantic": "WEIGHTS_0",
+          "exact": true
+        }
+      ],
+      "pass": true
+    },
+    {
+      "name": "Coat_L",
+      "primitiveCountExact": true,
+      "indicesExact": true,
+      "attributes": [
+        {
+          "semantic": "POSITION",
+          "exact": true
+        },
+        {
+          "semantic": "NORMAL",
+          "exact": true
+        },
+        {
+          "semantic": "COLOR_0",
+          "exact": true
+        },
+        {
+          "semantic": "JOINTS_0",
+          "exact": true
+        },
+        {
+          "semantic": "WEIGHTS_0",
+          "exact": true
+        }
+      ],
+      "pass": true
+    },
+    {
+      "name": "Shorts",
+      "primitiveCountExact": true,
+      "indicesExact": true,
+      "attributes": [
+        {
+          "semantic": "POSITION",
+          "exact": true
+        },
+        {
+          "semantic": "NORMAL",
+          "exact": true
+        },
+        {
+          "semantic": "COLOR_0",
+          "exact": true
+        },
+        {
+          "semantic": "JOINTS_0",
+          "exact": true
+        },
+        {
+          "semantic": "WEIGHTS_0",
+          "exact": true
+        }
+      ],
+      "pass": true
+    },
+    {
+      "name": "Tail",
+      "primitiveCountExact": true,
+      "indicesExact": true,
+      "attributes": [
+        {
+          "semantic": "POSITION",
+          "exact": true
+        },
+        {
+          "semantic": "NORMAL",
+          "exact": true
+        },
+        {
+          "semantic": "COLOR_0",
+          "exact": true
+        },
+        {
+          "semantic": "JOINTS_0",
+          "exact": true
+        },
+        {
+          "semantic": "WEIGHTS_0",
+          "exact": true
+        }
+      ],
+      "pass": true
+    },
+    {
+      "name": "Arm_R",
+      "primitiveCountExact": true,
+      "indicesExact": true,
+      "attributes": [
+        {
+          "semantic": "POSITION",
+          "exact": true
+        },
+        {
+          "semantic": "NORMAL",
+          "exact": true
+        },
+        {
+          "semantic": "COLOR_0",
+          "exact": true
+        },
+        {
+          "semantic": "JOINTS_0",
+          "exact": true
+        },
+        {
+          "semantic": "WEIGHTS_0",
+          "exact": true
+        }
+      ],
+      "pass": true
+    },
+    {
+      "name": "Sleeve_R",
+      "primitiveCountExact": true,
+      "indicesExact": true,
+      "attributes": [
+        {
+          "semantic": "POSITION",
+          "exact": true
+        },
+        {
+          "semantic": "NORMAL",
+          "exact": true
+        },
+        {
+          "semantic": "COLOR_0",
+          "exact": true
+        },
+        {
+          "semantic": "JOINTS_0",
+          "exact": true
+        },
+        {
+          "semantic": "WEIGHTS_0",
+          "exact": true
+        }
+      ],
+      "pass": true
+    },
+    {
+      "name": "Leg_R",
+      "primitiveCountExact": true,
+      "indicesExact": true,
+      "attributes": [
+        {
+          "semantic": "POSITION",
+          "exact": true
+        },
+        {
+          "semantic": "NORMAL",
+          "exact": true
+        },
+        {
+          "semantic": "COLOR_0",
+          "exact": true
+        },
+        {
+          "semantic": "JOINTS_0",
+          "exact": true
+        },
+        {
+          "semantic": "WEIGHTS_0",
+          "exact": true
+        }
+      ],
+      "pass": true
+    },
+    {
+      "name": "Sock_R",
+      "primitiveCountExact": true,
+      "indicesExact": true,
+      "attributes": [
+        {
+          "semantic": "POSITION",
+          "exact": true
+        },
+        {
+          "semantic": "NORMAL",
+          "exact": true
+        },
+        {
+          "semantic": "COLOR_0",
+          "exact": true
+        },
+        {
+          "semantic": "JOINTS_0",
+          "exact": true
+        },
+        {
+          "semantic": "WEIGHTS_0",
+          "exact": true
+        }
+      ],
+      "pass": true
+    },
+    {
+      "name": "Shoe_R",
+      "primitiveCountExact": true,
+      "indicesExact": true,
+      "attributes": [
+        {
+          "semantic": "POSITION",
+          "exact": true
+        },
+        {
+          "semantic": "NORMAL",
+          "exact": true
+        },
+        {
+          "semantic": "COLOR_0",
+          "exact": true
+        },
+        {
+          "semantic": "JOINTS_0",
+          "exact": true
+        },
+        {
+          "semantic": "WEIGHTS_0",
+          "exact": true
+        }
+      ],
+      "pass": true
+    },
+    {
+      "name": "Sole_R",
+      "primitiveCountExact": true,
+      "indicesExact": true,
+      "attributes": [
+        {
+          "semantic": "POSITION",
+          "exact": true
+        },
+        {
+          "semantic": "NORMAL",
+          "exact": true
+        },
+        {
+          "semantic": "COLOR_0",
+          "exact": true
+        },
+        {
+          "semantic": "JOINTS_0",
+          "exact": true
+        },
+        {
+          "semantic": "WEIGHTS_0",
+          "exact": true
+        }
+      ],
+      "pass": true
+    },
+    {
+      "name": "ShoeBand_R",
+      "primitiveCountExact": true,
+      "indicesExact": true,
+      "attributes": [
+        {
+          "semantic": "POSITION",
+          "exact": true
+        },
+        {
+          "semantic": "NORMAL",
+          "exact": true
+        },
+        {
+          "semantic": "COLOR_0",
+          "exact": true
+        },
+        {
+          "semantic": "JOINTS_0",
+          "exact": true
+        },
+        {
+          "semantic": "WEIGHTS_0",
+          "exact": true
+        }
+      ],
+      "pass": true
+    },
+    {
+      "name": "ShoeBuckle_R",
+      "primitiveCountExact": true,
+      "indicesExact": true,
+      "attributes": [
+        {
+          "semantic": "POSITION",
+          "exact": true
+        },
+        {
+          "semantic": "NORMAL",
+          "exact": true
+        },
+        {
+          "semantic": "COLOR_0",
+          "exact": true
+        },
+        {
+          "semantic": "JOINTS_0",
+          "exact": true
+        },
+        {
+          "semantic": "WEIGHTS_0",
+          "exact": true
+        }
+      ],
+      "pass": true
+    },
+    {
+      "name": "ShoeStrap_R",
+      "primitiveCountExact": true,
+      "indicesExact": true,
+      "attributes": [
+        {
+          "semantic": "POSITION",
+          "exact": true
+        },
+        {
+          "semantic": "NORMAL",
+          "exact": true
+        },
+        {
+          "semantic": "COLOR_0",
+          "exact": true
+        },
+        {
+          "semantic": "JOINTS_0",
+          "exact": true
+        },
+        {
+          "semantic": "WEIGHTS_0",
+          "exact": true
+        }
+      ],
+      "pass": true
+    },
+    {
+      "name": "Patch_R",
+      "primitiveCountExact": true,
+      "indicesExact": true,
+      "attributes": [
+        {
+          "semantic": "POSITION",
+          "exact": true
+        },
+        {
+          "semantic": "NORMAL",
+          "exact": true
+        },
+        {
+          "semantic": "COLOR_0",
+          "exact": true
+        },
+        {
+          "semantic": "JOINTS_0",
+          "exact": true
+        },
+        {
+          "semantic": "WEIGHTS_0",
+          "exact": true
+        }
+      ],
+      "pass": true
+    },
+    {
+      "name": "Arm_L",
+      "primitiveCountExact": true,
+      "indicesExact": true,
+      "attributes": [
+        {
+          "semantic": "POSITION",
+          "exact": true
+        },
+        {
+          "semantic": "NORMAL",
+          "exact": true
+        },
+        {
+          "semantic": "COLOR_0",
+          "exact": true
+        },
+        {
+          "semantic": "JOINTS_0",
+          "exact": true
+        },
+        {
+          "semantic": "WEIGHTS_0",
+          "exact": true
+        }
+      ],
+      "pass": true
+    },
+    {
+      "name": "Sleeve_L",
+      "primitiveCountExact": true,
+      "indicesExact": true,
+      "attributes": [
+        {
+          "semantic": "POSITION",
+          "exact": true
+        },
+        {
+          "semantic": "NORMAL",
+          "exact": true
+        },
+        {
+          "semantic": "COLOR_0",
+          "exact": true
+        },
+        {
+          "semantic": "JOINTS_0",
+          "exact": true
+        },
+        {
+          "semantic": "WEIGHTS_0",
+          "exact": true
+        }
+      ],
+      "pass": true
+    },
+    {
+      "name": "Leg_L",
+      "primitiveCountExact": true,
+      "indicesExact": true,
+      "attributes": [
+        {
+          "semantic": "POSITION",
+          "exact": true
+        },
+        {
+          "semantic": "NORMAL",
+          "exact": true
+        },
+        {
+          "semantic": "COLOR_0",
+          "exact": true
+        },
+        {
+          "semantic": "JOINTS_0",
+          "exact": true
+        },
+        {
+          "semantic": "WEIGHTS_0",
+          "exact": true
+        }
+      ],
+      "pass": true
+    },
+    {
+      "name": "Sock_L",
+      "primitiveCountExact": true,
+      "indicesExact": true,
+      "attributes": [
+        {
+          "semantic": "POSITION",
+          "exact": true
+        },
+        {
+          "semantic": "NORMAL",
+          "exact": true
+        },
+        {
+          "semantic": "COLOR_0",
+          "exact": true
+        },
+        {
+          "semantic": "JOINTS_0",
+          "exact": true
+        },
+        {
+          "semantic": "WEIGHTS_0",
+          "exact": true
+        }
+      ],
+      "pass": true
+    },
+    {
+      "name": "Shoe_L",
+      "primitiveCountExact": true,
+      "indicesExact": true,
+      "attributes": [
+        {
+          "semantic": "POSITION",
+          "exact": true
+        },
+        {
+          "semantic": "NORMAL",
+          "exact": true
+        },
+        {
+          "semantic": "COLOR_0",
+          "exact": true
+        },
+        {
+          "semantic": "JOINTS_0",
+          "exact": true
+        },
+        {
+          "semantic": "WEIGHTS_0",
+          "exact": true
+        }
+      ],
+      "pass": true
+    },
+    {
+      "name": "Sole_L",
+      "primitiveCountExact": true,
+      "indicesExact": true,
+      "attributes": [
+        {
+          "semantic": "POSITION",
+          "exact": true
+        },
+        {
+          "semantic": "NORMAL",
+          "exact": true
+        },
+        {
+          "semantic": "COLOR_0",
+          "exact": true
+        },
+        {
+          "semantic": "JOINTS_0",
+          "exact": true
+        },
+        {
+          "semantic": "WEIGHTS_0",
+          "exact": true
+        }
+      ],
+      "pass": true
+    },
+    {
+      "name": "ShoeBand_L",
+      "primitiveCountExact": true,
+      "indicesExact": true,
+      "attributes": [
+        {
+          "semantic": "POSITION",
+          "exact": true
+        },
+        {
+          "semantic": "NORMAL",
+          "exact": true
+        },
+        {
+          "semantic": "COLOR_0",
+          "exact": true
+        },
+        {
+          "semantic": "JOINTS_0",
+          "exact": true
+        },
+        {
+          "semantic": "WEIGHTS_0",
+          "exact": true
+        }
+      ],
+      "pass": true
+    },
+    {
+      "name": "ShoeBuckle_L",
+      "primitiveCountExact": true,
+      "indicesExact": true,
+      "attributes": [
+        {
+          "semantic": "POSITION",
+          "exact": true
+        },
+        {
+          "semantic": "NORMAL",
+          "exact": true
+        },
+        {
+          "semantic": "COLOR_0",
+          "exact": true
+        },
+        {
+          "semantic": "JOINTS_0",
+          "exact": true
+        },
+        {
+          "semantic": "WEIGHTS_0",
+          "exact": true
+        }
+      ],
+      "pass": true
+    },
+    {
+      "name": "ShoeStrap_L",
+      "primitiveCountExact": true,
+      "indicesExact": true,
+      "attributes": [
+        {
+          "semantic": "POSITION",
+          "exact": true
+        },
+        {
+          "semantic": "NORMAL",
+          "exact": true
+        },
+        {
+          "semantic": "COLOR_0",
+          "exact": true
+        },
+        {
+          "semantic": "JOINTS_0",
+          "exact": true
+        },
+        {
+          "semantic": "WEIGHTS_0",
+          "exact": true
+        }
+      ],
+      "pass": true
+    },
+    {
+      "name": "Patch_L",
+      "primitiveCountExact": true,
+      "indicesExact": true,
+      "attributes": [
+        {
+          "semantic": "POSITION",
+          "exact": true
+        },
+        {
+          "semantic": "NORMAL",
+          "exact": true
+        },
+        {
+          "semantic": "COLOR_0",
+          "exact": true
+        },
+        {
+          "semantic": "JOINTS_0",
+          "exact": true
+        },
+        {
+          "semantic": "WEIGHTS_0",
+          "exact": true
+        }
+      ],
+      "pass": true
+    },
+    {
+      "name": "ChestRibbon",
+      "primitiveCountExact": true,
+      "indicesExact": true,
+      "attributes": [
+        {
+          "semantic": "POSITION",
+          "exact": true
+        },
+        {
+          "semantic": "NORMAL",
+          "exact": true
+        },
+        {
+          "semantic": "COLOR_0",
+          "exact": true
+        },
+        {
+          "semantic": "JOINTS_0",
+          "exact": true
+        },
+        {
+          "semantic": "WEIGHTS_0",
+          "exact": true
+        }
+      ],
+      "pass": true
+    },
+    {
+      "name": "Acc_badge_strap",
+      "primitiveCountExact": true,
+      "indicesExact": true,
+      "attributes": [
+        {
+          "semantic": "POSITION",
+          "exact": true
+        },
+        {
+          "semantic": "NORMAL",
+          "exact": true
+        },
+        {
+          "semantic": "COLOR_0",
+          "exact": true
+        },
+        {
+          "semantic": "_PATH_T",
+          "exact": true
+        },
+        {
+          "semantic": "JOINTS_0",
+          "exact": true
+        },
+        {
+          "semantic": "WEIGHTS_0",
+          "exact": true
+        }
+      ],
+      "pass": true
+    },
+    {
+      "name": "Acc_badge_ring",
+      "primitiveCountExact": true,
+      "indicesExact": true,
+      "attributes": [
+        {
+          "semantic": "POSITION",
+          "exact": true
+        },
+        {
+          "semantic": "NORMAL",
+          "exact": true
+        },
+        {
+          "semantic": "COLOR_0",
+          "exact": true
+        },
+        {
+          "semantic": "_PATH_T",
+          "exact": true
+        },
+        {
+          "semantic": "JOINTS_0",
+          "exact": true
+        },
+        {
+          "semantic": "WEIGHTS_0",
+          "exact": true
+        }
+      ],
+      "pass": true
+    },
+    {
+      "name": "Acc_badge_card",
+      "primitiveCountExact": true,
+      "indicesExact": true,
+      "attributes": [
+        {
+          "semantic": "POSITION",
+          "exact": true
+        },
+        {
+          "semantic": "NORMAL",
+          "exact": true
+        },
+        {
+          "semantic": "COLOR_0",
+          "exact": true
+        },
+        {
+          "semantic": "_PATH_T",
+          "exact": true
+        },
+        {
+          "semantic": "JOINTS_0",
+          "exact": true
+        },
+        {
+          "semantic": "WEIGHTS_0",
+          "exact": true
+        }
+      ],
+      "pass": true
+    },
+    {
+      "name": "Acc_badge_frame",
+      "primitiveCountExact": true,
+      "indicesExact": true,
+      "attributes": [
+        {
+          "semantic": "POSITION",
+          "exact": true
+        },
+        {
+          "semantic": "NORMAL",
+          "exact": true
+        },
+        {
+          "semantic": "COLOR_0",
+          "exact": true
+        },
+        {
+          "semantic": "_PATH_T",
+          "exact": true
+        },
+        {
+          "semantic": "JOINTS_0",
+          "exact": true
+        },
+        {
+          "semantic": "WEIGHTS_0",
+          "exact": true
+        }
+      ],
+      "pass": true
+    },
+    {
+      "name": "Acc_badge_picture",
+      "primitiveCountExact": true,
+      "indicesExact": true,
+      "attributes": [
+        {
+          "semantic": "POSITION",
+          "exact": true
+        },
+        {
+          "semantic": "NORMAL",
+          "exact": true
+        },
+        {
+          "semantic": "COLOR_0",
+          "exact": true
+        },
+        {
+          "semantic": "_PATH_T",
+          "exact": true
+        },
+        {
+          "semantic": "JOINTS_0",
+          "exact": true
+        },
+        {
+          "semantic": "WEIGHTS_0",
+          "exact": true
+        }
+      ],
+      "pass": true
+    },
+    {
+      "name": "Acc_badge_bar",
+      "primitiveCountExact": true,
+      "indicesExact": true,
+      "attributes": [
+        {
+          "semantic": "POSITION",
+          "exact": true
+        },
+        {
+          "semantic": "NORMAL",
+          "exact": true
+        },
+        {
+          "semantic": "COLOR_0",
+          "exact": true
+        },
+        {
+          "semantic": "_PATH_T",
+          "exact": true
+        },
+        {
+          "semantic": "JOINTS_0",
+          "exact": true
+        },
+        {
+          "semantic": "WEIGHTS_0",
+          "exact": true
+        }
+      ],
+      "pass": true
+    },
+    {
+      "name": "Acc_sling",
+      "primitiveCountExact": true,
+      "indicesExact": true,
+      "attributes": [
+        {
+          "semantic": "POSITION",
+          "exact": true
+        },
+        {
+          "semantic": "NORMAL",
+          "exact": true
+        },
+        {
+          "semantic": "COLOR_0",
+          "exact": true
+        },
+        {
+          "semantic": "_PATH_T",
+          "exact": true
+        },
+        {
+          "semantic": "JOINTS_0",
+          "exact": true
+        },
+        {
+          "semantic": "WEIGHTS_0",
+          "exact": true
+        }
+      ],
+      "pass": true
+    },
+    {
+      "name": "Acc_sling_adjuster",
+      "primitiveCountExact": true,
+      "indicesExact": true,
+      "attributes": [
+        {
+          "semantic": "POSITION",
+          "exact": true
+        },
+        {
+          "semantic": "NORMAL",
+          "exact": true
+        },
+        {
+          "semantic": "COLOR_0",
+          "exact": true
+        },
+        {
+          "semantic": "_PATH_T",
+          "exact": true
+        },
+        {
+          "semantic": "JOINTS_0",
+          "exact": true
+        },
+        {
+          "semantic": "WEIGHTS_0",
+          "exact": true
+        }
+      ],
+      "pass": true
+    },
+    {
+      "name": "Acc_sling_crossbar",
+      "primitiveCountExact": true,
+      "indicesExact": true,
+      "attributes": [
+        {
+          "semantic": "POSITION",
+          "exact": true
+        },
+        {
+          "semantic": "NORMAL",
+          "exact": true
+        },
+        {
+          "semantic": "COLOR_0",
+          "exact": true
+        },
+        {
+          "semantic": "_PATH_T",
+          "exact": true
+        },
+        {
+          "semantic": "JOINTS_0",
+          "exact": true
+        },
+        {
+          "semantic": "WEIGHTS_0",
+          "exact": true
+        }
+      ],
+      "pass": true
+    },
+    {
+      "name": "Acc_sling_tail",
+      "primitiveCountExact": true,
+      "indicesExact": true,
+      "attributes": [
+        {
+          "semantic": "POSITION",
+          "exact": true
+        },
+        {
+          "semantic": "NORMAL",
+          "exact": true
+        },
+        {
+          "semantic": "COLOR_0",
+          "exact": true
+        },
+        {
+          "semantic": "_PATH_T",
+          "exact": true
+        },
+        {
+          "semantic": "JOINTS_0",
+          "exact": true
+        },
+        {
+          "semantic": "WEIGHTS_0",
+          "exact": true
+        }
+      ],
+      "pass": true
+    },
+    {
+      "name": "Acc_zip_tape",
+      "primitiveCountExact": true,
+      "indicesExact": true,
+      "attributes": [
+        {
+          "semantic": "POSITION",
+          "exact": true
+        },
+        {
+          "semantic": "NORMAL",
+          "exact": true
+        },
+        {
+          "semantic": "COLOR_0",
+          "exact": true
+        },
+        {
+          "semantic": "_PATH_T",
+          "exact": true
+        },
+        {
+          "semantic": "JOINTS_0",
+          "exact": true
+        },
+        {
+          "semantic": "WEIGHTS_0",
+          "exact": true
+        }
+      ],
+      "pass": true
+    },
+    {
+      "name": "Acc_zip_slider",
+      "primitiveCountExact": true,
+      "indicesExact": true,
+      "attributes": [
+        {
+          "semantic": "POSITION",
+          "exact": true
+        },
+        {
+          "semantic": "NORMAL",
+          "exact": true
+        },
+        {
+          "semantic": "COLOR_0",
+          "exact": true
+        },
+        {
+          "semantic": "_PATH_T",
+          "exact": true
+        },
+        {
+          "semantic": "JOINTS_0",
+          "exact": true
+        },
+        {
+          "semantic": "WEIGHTS_0",
+          "exact": true
+        }
+      ],
+      "pass": true
+    },
+    {
+      "name": "Acc_zip_pull",
+      "primitiveCountExact": true,
+      "indicesExact": true,
+      "attributes": [
+        {
+          "semantic": "POSITION",
+          "exact": true
+        },
+        {
+          "semantic": "NORMAL",
+          "exact": true
+        },
+        {
+          "semantic": "COLOR_0",
+          "exact": true
+        },
+        {
+          "semantic": "_PATH_T",
+          "exact": true
+        },
+        {
+          "semantic": "JOINTS_0",
+          "exact": true
+        },
+        {
+          "semantic": "WEIGHTS_0",
+          "exact": true
+        }
+      ],
+      "pass": true
+    },
+    {
+      "name": "Acc_thigh_wrap",
+      "primitiveCountExact": true,
+      "indicesExact": true,
+      "attributes": [
+        {
+          "semantic": "POSITION",
+          "exact": true
+        },
+        {
+          "semantic": "NORMAL",
+          "exact": true
+        },
+        {
+          "semantic": "COLOR_0",
+          "exact": true
+        },
+        {
+          "semantic": "_PATH_T",
+          "exact": true
+        },
+        {
+          "semantic": "JOINTS_0",
+          "exact": true
+        },
+        {
+          "semantic": "WEIGHTS_0",
+          "exact": true
+        }
+      ],
+      "pass": true
+    },
+    {
+      "name": "Acc_pouch",
+      "primitiveCountExact": true,
+      "indicesExact": true,
+      "attributes": [
+        {
+          "semantic": "POSITION",
+          "exact": true
+        },
+        {
+          "semantic": "NORMAL",
+          "exact": true
+        },
+        {
+          "semantic": "COLOR_0",
+          "exact": true
+        },
+        {
+          "semantic": "_PATH_T",
+          "exact": true
+        },
+        {
+          "semantic": "JOINTS_0",
+          "exact": true
+        },
+        {
+          "semantic": "WEIGHTS_0",
+          "exact": true
+        }
+      ],
+      "pass": true
+    },
+    {
+      "name": "Acc_pouch_flap",
+      "primitiveCountExact": true,
+      "indicesExact": true,
+      "attributes": [
+        {
+          "semantic": "POSITION",
+          "exact": true
+        },
+        {
+          "semantic": "NORMAL",
+          "exact": true
+        },
+        {
+          "semantic": "COLOR_0",
+          "exact": true
+        },
+        {
+          "semantic": "_PATH_T",
+          "exact": true
+        },
+        {
+          "semantic": "JOINTS_0",
+          "exact": true
+        },
+        {
+          "semantic": "WEIGHTS_0",
+          "exact": true
+        }
+      ],
+      "pass": true
+    },
+    {
+      "name": "Acc_pouch_button",
+      "primitiveCountExact": true,
+      "indicesExact": true,
+      "attributes": [
+        {
+          "semantic": "POSITION",
+          "exact": true
+        },
+        {
+          "semantic": "NORMAL",
+          "exact": true
+        },
+        {
+          "semantic": "COLOR_0",
+          "exact": true
+        },
+        {
+          "semantic": "_PATH_T",
+          "exact": true
+        },
+        {
+          "semantic": "JOINTS_0",
+          "exact": true
+        },
+        {
+          "semantic": "WEIGHTS_0",
+          "exact": true
+        }
+      ],
+      "pass": true
+    }
+  ],
+  "metadataDifferences": [],
+  "runtimeSources": [
+    {
+      "relativePath": "character/hair-physics.mjs",
+      "beforeSha256": "24353d34fbdadeecf623b4d5894461b3bc212a7a5be68877786572af1e53e176",
+      "afterSha256": "24353d34fbdadeecf623b4d5894461b3bc212a7a5be68877786572af1e53e176",
+      "exact": true
+    },
+    {
+      "relativePath": "character/tail-dynamics.mjs",
+      "beforeSha256": "f4d2907a75eeba7cdad3658893bae8facf3b2fc1318b4a6cc81a7e84471131c4",
+      "afterSha256": "f4d2907a75eeba7cdad3658893bae8facf3b2fc1318b4a6cc81a7e84471131c4",
+      "exact": true
+    },
+    {
+      "relativePath": "character/accessories/accessory-dynamics.mjs",
+      "beforeSha256": "f1e8dce7090fae199d5c44477e0d05374e8bcd2a13518abea9d76030872e21a0",
+      "afterSha256": "f1e8dce7090fae199d5c44477e0d05374e8bcd2a13518abea9d76030872e21a0",
+      "exact": true
+    },
+    {
+      "relativePath": "character/motion-demo.mjs",
+      "beforeSha256": "52028d364ced31dc4647fb7d469ed55542522c00227878ed0029034053f19487",
+      "afterSha256": "52028d364ced31dc4647fb7d469ed55542522c00227878ed0029034053f19487",
+      "exact": true
+    },
+    {
+      "relativePath": "character/drop-demo.mjs",
+      "beforeSha256": "f1c5b08e65306e8d92add3693f72b4501983c78ffe554fcec826fd35580654d1",
+      "afterSha256": "f1c5b08e65306e8d92add3693f72b4501983c78ffe554fcec826fd35580654d1",
+      "exact": true
+    },
+    {
+      "relativePath": "character/rig-viewer.mjs",
+      "beforeSha256": "17168014a937d2a2ad64fe4e459c88a4d1ff9aceccde2ba1617f7b6216eec8fb",
+      "afterSha256": "17168014a937d2a2ad64fe4e459c88a4d1ff9aceccde2ba1617f7b6216eec8fb",
+      "exact": true
+    }
+  ],
+  "defaultBaseline": {
+    "path": "D:/Documents/ChatGPT/pixelChar/voxel-chibi-character-skill-silver-wolf/skills/voxel-chibi-character/assets/silver-wolf-refined-dynamics/silver-wolf-rigged.glb",
+    "sha256": "272765ec896df061184c9ab3400be1851dd7b097783b7ecef307aaf770aa8225",
+    "fileBytes": 520464,
+    "jsonBytes": 56020,
+    "binBytes": 464416,
+    "meshes": 38,
+    "primitives": 38,
+    "vertices": 6800,
+    "triangles": 3186,
+    "bones": 43,
+    "materials": 1,
+    "images": 0,
+    "textures": 0,
+    "samplers": 0,
+    "animations": [
+      "Idle",
+      "Rig_Test"
+    ]
+  },
+  "issues": []
+}

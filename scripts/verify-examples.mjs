@@ -13,7 +13,7 @@ const scaffold=path.join(work,'renamed');run(path.join(root,'skills/voxel-chibi-
 for(const f of ['export.mjs','rig-export.mjs'])run(path.join(scaffold,'character',f));
 if(!fs.existsSync(path.join(scaffold,'character/test-wolf-rigged.glb')))throw Error('Renamed output missing');
 const stats=JSON.parse(fs.readFileSync(path.join(scaffold,'character/stats.json'))),info=JSON.parse(fs.readFileSync(path.join(scaffold,'character/rig-info.json')));
-if(stats.triangles!==3182||info.bones.length!==43||info.maxWeightError>1e-6)throw Error('Unexpected baseline structure');
+if(stats.triangles!==3186||info.bones.length!==43||info.maxWeightError>1e-6)throw Error('Unexpected baseline structure');
 const tests=['test-character.mjs','test-refined.mjs','test-drop.mjs','test-tail.mjs','test-chest-ribbon.mjs','test-head-closure.mjs','test-knees.mjs','test-physics.mjs'];
 const results=[];
 for(const test of tests){try{run(path.join(scaffold,'character',test));results.push({test,pass:true});}catch(e){console.error(test,String(e.stdout),String(e.stderr));throw e;}}

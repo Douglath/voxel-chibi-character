@@ -2,9 +2,27 @@
 
 以当前银灰狼耳少女为唯一基准的第二版体素角色 skill。保留调用名称 `voxel-chibi-character`，同时包含配套 `character-sheet-to-voxel` 入口。
 
+## 已确认的模型与规则
+
+本版收录用户确认的 v5：服装内部的克制色块、头顶与四周连续接色、可读的宽发束，以及以原虹膜色为中间、上略暗下微亮的眼睛层次。基础母版已经包含这些效果；具体色号与选面规则属于银灰范例，新角色按参考调整。
+
+通用配件支持薄片、矩形开孔框、路径扁带、方截面绳和开口壳体。身份牌、带尾、扣具、拉片、挂包及设备按承载面、挂点、路径和运动方式组合。读取 [图片到模型入口](skills/character-sheet-to-voxel/SKILL.md) 或 [建模入口](skills/voxel-chibi-character/SKILL.md)，按需加载 [配件规则与输入格式](skills/voxel-chibi-character/references/accessories.md)。新建独立工程，在 `character-spec.json.accessories` 填写规格；默认不强加整套装备。
+
+可复用的 [组合样件定义](skills/voxel-chibi-character/assets/accessory-examples/technical-kit.mjs) 展示短带胸卡、双端斜跨带与带尾、长拉片、腿带挂包及独立腕部设备。[确认版 GLB](skills/voxel-chibi-character/assets/accessory-examples/technical-kit-rigged.glb) 与 [重新生成对比](approved-version-verification.json) 保证范例可重建。这些构件仍需按新角色适配，不是自动识图或完整服装碰撞系统。运行以下检查会新建可编辑工程并输出 [配件验证报告](accessory-verification.json)：
+
+```powershell
+node --test skills/voxel-chibi-character/assets/accessory-kit/test-accessory-kit.mjs
+node scripts/verify-accessories.mjs
+node scripts/verify-examples.mjs
+```
+
+生成工程路径见配件报告。在工程运行 `node character/server.mjs` 后可查看；端口占用时先换端口，已有 localhost 页面不代表刚生成的工程。测试工程复用本仓库的 Three.js 依赖。基础 GLB 动画与运行时配件弹簧分开交付。
+
 ## 网页版适配包
 
 [使用说明](web/voxel-character-web/README.md) · [网页版 Skill](web/voxel-character-web/skills/voxel-character-web/SKILL.md) · [Skill 上传包](web/dist/voxel-character-web-skill.zip) · [完整插件包](web/dist/voxel-character-web-plugin.zip) · [自包含 HTML](web/dist/character-preview.html) · [GLB](web/dist/character-rigged.glb) · [适配验证](web/verification.json)
+
+[确认版完整配件预览](web/dist/technical-kit-preview.html) · [确认版配件 GLB](web/dist/technical-kit-rigged.glb)。网页版默认项目使用基础母版，完整配件范例通过 `create_project.py --accessory-example technical-kit` 选用。
 
 HTML 中已内嵌 Three.js、模型与动效，无 CDN 和本地服务依赖。GitHub 上请下载 HTML 后打开。独立网页验证通过；网页版 ChatGPT 的安装和内嵌预览取决于账号能力，尚未在用户账号实测。
 
@@ -18,7 +36,7 @@ HTML 中已内嵌 Three.js、模型与动效，无 CDN 和本地服务依赖。G
 
 旧版及此前规则已保存于 https://github.com/Douglath/voxel-chibi-character-skill ，冻结点 31d6e56。新版独立维护，不覆盖旧仓库历史。
 
-当前基准：3182 三角面、6792 顶点、43 骨骼、一个顶点色材质。源码、GLB、实际多视图、附件与掉落范例随包提供。头发规则来自实际迭代：宽发片、鬓发轮廓分离、后发低对比宽色阶；不把回退的鬓发提亮或复杂侧发方案变成默认。
+基础母版：3186 三角面、6800 顶点、43 骨骼、38 网格；完整配件范例：4026 三角面、8480 顶点、46 骨骼、55 网格。两者均为一个顶点色材质、无图像贴图。头发和服装重着色没有新增拓扑，虹膜色界较旧母版增加 4 三角面、8 顶点；这些是当前范例统计，不能代替其他角色的实测。
 
 安装：将 skills 下两个目录复制到本地 Codex skills 目录。使用原调用名称。Node.js 与 Three.js 0.180.0；仓库根安装依赖后运行 `node scripts/verify-examples.mjs`。脚手架复制可编辑母版，必须按新参考改造型、附件、绑定与测试，并非自动识图建模服务。
 

@@ -1,6 +1,8 @@
 import * as THREE from 'three';
 import {CHARACTER_BASELINE} from './character-baseline.mjs';
-export const palette={skin:'#f3d9cb',hair:'#bac3c9',hairLight:'#e4e7e6',hairShade:'#82909e',backHairLight:'#919eaa',backHairDeep:'#798793',sideHairShade:'#aeb9c2',hairSoftLight:'#d4dadd',hairSoftShade:'#a1aeb9',coat:'#20242b',coatLight:'#30353c',lining:'#192c43',trim:'#9fa4a4',eyeWhite:'#f5f4ed',eyeHighlight:'#ffffff',iris:'#788c86',dark:'#24282e',sole:'#151a20',ear:'#505b66'};
+import {applyTonalColors} from './tonal-colors.mjs';
+import {applyHairColors} from './hair-colors.mjs';
+export const palette={skin:'#f3d9cb',hair:'#bac3c9',hairLight:'#e4e7e6',hairShade:'#82909e',backHairLight:'#919eaa',backHairDeep:'#798793',sideHairShade:'#aeb9c2',hairSoftLight:'#d4dadd',hairSoftShade:'#a1aeb9',coat:'#20242b',coatLight:'#30353c',lining:'#192c43',trim:'#9fa4a4',eyeWhite:'#f5f4ed',eyeHighlight:'#ffffff',irisUpper:'#6b807a',iris:'#788c86',irisLower:'#82968f',dark:'#24282e',sole:'#151a20',ear:'#505b66'};
 export function createCharacter(){
  const vox=new Map(),s=.085;
  const headParts=new Set(['Head','Hair','Fringe','Face','Bow','Ribbon_L','Ribbon_R','BowWing_L','BowWing_R','SideHair_L','SideHair_R','HairBand_L','HairBand_R','Ears','Clips']);
@@ -47,7 +49,8 @@ export function createCharacter(){
  }
  for(const sign of [-1,1]){
   box(sign<0?-6:3,sign<0?-3:6,33,36,6,6,'eyeWhite','Face');
-  box(sign<0?-5:3,sign<0?-3:5,33,35,6,6,'iris','Face');
+  // Keep the original iris in the middle; use only a small shift above/below it.
+  for(let y=33;y<=35;y++)box(sign<0?-5:3,sign<0?-3:5,y,y,6,6,y===35?'irisUpper':y===33?'irisLower':'iris','Face');
   box(sign<0?-5:3,sign<0?-3:5,36,36,6,6,'dark','Face');
   put(sign*4,35,6,'eyeHighlight','Face');
   box(sign<0?-8:7,sign<0?-7:8,31,32,6,6,'skin','Head');
@@ -145,5 +148,7 @@ export function createCharacter(){
 
  material.flatShading=true;
  root.userData={reference:"Silver Wolf approved model; see baseline-provenance.json",styleBaseline:CHARACTER_BASELINE.id,style:'stepped voxel chibi',pose:'T-pose authored geometry',static:true,wings:false,voxelSize:s,voxelCount:vox.size,headRefinement:{headOffsetY:-s,neckWidth:3*s,neckJointY:2.26,headJointY:2.465-s},limbReference:{source:CHARACTER_BASELINE.id,detailScale:k,shoulderX,shoulderY,elbowX,wristX,tipX,hipY,kneeY,ankleY,legX,thickness},triangles:root.children.reduce((n,m)=>n+m.geometry.index.count/3,0)};
+ applyTonalColors(root);
+ applyHairColors(root,palette);
  return root;
 }
