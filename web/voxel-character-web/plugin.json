@@ -1,0 +1,10 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "voxel-character-web",
+  "version": "1.0.0",
+  "description": "Voxel character modeling guidance and self-contained Three.js previews for ChatGPT web.",
+  "author": {
+    "name": "Douglath"
+  },
+  "repository": "https://github.com/Douglath/voxel-chibi-character-skill-silver-wolf"
+}

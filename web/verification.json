@@ -1,0 +1,49 @@
+{
+  "portableProjectBuild": true,
+  "exactOriginalGlbReproduction": true,
+  "noNpmInstallRequired": true,
+  "tests": [
+    {
+      "test": "character",
+      "pass": true
+    },
+    {
+      "test": "refined",
+      "pass": true
+    },
+    {
+      "test": "drop",
+      "pass": true
+    },
+    {
+      "test": "tail",
+      "pass": true
+    },
+    {
+      "test": "chest-ribbon",
+      "pass": true
+    },
+    {
+      "test": "head-closure",
+      "pass": true
+    },
+    {
+      "test": "knees",
+      "pass": true
+    },
+    {
+      "test": "physics",
+      "pass": true
+    }
+  ],
+  "browser": "See browser checks in README; ChatGPT account installation unverified",
+  "browserChecks": {
+    "httpSingleHtmlLoad": true,
+    "run": true,
+    "pauseResume": true,
+    "dropAndSettle": true,
+    "fileSchemeOpen": "blocked by browser URL policy; unverified",
+    "downloadEvent": "not confirmed",
+    "chatgptAccountInstall": "unverified"
+  }
+}

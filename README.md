@@ -2,6 +2,12 @@
 
 以当前银灰狼耳少女为唯一基准的第二版体素角色 skill。保留调用名称 `voxel-chibi-character`，同时包含配套 `character-sheet-to-voxel` 入口。
 
+## 网页版适配包
+
+[使用说明](web/voxel-character-web/README.md) · [网页版 Skill](web/voxel-character-web/skills/voxel-character-web/SKILL.md) · [Skill 上传包](web/dist/voxel-character-web-skill.zip) · [完整插件包](web/dist/voxel-character-web-plugin.zip) · [自包含 HTML](web/dist/character-preview.html) · [GLB](web/dist/character-rigged.glb) · [适配验证](web/verification.json)
+
+HTML 中已内嵌 Three.js、模型与动效，无 CDN 和本地服务依赖。GitHub 上请下载 HTML 后打开。独立网页验证通过；网页版 ChatGPT 的安装和内嵌预览取决于账号能力，尚未在用户账号实测。
+
 ## 快速入口
 
 - **开始使用**：[Skill 入口](skills/voxel-chibi-character/SKILL.md) · [图片到模型](skills/character-sheet-to-voxel/SKILL.md) · [完整精修动态](skills/character-sheet-to-voxel/references/refined-dynamics.md)

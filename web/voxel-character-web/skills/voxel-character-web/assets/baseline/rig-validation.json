@@ -1,0 +1,49 @@
+{
+  "loadedFrom": "silver-wolf-rigged.glb",
+  "threeRevision": "180",
+  "triangles": 3182,
+  "meshCount": 38,
+  "bones": 43,
+  "animations": [
+    "Idle",
+    "Rig_Test"
+  ],
+  "bindPoseError": 1.4446875316198544e-7,
+  "checks": [
+    {
+      "clip": "Idle",
+      "displacement": 0.021139998457581254,
+      "loopError": 0,
+      "tenCyclesError": 4.239249638446193e-15,
+      "pauseError": 0,
+      "resumeDelta": 0.02113999845758235,
+      "finite": true
+    },
+    {
+      "clip": "Rig_Test",
+      "displacement": 0.5928326221255728,
+      "loopError": 0,
+      "tenCyclesError": 2.98868430858875e-14,
+      "pauseError": 0,
+      "resumeDelta": 0.5928326221255893,
+      "finite": true
+    }
+  ],
+  "webglError": 0,
+  "errors": [],
+  "numericPass": true,
+  "sleeveCoverage": {
+    "samples": 105,
+    "minClearance": 0.053684283178555114,
+    "pass": true,
+    "scope": "Both upper-arm root caps inside sleeves: both clips + mirrored shoulder rotations -90..90 degrees; not full garment collision testing"
+  },
+  "live": {
+    "frames": 1441,
+    "loops": 3,
+    "drawCalls": 38,
+    "activeParticles": 23,
+    "webglError": 0
+  },
+  "pass": true
+}

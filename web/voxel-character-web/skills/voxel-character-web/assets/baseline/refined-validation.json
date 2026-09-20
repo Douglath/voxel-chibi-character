@@ -1,0 +1,408 @@
+{
+  "pass": true,
+  "results": [
+    {
+      "fps": 30,
+      "chains": [
+        {
+          "bones": [
+            "hair_L_1",
+            "hair_L_2"
+          ],
+          "max": 0.24000000000000188,
+          "settled": 0,
+          "weighted": true
+        },
+        {
+          "bones": [
+            "hair_R_1",
+            "hair_R_2"
+          ],
+          "max": 0.24000000000000188,
+          "settled": 0,
+          "weighted": true
+        },
+        {
+          "bones": [
+            "coat_L"
+          ],
+          "max": 0.07245579614902693,
+          "settled": 0,
+          "weighted": true
+        },
+        {
+          "bones": [
+            "coat_R"
+          ],
+          "max": 0.07245579250740075,
+          "settled": 0,
+          "weighted": true
+        },
+        {
+          "bones": [
+            "side_hair_L_1",
+            "side_hair_L_2"
+          ],
+          "max": 0.07500000000000372,
+          "settled": 0,
+          "weighted": true
+        },
+        {
+          "bones": [
+            "outer_hair_L"
+          ],
+          "max": 0.10604689462881257,
+          "settled": 0,
+          "weighted": true
+        },
+        {
+          "bones": [
+            "ear_L"
+          ],
+          "max": 0.024999999999991765,
+          "settled": 0,
+          "weighted": true
+        },
+        {
+          "bones": [
+            "sleeve_soft_L"
+          ],
+          "max": 0.07499999999999779,
+          "settled": 0,
+          "weighted": true
+        },
+        {
+          "bones": [
+            "coat_back_L"
+          ],
+          "max": 0.059999999999998214,
+          "settled": 0,
+          "weighted": true
+        },
+        {
+          "bones": [
+            "side_hair_R_1",
+            "side_hair_R_2"
+          ],
+          "max": 0.07500000000000372,
+          "settled": 0,
+          "weighted": true
+        },
+        {
+          "bones": [
+            "outer_hair_R"
+          ],
+          "max": 0.10604689462881257,
+          "settled": 0,
+          "weighted": true
+        },
+        {
+          "bones": [
+            "ear_R"
+          ],
+          "max": 0.024999999999991765,
+          "settled": 0,
+          "weighted": true
+        },
+        {
+          "bones": [
+            "sleeve_soft_R"
+          ],
+          "max": 0.07499999999999779,
+          "settled": 0,
+          "weighted": true
+        },
+        {
+          "bones": [
+            "coat_back_R"
+          ],
+          "max": 0.05890362559228238,
+          "settled": 0,
+          "weighted": true
+        },
+        {
+          "bones": [
+            "chest_ribbon_1",
+            "chest_ribbon_2"
+          ],
+          "max": 0.12956575621339478,
+          "settled": 2.9802322387695312e-8,
+          "weighted": true
+        }
+      ],
+      "rootError": 0,
+      "finite": true,
+      "teleport": true,
+      "pass": true
+    },
+    {
+      "fps": 60,
+      "chains": [
+        {
+          "bones": [
+            "hair_L_1",
+            "hair_L_2"
+          ],
+          "max": 0.24000000000000374,
+          "settled": 0,
+          "weighted": true
+        },
+        {
+          "bones": [
+            "hair_R_1",
+            "hair_R_2"
+          ],
+          "max": 0.24000000000000188,
+          "settled": 0,
+          "weighted": true
+        },
+        {
+          "bones": [
+            "coat_L"
+          ],
+          "max": 0.07815698194312894,
+          "settled": 0,
+          "weighted": true
+        },
+        {
+          "bones": [
+            "coat_R"
+          ],
+          "max": 0.07815698194308915,
+          "settled": 0,
+          "weighted": true
+        },
+        {
+          "bones": [
+            "side_hair_L_1",
+            "side_hair_L_2"
+          ],
+          "max": 0.07499999999999186,
+          "settled": 0,
+          "weighted": true
+        },
+        {
+          "bones": [
+            "outer_hair_L"
+          ],
+          "max": 0.11527268200218904,
+          "settled": 0,
+          "weighted": true
+        },
+        {
+          "bones": [
+            "ear_L"
+          ],
+          "max": 0.024999999999991765,
+          "settled": 0,
+          "weighted": true
+        },
+        {
+          "bones": [
+            "sleeve_soft_L"
+          ],
+          "max": 0.07499999999999186,
+          "settled": 0,
+          "weighted": true
+        },
+        {
+          "bones": [
+            "coat_back_L"
+          ],
+          "max": 0.059999999999998214,
+          "settled": 0,
+          "weighted": true
+        },
+        {
+          "bones": [
+            "side_hair_R_1",
+            "side_hair_R_2"
+          ],
+          "max": 0.07499999999999186,
+          "settled": 0,
+          "weighted": true
+        },
+        {
+          "bones": [
+            "outer_hair_R"
+          ],
+          "max": 0.11527268200218133,
+          "settled": 0,
+          "weighted": true
+        },
+        {
+          "bones": [
+            "ear_R"
+          ],
+          "max": 0.024999999999991765,
+          "settled": 0,
+          "weighted": true
+        },
+        {
+          "bones": [
+            "sleeve_soft_R"
+          ],
+          "max": 0.07499999999999186,
+          "settled": 0,
+          "weighted": true
+        },
+        {
+          "bones": [
+            "coat_back_R"
+          ],
+          "max": 0.059999999999998214,
+          "settled": 0,
+          "weighted": true
+        },
+        {
+          "bones": [
+            "chest_ribbon_1",
+            "chest_ribbon_2"
+          ],
+          "max": 0.12740219936255637,
+          "settled": 0,
+          "weighted": true
+        }
+      ],
+      "rootError": 0,
+      "finite": true,
+      "teleport": true,
+      "pass": true
+    },
+    {
+      "fps": 144,
+      "chains": [
+        {
+          "bones": [
+            "hair_L_1",
+            "hair_L_2"
+          ],
+          "max": 0.24000000000000002,
+          "settled": 0,
+          "weighted": true
+        },
+        {
+          "bones": [
+            "hair_R_1",
+            "hair_R_2"
+          ],
+          "max": 0.24000000000000188,
+          "settled": 0,
+          "weighted": true
+        },
+        {
+          "bones": [
+            "coat_L"
+          ],
+          "max": 0.08000000000000677,
+          "settled": 0,
+          "weighted": true
+        },
+        {
+          "bones": [
+            "coat_R"
+          ],
+          "max": 0.08000000000000677,
+          "settled": 0,
+          "weighted": true
+        },
+        {
+          "bones": [
+            "side_hair_L_1",
+            "side_hair_L_2"
+          ],
+          "max": 0.07499999999999779,
+          "settled": 0,
+          "weighted": true
+        },
+        {
+          "bones": [
+            "outer_hair_L"
+          ],
+          "max": 0.11999999999999919,
+          "settled": 0,
+          "weighted": true
+        },
+        {
+          "bones": [
+            "ear_L"
+          ],
+          "max": 0.024999999999991765,
+          "settled": 0,
+          "weighted": true
+        },
+        {
+          "bones": [
+            "sleeve_soft_L"
+          ],
+          "max": 0.07500000000001555,
+          "settled": 0,
+          "weighted": true
+        },
+        {
+          "bones": [
+            "coat_back_L"
+          ],
+          "max": 0.059999999999998214,
+          "settled": 0,
+          "weighted": true
+        },
+        {
+          "bones": [
+            "side_hair_R_1",
+            "side_hair_R_2"
+          ],
+          "max": 0.07500000000000372,
+          "settled": 0,
+          "weighted": true
+        },
+        {
+          "bones": [
+            "outer_hair_R"
+          ],
+          "max": 0.11999999999999919,
+          "settled": 0,
+          "weighted": true
+        },
+        {
+          "bones": [
+            "ear_R"
+          ],
+          "max": 0.024999999999991765,
+          "settled": 0,
+          "weighted": true
+        },
+        {
+          "bones": [
+            "sleeve_soft_R"
+          ],
+          "max": 0.07500000000000964,
+          "settled": 0,
+          "weighted": true
+        },
+        {
+          "bones": [
+            "coat_back_R"
+          ],
+          "max": 0.059999999999998214,
+          "settled": 0,
+          "weighted": true
+        },
+        {
+          "bones": [
+            "chest_ribbon_1",
+            "chest_ribbon_2"
+          ],
+          "max": 0.1287442894748591,
+          "settled": 0,
+          "weighted": true
+        }
+      ],
+      "rootError": 0,
+      "finite": true,
+      "teleport": true,
+      "pass": true
+    }
+  ],
+  "scope": "Actual GLB: every added spring bone has nonzero skin influence; simultaneous running/turn/head/arm/impulse, fixed anchors, settle, teleport, 30/60/144 FPS. Tail separate report; no full mesh self collision guarantee."
+}

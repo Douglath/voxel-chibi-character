@@ -1,0 +1,22 @@
+{
+  "character-preview.html": {
+    "bytes": 4097099,
+    "sha256": "c46f6bee70eb9eddddcae10da6e47d5c2068d86fc2c90ef29ff29bf6dc109d6d"
+  },
+  "character-rigged.glb": {
+    "bytes": 519956,
+    "sha256": "c1dc60589525bee4431f5d6c302be1fc51a5fb86121f821c535a80747a9fd907"
+  },
+  "voxel-character-web-plugin.zip": {
+    "bytes": 6505299,
+    "sha256": "94f7eb750b91cb5d3d9c3db6f7c754274b1a9c41aca827d6714224eb699704cc"
+  },
+  "voxel-character-web-skill.zip": {
+    "bytes": 6501992,
+    "sha256": "5736629b6cdc4aa72333c4af4d7814fdbb4979cac13119ec758f820c7fc93ea1"
+  },
+  "使用说明.md": {
+    "bytes": 2111,
+    "sha256": "a810b579e5a73f60734de734104389c666d851c0d5b3b703ad3ea1fe012eb183"
+  }
+}

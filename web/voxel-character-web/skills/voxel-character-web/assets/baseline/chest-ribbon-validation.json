@@ -1,0 +1,36 @@
+{
+  "pass": true,
+  "results": [
+    {
+      "fps": 30,
+      "attachment": true,
+      "maxSide": 0.08003739141628374,
+      "maxDepth": 1.9518975213905776e-8,
+      "rootError": 7.471320895291466e-9,
+      "minGap": 0.025884985543901007,
+      "settled": 0,
+      "pass": true
+    },
+    {
+      "fps": 60,
+      "attachment": true,
+      "maxSide": 0.08836414330475587,
+      "maxDepth": 1.9518975213905776e-8,
+      "rootError": 7.471321117336064e-9,
+      "minGap": 0.021116855553524716,
+      "settled": 0,
+      "pass": true
+    },
+    {
+      "fps": 144,
+      "attachment": true,
+      "maxSide": 0.09520326150316932,
+      "maxDepth": 1.9519088012565078e-8,
+      "rootError": 7.471320895291466e-9,
+      "minGap": 0.01915123931850765,
+      "settled": 0,
+      "pass": true
+    }
+  ],
+  "scope": "Actual GLB ribbon vertices in chest coordinates; lateral movement, depth lock, root attachment, sewn upper band intersects collar surface; free-segment clearance from bodice/collar/shorts/coat and settling under combined turn/translation/impulse."
+}

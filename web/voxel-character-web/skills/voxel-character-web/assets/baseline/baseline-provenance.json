@@ -1,0 +1,17 @@
+{
+  "baseline": "silver-wolf-refined-dynamics",
+  "source": "User-approved current silver-wolf character, after broad rear-hair tone iteration",
+  "previousSkill": {
+    "repository": "https://github.com/Douglath/voxel-chibi-character-skill",
+    "commit": "31d6e56"
+  },
+  "geometry": "Preserved from current model; metadata and portable fixture packaging updated",
+  "originalSourceGlbSHA256": "4f3cd13666b82879a44072ddc9135a68872267ca3b238f6862f968d0a7edcfb7",
+  "browserEvidence": "rig-*.png and rig-validation.json copied from actual current model browser; scaffold browser tested separately in repository verification",
+  "limits": [
+    "No full mesh self collision",
+    "No multi-character stress benchmark",
+    "No automatic LOD",
+    "Physics not baked into GLB"
+  ]
+}

@@ -1,0 +1,449 @@
+{
+  "bones": [
+    {
+      "name": "root",
+      "parent": null,
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "node": 39
+    },
+    {
+      "name": "hips",
+      "parent": 0,
+      "position": [
+        0,
+        1.1567554401435407,
+        0
+      ],
+      "node": 40
+    },
+    {
+      "name": "spine",
+      "parent": 1,
+      "position": [
+        0,
+        1.65,
+        0
+      ],
+      "node": 41
+    },
+    {
+      "name": "chest",
+      "parent": 2,
+      "position": [
+        0,
+        1.9838093444497609,
+        0
+      ],
+      "node": 42
+    },
+    {
+      "name": "neck",
+      "parent": 3,
+      "position": [
+        0,
+        2.26,
+        0
+      ],
+      "node": 43
+    },
+    {
+      "name": "head",
+      "parent": 4,
+      "position": [
+        0,
+        2.38,
+        0
+      ],
+      "node": 44
+    },
+    {
+      "name": "shoulder.L",
+      "parent": 3,
+      "position": [
+        0.25,
+        1.9838093444497609,
+        0
+      ],
+      "node": 45
+    },
+    {
+      "name": "upper_arm.L",
+      "parent": 6,
+      "position": [
+        0.3376605600478469,
+        1.9838093444497609,
+        0
+      ],
+      "node": 46
+    },
+    {
+      "name": "forearm.L",
+      "parent": 7,
+      "position": [
+        0.6808677548325359,
+        1.9838093444497609,
+        0
+      ],
+      "node": 47
+    },
+    {
+      "name": "hand.L",
+      "parent": 8,
+      "position": [
+        1.0431379760765551,
+        1.9838093444497609,
+        0
+      ],
+      "node": 48
+    },
+    {
+      "name": "thigh.L",
+      "parent": 1,
+      "position": [
+        0.22405460066985647,
+        1.1567554401435407,
+        0
+      ],
+      "node": 49
+    },
+    {
+      "name": "shin.L",
+      "parent": 10,
+      "position": [
+        0.22405460066985647,
+        0.6724725675598087,
+        0
+      ],
+      "node": 50
+    },
+    {
+      "name": "foot.L",
+      "parent": 11,
+      "position": [
+        0.22405460066985647,
+        0.09009184488038277,
+        0
+      ],
+      "node": 51
+    },
+    {
+      "name": "shoulder.R",
+      "parent": 3,
+      "position": [
+        -0.25,
+        1.9838093444497609,
+        0
+      ],
+      "node": 52
+    },
+    {
+      "name": "upper_arm.R",
+      "parent": 13,
+      "position": [
+        -0.3376605600478469,
+        1.9838093444497609,
+        0
+      ],
+      "node": 53
+    },
+    {
+      "name": "forearm.R",
+      "parent": 14,
+      "position": [
+        -0.6808677548325359,
+        1.9838093444497609,
+        0
+      ],
+      "node": 54
+    },
+    {
+      "name": "hand.R",
+      "parent": 15,
+      "position": [
+        -1.0431379760765551,
+        1.9838093444497609,
+        0
+      ],
+      "node": 55
+    },
+    {
+      "name": "thigh.R",
+      "parent": 1,
+      "position": [
+        -0.22405460066985647,
+        1.1567554401435407,
+        0
+      ],
+      "node": 56
+    },
+    {
+      "name": "shin.R",
+      "parent": 17,
+      "position": [
+        -0.22405460066985647,
+        0.6724725675598087,
+        0
+      ],
+      "node": 57
+    },
+    {
+      "name": "foot.R",
+      "parent": 18,
+      "position": [
+        -0.22405460066985647,
+        0.09009184488038277,
+        0
+      ],
+      "node": 58
+    },
+    {
+      "name": "hair_L_1",
+      "parent": 5,
+      "position": [
+        0.4,
+        2.465,
+        -0.66
+      ],
+      "node": 59
+    },
+    {
+      "name": "hair_L_2",
+      "parent": 20,
+      "position": [
+        0.4,
+        1.99,
+        -0.66
+      ],
+      "node": 60
+    },
+    {
+      "name": "hair_R_1",
+      "parent": 5,
+      "position": [
+        -0.4,
+        2.465,
+        -0.66
+      ],
+      "node": 61
+    },
+    {
+      "name": "hair_R_2",
+      "parent": 22,
+      "position": [
+        -0.4,
+        1.99,
+        -0.66
+      ],
+      "node": 62
+    },
+    {
+      "name": "tail_1",
+      "parent": 1,
+      "position": [
+        0,
+        1.2325,
+        -0.2125
+      ],
+      "node": 63
+    },
+    {
+      "name": "tail_2",
+      "parent": 24,
+      "position": [
+        0,
+        1.2325,
+        -0.4675
+      ],
+      "node": 64
+    },
+    {
+      "name": "tail_3",
+      "parent": 25,
+      "position": [
+        0,
+        1.2325,
+        -0.8925
+      ],
+      "node": 65
+    },
+    {
+      "name": "coat_L",
+      "parent": 1,
+      "position": [
+        0.34,
+        1.615,
+        0
+      ],
+      "node": 66
+    },
+    {
+      "name": "coat_R",
+      "parent": 1,
+      "position": [
+        -0.34,
+        1.615,
+        0
+      ],
+      "node": 67
+    },
+    {
+      "name": "side_hair_L_1",
+      "parent": 5,
+      "position": [
+        0.6375,
+        2.89,
+        0.4675
+      ],
+      "node": 68
+    },
+    {
+      "name": "side_hair_L_2",
+      "parent": 29,
+      "position": [
+        0.6375,
+        2.465,
+        0.4675
+      ],
+      "node": 69
+    },
+    {
+      "name": "outer_hair_L",
+      "parent": 5,
+      "position": [
+        0.76,
+        2.89,
+        -0.085
+      ],
+      "node": 70
+    },
+    {
+      "name": "ear_L",
+      "parent": 5,
+      "position": [
+        0.6375,
+        3.7,
+        -0.085
+      ],
+      "node": 71
+    },
+    {
+      "name": "sleeve_soft_L",
+      "parent": 8,
+      "position": [
+        0.88,
+        1.9838093444497609,
+        0
+      ],
+      "node": 72
+    },
+    {
+      "name": "coat_back_L",
+      "parent": 1,
+      "position": [
+        0.25,
+        1.615,
+        -0.3
+      ],
+      "node": 73
+    },
+    {
+      "name": "side_hair_R_1",
+      "parent": 5,
+      "position": [
+        -0.6375,
+        2.89,
+        0.4675
+      ],
+      "node": 74
+    },
+    {
+      "name": "side_hair_R_2",
+      "parent": 35,
+      "position": [
+        -0.6375,
+        2.465,
+        0.4675
+      ],
+      "node": 75
+    },
+    {
+      "name": "outer_hair_R",
+      "parent": 5,
+      "position": [
+        -0.76,
+        2.89,
+        -0.085
+      ],
+      "node": 76
+    },
+    {
+      "name": "ear_R",
+      "parent": 5,
+      "position": [
+        -0.6375,
+        3.7,
+        -0.085
+      ],
+      "node": 77
+    },
+    {
+      "name": "sleeve_soft_R",
+      "parent": 15,
+      "position": [
+        -0.88,
+        1.9838093444497609,
+        0
+      ],
+      "node": 78
+    },
+    {
+      "name": "coat_back_R",
+      "parent": 1,
+      "position": [
+        -0.25,
+        1.615,
+        -0.3
+      ],
+      "node": 79
+    },
+    {
+      "name": "chest_ribbon_1",
+      "parent": 3,
+      "position": [
+        0.255,
+        2.125,
+        0.4725
+      ],
+      "node": 80
+    },
+    {
+      "name": "chest_ribbon_2",
+      "parent": 41,
+      "position": [
+        0.255,
+        1.785,
+        0.4725
+      ],
+      "node": 81
+    }
+  ],
+  "vertices": 6792,
+  "maxWeightError": 1.1102230246251565e-16,
+  "clips": [
+    {
+      "name": "Idle",
+      "tracks": 3,
+      "duration": 4
+    },
+    {
+      "name": "Rig_Test",
+      "tracks": 13,
+      "duration": 2
+    }
+  ],
+  "source": "silver-wolf.glb; geometry and T-pose preserved"
+}
