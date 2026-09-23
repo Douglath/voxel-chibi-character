@@ -29,7 +29,7 @@ node scripts/verify-examples.mjs
 本地与网页端使用同源规则，网页端分开提供两个自包含 ZIP：
 
 1. [生成参考图：chibi-character-sheet.zip](dist/chibi-character-sheet.zip) — 角色原图 → 概念翻译与母版换装 → 最终四视图和完整/简版设计交接。到出图交付为止，不启动建模。
-2. [生成像素模型：voxel-chibi-character.zip](dist/voxel-chibi-character.zip) — 读取已完成四视图 → 制作模型、绑定与动态 → 导出 GLB、源码和离线 HTML。只收到原画时先提示使用出图包；用户明确选择直接建模时才例外继续。
+2. [生成像素模型：voxel-chibi-character.zip](dist/voxel-chibi-character.zip) — 根据参考制作模型；快速预览交静态 GLB 和三视图，正式流程按所选范围完成绑定、动态与成品交付。正式流程仅收到原画时先提示使用出图包；快速预览或用户明确直接建模时可按现图继续。
 
 将两个 ZIP 分别保存或上传至 Google Drive。使用时解包所选 ZIP，先读取其中 SKILL.md，再按任务加载 references 和实际 assets/scripts。建模时提供上一步的最终图片及交接资料。无需同时安装另一个包；环境仍需具备相应图像工具或 Node.js/Python 执行能力，云盘存储本身不提供这些能力。
 
@@ -40,6 +40,8 @@ node scripts/verify-examples.mjs
 运行 `python scripts/package-skill.py` 从源码生成两个 ZIP 及 dist/checksums.json；ZIP 内每个文件均与同名 skill 源文件一致，不另维护网页版规则或模型。旧网页插件仍已退役，历史可从 Git 提交 0ba7424 恢复。
 
 ## 迭代与检查
+
+可直接写“模式：快速预览 / 静态成品 / 轻量动态成品 / 精修动态成品”，也可用自然语言说明目的。它们映射到现有 delivery.mode 与 dynamics.mode，名称、路由和停止条件统一维护在 [建模入口](skills/voxel-chibi-character/SKILL.md#选择交付模式)；一体化入口沿用同一规则。未指定且无上下文时默认轻量动态成品。
 
 需要快速看造型时可说：“用快速预览模式，根据现有参考修改肩部，先给正面、侧面和斜视，不做动态和完整穿插检查。”本轮只交实际静态模型与三视图，标明功能未验收；已有参考/模型直接复用。新建工程用 `scaffold.mjs <new-project> <id> <角色名称> <端口> --preview`，静态构建后打开 `/character/index.html`。转成品时继续同一工程并补齐功能和验收，详见 [快速预览范围](skills/voxel-chibi-character/references/validation.md#快速预览范围)。
 
