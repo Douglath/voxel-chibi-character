@@ -1,6 +1,6 @@
 ---
 name: character-sheet-to-voxel
-description: 根据角色图片完成四视图准备与像素体素 Q 版建模的一体化流程；内置出图规则和母版，复用 voxel-chibi-character，默认带动态，支持完整精修。不用于仅出图或严格复制平滑曲面。
+description: 根据角色图片完成四视图准备与像素体素 Q 版建模的一体化流程；复用 voxel-chibi-character，支持快速模型预览，正式流程默认带动态并支持完整精修。不用于仅出图或严格复制平滑曲面。
 ---
 
 # 四视图到带动效像素模型
@@ -8,6 +8,8 @@ description: 根据角色图片完成四视图准备与像素体素 Q 版建模�
 本入口协调输入准备与建模；造型、配件、动态和检查规则统一由相邻 [voxel-chibi-character](../voxel-chibi-character/SKILL.md) 维护。依赖位置变化时按当前技能列表查找；缺失时说明，不以空母版冒充模型，也不自动换用付费服务。内置出图资源不依赖另装 chibi-character-sheet。
 
 ## 准备输入
+
+先继承底层入口的交付模式。用户明确先看模型大致效果、快速三视图或低成本检修时，delivery.mode=preview，复用当前参考或模型直接进入建模，不自动重跑出图。模型三视图是本轮输出，不是要求先生成的四视图设定图；完成条件统一见底层 [快速预览范围](../voxel-chibi-character/references/validation.md#快速预览范围)。下列自动出图路由用于正式流程。
 
 1. 查看真实输入并读取 [输入适用性与路由](references/input-readiness.md)，开工时记录一次 inputReview；输入或用户要求改变后才复检，不按迭代轮数重复。
 2. 已有合格四视图直接复用；仅有插画、单视图或不合格多视图时执行 [内置四视图流程](references/sheet/pipeline.md)，无需用户另说“先出图”。用户明确禁止生图、仅预检或限制预算时服从其范围。身份不明才补充关键信息，不用生图掩盖未知结构。
@@ -21,9 +23,9 @@ description: 根据角色图片完成四视图准备与像素体素 Q 版建模�
 
 读取 [设计到模型适配](references/adaptation.md)，将身份、结构和配色映射到模型。设定图决定角色设计，三维母版决定像素表达和素体/骨架约定；用户纠正覆盖生成图推定。自然站姿用于外观，T-pose 用于内部绑定，不反向改设定图。
 
-按底层 [动态选择](../voxel-chibi-character/references/dynamics.md) 理解自然语言要求，记录 dynamics.mode。默认轻量；明确追求全面或精致动态时执行 [完整精修](../voxel-chibi-character/references/refined-dynamics.md)，静态或性能限制优先。无需再次确认已表达的模式。
+正式流程按底层 [动态选择](../voxel-chibi-character/references/dynamics.md) 理解自然语言要求，记录 dynamics.mode。默认轻量；明确追求全面或精致动态时执行 [完整精修](../voxel-chibi-character/references/refined-dynamics.md)，静态或性能限制优先。快速模式暂缓这些功能，不额外加载对应专题。
 
-随后按底层入口建立新工程、迭代外形、适配功能并交付。design 已在角色目录时 scaffold 到新的 model 子目录，不覆盖唯一原件。保留工程 spec 的绑定和动态字段，设计交接不能直接覆盖实现 spec。
+随后按底层入口新建或继续现有工程，迭代外形并在所选模式的完成点交付。design 已在角色目录时 scaffold 到新的 model 子目录，不覆盖唯一原件。保留工程 spec 的绑定和动态意图，设计交接不能直接覆盖实现 spec。
 
 ## 检查与完成
 
