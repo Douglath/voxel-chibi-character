@@ -1,6 +1,16 @@
 {
-  "file": "voxel-chibi-character.zip",
-  "files": 79,
-  "sha256": "b6c6a69c2ddf0234d6e1b6b156753a7296bcd8a0a1777e87c9832254f13bc73f",
-  "bytes": 856272
+  "packages": [
+    {
+      "file": "chibi-character-sheet.zip",
+      "files": 8,
+      "sha256": "8696012e7667e382e01b4e98e795a6073b8eaea5b3b62b076edc95fe63d98e75",
+      "bytes": 4975675
+    },
+    {
+      "file": "voxel-chibi-character.zip",
+      "files": 79,
+      "sha256": "b562cc384b6981d0ef7dfe44b390fa48f964e855e5f038dd44b4ec07974b6ce3",
+      "bytes": 860932
+    }
+  ]
 }

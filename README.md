@@ -1,6 +1,6 @@
 # Silver Wolf Voxel Chibi Skill
 
-以当前银灰狼耳少女为唯一基准的第二版体素角色 skill。保留调用名称 `voxel-chibi-character`，同时包含配套 `character-sheet-to-voxel` 入口。
+以当前银灰狼耳少女为唯一基准的第二版体素角色 skill。保留调用名称 `voxel-chibi-character`，同时包含独立出图 `chibi-character-sheet` 与本地一体化 `character-sheet-to-voxel` 入口。
 
 ## 已确认的模型与规则
 
@@ -24,13 +24,20 @@ node scripts/verify-examples.mjs
 
 统一脚手架和离线 HTML 均包含生产代码与控件。GLB 基础资产保持不变，表情/眨眼依赖 expressions.mjs 运行时。原身体、头发、服装与附加动态保留；开销另计。
 
-## 统一 skill 与跨环境使用
+## 独立出图与建模包
 
-本地和网页版均使用 [同一个 skill](skills/voxel-chibi-character/SKILL.md)，规则、模型、表情、动态只维护一份。[完整 skill ZIP](dist/voxel-chibi-character.zip) 可保存到 Google Drive；保留整个文件夹结构，由会话读取 SKILL.md 并按需获取引用文档、脚本和资源。云盘账号中的实际读取和执行尚未验证。
+本地与网页端使用同源规则，网页端分开提供两个自包含 ZIP：
 
-[跨环境说明](skills/voxel-chibi-character/references/portable-use.md) · [统一脚手架](skills/voxel-chibi-character/scripts/scaffold.mjs) · [离线 HTML 打包](skills/voxel-chibi-character/scripts/build_html.py)。脚手架自带工作流所需 Three.js；生成项目内运行 python scripts/build_html.py --project . --output character.html，即可输出内嵌模型、动态、表情及依赖的 HTML。
+1. [生成参考图：chibi-character-sheet.zip](dist/chibi-character-sheet.zip) — 角色原图 → 概念翻译与母版换装 → 最终四视图和 design-handoff.json。到出图交付为止，不启动建模。
+2. [生成像素模型：voxel-chibi-character.zip](dist/voxel-chibi-character.zip) — 读取已完成四视图 → 制作模型、绑定与动态 → 导出 GLB、源码和离线 HTML。只收到原画时先提示使用出图包；用户明确选择直接建模时才例外继续。
 
-独立网页版 skill、插件清单和重复安装包已退役；历史可从 Git 提交 0ba7424 恢复。需要更新主 skill ZIP 时运行 python scripts/package-skill.py。
+将两个 ZIP 分别保存或上传至 Google Drive。使用时解包所选 ZIP，先读取其中 SKILL.md，再按任务加载 references 和实际 assets/scripts。建模时提供上一步的最终图片及交接资料。无需同时安装另一个包；环境仍需具备相应图像工具或 Node.js/Python 执行能力，云盘存储本身不提供这些能力。
+
+建模入口独立执行道具过滤：默认不生成手持物、武器、工具和独立场景物件，也不将其改挂到身上。保留合理的穿戴饰件；用户明确要求的道具记录例外。scopeReview 记录保留、排除与明确请求项，实际 GLB 和预览再次验收，不依赖出图兜底。
+
+本地一体化流程仍可使用 [character-sheet-to-voxel](skills/character-sheet-to-voxel/SKILL.md)，不放入这两个单阶段 ZIP。[跨环境说明](skills/voxel-chibi-character/references/portable-use.md) · [统一脚手架](skills/voxel-chibi-character/scripts/scaffold.mjs) · [离线 HTML 打包](skills/voxel-chibi-character/scripts/build_html.py)。
+
+运行 `python scripts/package-skill.py` 从源码生成两个 ZIP 及 dist/checksums.json；ZIP 内每个文件均与同名 skill 源文件一致，不另维护网页版规则或模型。旧网页插件仍已退役，历史可从 Git 提交 0ba7424 恢复。
 
 ## 快速入口
 
@@ -44,6 +51,6 @@ node scripts/verify-examples.mjs
 
 基础母版：3186 三角面、6800 顶点、43 骨骼、38 网格；完整配件范例：4026 三角面、8480 顶点、46 骨骼、55 网格。两者均为一个顶点色材质、无图像贴图。头发和服装重着色没有新增拓扑，虹膜色界较旧母版增加 4 三角面、8 顶点；这些是当前范例统计，不能代替其他角色的实测。
 
-安装：将 skills 下两个目录复制到本地 Codex skills 目录。使用原调用名称。Node.js 与 Three.js 0.180.0；仓库根安装依赖后运行 `node scripts/verify-examples.mjs`。脚手架复制可编辑母版，必须按新参考改造型、附件、绑定与测试，并非自动识图建模服务。
+安装：将 skills 下所需目录复制到本地 Codex skills 目录；三个入口分别用于出图、建模与一体化流程。使用原调用名称。Node.js 与 Three.js 0.180.0；仓库根安装依赖后运行 `node scripts/verify-examples.mjs`。脚手架复制可编辑母版，必须按新参考改造型、附件、绑定与测试，并非自动识图建模服务。
 
 GLB含基础动画，弹簧和重力依赖运行时代码。完整网格自碰撞、自动LOD、多角色性能、其他引擎物理迁移尚未验证。不附用户原始插画，不额外授予角色IP权利。

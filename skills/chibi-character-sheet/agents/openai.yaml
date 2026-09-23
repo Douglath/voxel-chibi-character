@@ -1,0 +1,4 @@
+interface:
+  display_name: "Q版角色设定图"
+  short_description: "从角色原图生成统一母版的四视图设定图，保留身份，仅交付图片与设计交接"
+  default_prompt: "使用 $chibi-character-sheet 根据我的角色参考生成标准化单行四视图。"

@@ -20,12 +20,15 @@
   "inferred_details": [],
   "review": [{"check": "identity", "result": "unverified", "evidence": "尚未检查"}],
   "unresolved": [],
+  "scopeReview": {"kept": [], "excluded": [], "explicitlyRequestedProps": []},
   "model_target": "voxel-silver-wolf-refined-dynamics",
   "model_notes": ["保留身份；体素模型沿用三维母版比例和几何，非平滑设定图的逐像素复制"]
 }
 ```
 
 phase 为 concept / standardized；status 为 ready / needs_revision。ready 必须有实际视觉评审，review 覆盖 body、pose_camera、identity、structure、layout_material 五项，有阻断项时不能 ready。concept 可作为直接建模输入但不是标准化结果；只有用户接受该范围时继续。
+
+交接记录 scopeReview.kept、excluded、explicitlyRequestedProps 及依据；建模端仍独立复核，旧交接缺少字段时自行补齐，不假定出图已过滤道具。
 
 parts 的旧字段 motion 为 rigid / secondary / skinned，evidence 为 observed / inferred。发带等刚性附件记录挂在哪束头发上，不能只写 head 而丢失随动关系。palette 使用独立语义键，即使色值一样也不合并眼睛与服装用途。
 
