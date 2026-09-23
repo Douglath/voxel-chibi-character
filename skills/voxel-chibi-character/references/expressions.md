@@ -41,6 +41,6 @@ expressions.toggle('anger', false);
 
 默认预设新增可见三角面 / draw calls：Normal 0/0，Happy 24/2，Angry 112/2，Crying 24/1，Scared 108/2，Confused 112/1，Hungry 96/3，Closed 16/1。Normal 眨眼半闭 32/1、闭合 12/1。试色后的 Normal/Crying 额外显示眼睛网格（64 面/1 call）。常驻新增 560–752 顶点、280–376 面，另有 60 顶点/30 面的肤色副本。按实际产物重新统计，不把一个材质说成一次绘制。
 
-运行 `node character/test-expressions.mjs`（包内直接运行 `node test-expressions.mjs`），验证实际 GLB、换色不改布局、原几何保留、独立层、头骨挂接及 30/60/144 FPS 眨眼缓存。再在浏览器检查动画及符号无遮挡。
+检查调度见 [渐进验证](validation.md)。需要表情专项时，运行 `node character/test-expressions.mjs`（包内直接运行 `node test-expressions.mjs`），验证实际 GLB、换色不改布局、原几何保留、独立层、头骨挂接及 30/60/144 FPS 眨眼缓存；浏览器查看动画与符号无遮挡。复用未改模板不要求每轮运行此专项。
 
 GLB 仍仅含母版几何、骨架和基础动画；表情切换与眨眼由运行时代码提供，不能宣传下载 GLB 即包含表情系统。交付代码与可运行预览。其他引擎、任意头型适配和多角色性能未验证。

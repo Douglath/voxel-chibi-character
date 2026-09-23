@@ -33,6 +33,6 @@
 
 ## 记录与复检
 
-预检结果先保存在角色的 design/input-review.json，后映射到 character-spec.json 的 inputReview：记录输入路径与实际 SHA-256、route（direct / prepare_sheet / needs_input）、具体观察、推定、缺项、所选动态模式、预处理次数与结果。未创建模型工程时也可只建立 design 目录，不需要先复制母版。
+开工时记录一次 route（direct / prepare_sheet / needs_input）、关键观察、推定与缺项、动态模式和预处理结果。有文件能力时保存 design/input-review.json，记录真实路径与 SHA-256，后映射到 spec.inputReview；无文件或哈希能力时沿用 [简版交接](sheet/handoff.md) 记录，不编造路径或哈希。资料未变时复用记录，只有输入/范围变化才更新，不需要先复制母版。
 
-预处理返回后记录最终参考路径与哈希，重新检查身份、结构与交接状态；保留原始图与生成图的来源区别。status=needs_revision 不自动放行。精修动态、静态选项和用户限制必须跨阶段保留。只要求预检的任务止于报告，不擅自生成图片或模型。
+预处理返回后记录实际最终参考及可取得的路径/哈希，检查新图的身份、结构与交接状态；保留原始图与生成图的来源区别。status=needs_revision 不自动放行。精修动态、静态选项和用户限制必须跨阶段保留。只要求预检的任务止于报告，不擅自生成图片或模型。

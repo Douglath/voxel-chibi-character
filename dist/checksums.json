@@ -3,14 +3,14 @@
     {
       "file": "chibi-character-sheet.zip",
       "files": 8,
-      "sha256": "8696012e7667e382e01b4e98e795a6073b8eaea5b3b62b076edc95fe63d98e75",
-      "bytes": 4975675
+      "sha256": "ab2ececb214032461049c7f373419710c084f8e1ff14c7f44ff0f97820febcaa",
+      "bytes": 4976123
     },
     {
       "file": "voxel-chibi-character.zip",
-      "files": 79,
-      "sha256": "b562cc384b6981d0ef7dfe44b390fa48f964e855e5f038dd44b4ec07974b6ce3",
-      "bytes": 860932
+      "files": 80,
+      "sha256": "b01c84d4183313dd5572c988e77d46f81f2f8fe41040bd1d2320f540698e30e5",
+      "bytes": 861741
     }
   ]
 }

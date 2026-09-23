@@ -8,7 +8,7 @@
 
 通用配件支持薄片、矩形开孔框、路径扁带、方截面绳和开口壳体。身份牌、带尾、扣具、拉片、挂包及设备按承载面、挂点、路径和运动方式组合。读取 [图片到模型入口](skills/character-sheet-to-voxel/SKILL.md) 或 [建模入口](skills/voxel-chibi-character/SKILL.md)，按需加载 [配件规则与输入格式](skills/voxel-chibi-character/references/accessories.md)。新建独立工程，在 `character-spec.json.accessories` 填写规格；默认不强加整套装备。
 
-可复用的 [组合样件定义](skills/voxel-chibi-character/assets/accessory-examples/technical-kit.mjs) 展示短带胸卡、双端斜跨带与带尾、长拉片、腿带挂包及独立腕部设备。[确认版 GLB](skills/voxel-chibi-character/assets/accessory-examples/technical-kit-rigged.glb) 与 [重新生成对比](approved-version-verification.json) 保证范例可重建。这些构件仍需按新角色适配，不是自动识图或完整服装碰撞系统。运行以下检查会新建可编辑工程并输出 [配件验证报告](accessory-verification.json)：
+可复用的 [组合样件定义](skills/voxel-chibi-character/assets/accessory-examples/technical-kit.mjs) 展示短带胸卡、双端斜跨带与带尾、长拉片、腿带挂包及独立腕部设备。[确认版 GLB](skills/voxel-chibi-character/assets/accessory-examples/technical-kit-rigged.glb) 与 [重新生成对比](approved-version-verification.json) 保证范例可重建。这些构件仍需按新角色适配，不是自动识图或完整服装碰撞系统。维护母版、脚手架或配件实现时，按变更运行以下检查；普通角色制作无需执行。检查会新建可编辑工程并输出 [配件验证报告](accessory-verification.json)：
 
 ```powershell
 node --test skills/voxel-chibi-character/assets/accessory-kit/test-accessory-kit.mjs
@@ -28,7 +28,7 @@ node scripts/verify-examples.mjs
 
 本地与网页端使用同源规则，网页端分开提供两个自包含 ZIP：
 
-1. [生成参考图：chibi-character-sheet.zip](dist/chibi-character-sheet.zip) — 角色原图 → 概念翻译与母版换装 → 最终四视图和 design-handoff.json。到出图交付为止，不启动建模。
+1. [生成参考图：chibi-character-sheet.zip](dist/chibi-character-sheet.zip) — 角色原图 → 概念翻译与母版换装 → 最终四视图和完整/简版设计交接。到出图交付为止，不启动建模。
 2. [生成像素模型：voxel-chibi-character.zip](dist/voxel-chibi-character.zip) — 读取已完成四视图 → 制作模型、绑定与动态 → 导出 GLB、源码和离线 HTML。只收到原画时先提示使用出图包；用户明确选择直接建模时才例外继续。
 
 将两个 ZIP 分别保存或上传至 Google Drive。使用时解包所选 ZIP，先读取其中 SKILL.md，再按任务加载 references 和实际 assets/scripts。建模时提供上一步的最终图片及交接资料。无需同时安装另一个包；环境仍需具备相应图像工具或 Node.js/Python 执行能力，云盘存储本身不提供这些能力。
@@ -39,9 +39,15 @@ node scripts/verify-examples.mjs
 
 运行 `python scripts/package-skill.py` 从源码生成两个 ZIP 及 dist/checksums.json；ZIP 内每个文件均与同名 skill 源文件一致，不另维护网页版规则或模型。旧网页插件仍已退役，历史可从 Git 提交 0ba7424 恢复。
 
+## 迭代与检查
+
+按 [渐进检查](skills/voxel-chibi-character/references/validation.md) 执行：造型迭代只看改动与基本运行，外形稳定后检查相关功能，交付前集中验收最终 GLB 和实际预览。验收后小修只重测受影响项；未改依赖可复用注明版本与范围的专项证据。测试成功简短汇总，失败才展开日志，不逐轮重读全文、全截图或重写完整报告。
+
+建模入口只保留流程与默认范围，专题维护构造技术；动态模式与完整精修统一位于建模 skill，两个网页包各自可用。无文件/哈希能力的出图环境允许简版交接，不编造路径或校验值。默认道具过滤与最终实际产物验收仍独立执行。
+
 ## 快速入口
 
-- **开始使用**：[Skill 入口](skills/voxel-chibi-character/SKILL.md) · [图片到模型](skills/character-sheet-to-voxel/SKILL.md) · [完整精修动态](skills/character-sheet-to-voxel/references/refined-dynamics.md)
+- **开始使用**：[Skill 入口](skills/voxel-chibi-character/SKILL.md) · [图片到模型](skills/character-sheet-to-voxel/SKILL.md) · [完整精修动态](skills/voxel-chibi-character/references/refined-dynamics.md)
 - **造型与配件**：[造型与绑定](skills/voxel-chibi-character/references/modeling.md) · [头发与配色](skills/voxel-chibi-character/references/hair.md) · [耳朵、尾巴与飘带](skills/voxel-chibi-character/references/ears-tails-straps.md)
 - **动态与验收**：[动态强度与成本](skills/voxel-chibi-character/references/dynamics.md) · [掉落测试](skills/voxel-chibi-character/references/drop-testing.md) · [验证与交付](skills/voxel-chibi-character/references/validation.md) · [多模型试验室](skills/voxel-chibi-character/references/model-lab.md)
 - **基准模型**：[源码与完整资源](skills/voxel-chibi-character/assets/silver-wolf-refined-dynamics/) · [骨骼 GLB](skills/voxel-chibi-character/assets/silver-wolf-refined-dynamics/silver-wolf-rigged.glb) · [静态 GLB](skills/voxel-chibi-character/assets/silver-wolf-refined-dynamics/silver-wolf.glb) · [正面](skills/voxel-chibi-character/assets/silver-wolf-refined-dynamics/rig-front.png) · [侧面](skills/voxel-chibi-character/assets/silver-wolf-refined-dynamics/rig-side.png) · [背面](skills/voxel-chibi-character/assets/silver-wolf-refined-dynamics/rig-back.png) · [斜视](skills/voxel-chibi-character/assets/silver-wolf-refined-dynamics/rig-three.png)
@@ -51,6 +57,6 @@ node scripts/verify-examples.mjs
 
 基础母版：3186 三角面、6800 顶点、43 骨骼、38 网格；完整配件范例：4026 三角面、8480 顶点、46 骨骼、55 网格。两者均为一个顶点色材质、无图像贴图。头发和服装重着色没有新增拓扑，虹膜色界较旧母版增加 4 三角面、8 顶点；这些是当前范例统计，不能代替其他角色的实测。
 
-安装：将 skills 下所需目录复制到本地 Codex skills 目录；三个入口分别用于出图、建模与一体化流程。使用原调用名称。Node.js 与 Three.js 0.180.0；仓库根安装依赖后运行 `node scripts/verify-examples.mjs`。脚手架复制可编辑母版，必须按新参考改造型、附件、绑定与测试，并非自动识图建模服务。
+安装：将 skills 下所需目录复制到本地 Codex skills 目录；三个入口分别用于出图、建模与一体化流程。使用原调用名称。Node.js 与 Three.js 0.180.0；仅维护母版/脚手架时在仓库根运行相关回归。脚手架复制可编辑母版，必须按新参考改造型、附件、绑定与测试，并非自动识图建模服务。
 
 GLB含基础动画，弹簧和重力依赖运行时代码。完整网格自碰撞、自动LOD、多角色性能、其他引擎物理迁移尚未验证。不附用户原始插画，不额外授予角色IP权利。
