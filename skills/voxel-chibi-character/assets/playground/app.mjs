@@ -1,3 +1,4 @@
+import {validateStandardPhysics} from './standard-physics.mjs';
 import {attachPhysics,updatePhysics,kickPhysics,supportsPhysics} from './character-physics.mjs';
 import {captureArmFrames,applyArmSwing} from './arm-motion.mjs';
 import * as T from 'three';
@@ -12,7 +13,7 @@ import {GLTFExporter} from './vendor/exporters/GLTFExporter.js';
 const expressionProfiles=__EXPRESSION_PROFILES__;
 const $=id=>document.getElementById(id),shell='<!doctype html>\n'+document.documentElement.outerHTML;
 const initial=JSON.parse($('library-data').textContent),entries=[],logs=[],hashes=new Set();
-const settings={scene:'studio',random:true,paused:false,speed:1,grid:true,labels:false,...initial.settings};
+const settings={scene:'studio',physics:true,random:true,paused:false,speed:1,grid:true,labels:false,...initial.settings};
 let mode='playground',selected=null,serial=0,loading=false,worldRadius=28,customScene=null,environment=null,toastTimer,dragDepth=0,citySet=null,renderCalls=0;
 const crowd=new Crowd({extent:28,halfWidth:10.55,cross:true});
 let simulationClock=0;
@@ -72,14 +73,15 @@ function safeProfile(p){if(p===null||p===undefined)return null;const out={};for(
 async function addRecord(raw){
  const buffer=fromBase64(raw.glb);validateGlb(buffer);
  const palette={};for(const [k,value]of Object.entries(raw.palette??{}))if(/^[A-Za-z]\w*$/.test(k)&&/^#[0-9a-f]{6}$/i.test(value))palette[k]=value;
- const expression=safeProfile(raw.expression),hash=await digest(new Uint8Array(buffer)),identity=hash+':'+JSON.stringify(palette)+':'+JSON.stringify(expression);
+ const standardPhysics=validateStandardPhysics(raw.standardPhysics);
+ const expression=safeProfile(raw.expression),hash=await digest(new Uint8Array(buffer)),identity=hash+':'+JSON.stringify(palette)+':'+JSON.stringify(expression)+':'+JSON.stringify(standardPhysics);
  if(hashes.has(identity))return null;
  const gltf=await new GLTFLoader().parseAsync(buffer,''),rig=gltf.scene;rig.updateMatrixWorld(true);
  const sourceBox=new T.Box3().setFromObject(rig),sourceSize=sourceBox.getSize(new T.Vector3());
  if(sourceBox.isEmpty()||!sourceSize.toArray().every(Number.isFinite)||sourceSize.y<=0){disposeTree(rig);throw Error('模型没有可显示的有限几何');}
  const bones=new Map(),rest=[];let triangles=0,meshCount=0;
  rig.traverse(o=>{rest.push([o,o.position.clone(),o.quaternion.clone(),o.scale.clone()]);if(o.isBone)bones.set(normalizeBone(o.name),o);if(o.isMesh){meshCount++;triangles+=(o.geometry.index?.count??o.geometry.attributes.position.count)/3;o.frustumCulled=false;o.castShadow=true;o.receiveShadow=true;}});
- const record={name:String(raw.name||raw.source||'未命名角色').slice(0,100),source:String(raw.source||'模型集合').slice(0,200),glb:raw.glb,palette,expression,physics:supportsPhysics(raw.physics)?raw.physics:null,physicsEnabled:raw.physicsEnabled!==false,expressionNote:String(raw.expressionNote||'').slice(0,160)};
+ const record={name:String(raw.name||raw.source||'未命名角色').slice(0,100),source:String(raw.source||'模型集合').slice(0,200),glb:raw.glb,palette,expression,standardPhysics,physics:supportsPhysics(raw.physics)?raw.physics:null,physicsEnabled:raw.physicsEnabled!==false,expressionNote:String(raw.expressionNote||'').slice(0,160)};
  let expr=null;
  if(expression&&rig.getObjectByName('Face')&&rig.getObjectByName('head')){
   try{expr=attachExpressions(rig,palette,expression);expr.set('Normal');}catch(error){record.expression=null;record.expressionNote='表情挂接不兼容：'+error.message;log(record.name+'：'+record.expressionNote);}
@@ -131,7 +133,7 @@ function updateActor(e,dt){
   e.rig.position.y=e.rest[0][1].y+Math.max(0,h+velocity*t-9*t*t);
   if(t>(velocity+Math.sqrt(velocity*velocity+36*h))/18+1.5){setAction(e,'idle');if(mode==='single')frameSingle(e,'three');}
  }
- updatePhysics(e,dt);
+ updatePhysics(e,dt,settings.physics);
  if(e.expr){
   if(e.rare&&e.exprUntil!==Infinity){e.exprWait-=dt;if(e.exprWait<=0){e.exprWait=7+Math.random()*11;if(Math.random()<.1&&e.expr.state.expression==='Normal'){const list=['Happy','Confused','Hungry','Scared'];setExpression(e,list[Math.floor(Math.random()*list.length)]);}}}
   if(e.exprUntil>0&&e.exprUntil!==Infinity){e.exprUntil-=dt;if(e.exprUntil<=0)e.expr.set('Normal');}
@@ -224,6 +226,7 @@ function setMode(next,e=null){
 function refreshUI(){
  $('count').textContent=entries.length;$('empty').hidden=entries.length>0||mode!=='playground';$('sceneBadge').textContent=entries.length?`${entries.filter(e=>e.display).length} 位在场 / ${entries.length} 位小伙伴`:'无人入场 · 等待导入';
  $('pauseAll').textContent=settings.paused?'▶ 继续':'Ⅱ 暂停';$('randomAll').classList.toggle('active',settings.random);$('saveLibrary').disabled=loading||entries.length===0;$('importButton').disabled=loading;
+ $('globalPhysics').textContent='物理动态：'+(settings.physics?'开':'关');$('globalPhysics').classList.toggle('active',settings.physics);$('globalPhysics').setAttribute('aria-pressed',String(settings.physics));
  $('speed').value=String(settings.speed);$('toggleNames').classList.toggle('active',settings.labels);$('arrange').textContent=settings.scene==='hongkong'&&mode!=='single'?'重新散开':'整齐站好';renderRoster();if(mode==='table')renderTable();
 }
 function filtered(){const term=$('search').value.trim().toLowerCase();return entries.filter(e=>(e.record.name+' '+e.record.source).toLowerCase().includes(term));}
@@ -245,7 +248,7 @@ function renderTable(){
 }
 function removeEntry(e){if(selected===e&&mode==='single')setMode('playground');if(selected===e)selected=null;entries.splice(entries.indexOf(e),1);crowd.remove(e.id);hashes.delete(e.identity);e.mixer.stopAllAction();e.mixer.uncacheRoot(e.rig);e.slot.removeFromParent();e.skeleton.removeFromParent();e.label.remove();disposeTree(e.slot);if(e.physics?.hair.helpers)disposeTree(e.physics.hair.helpers);e.skeleton.geometry.dispose();e.skeleton.material.dispose();refreshUI();}
 function buildInspector(e){
- $('physicsToggle').checked=e.physicsEnabled!==false;$('physicsToggle').disabled=!e.physics;$('physicsKick').disabled=!e.physics;$('physicsStatus').textContent=e.physics?'已加载该角色原始物理模块':'未识别原始物理模块';
+ $('physicsToggle').checked=e.physicsEnabled!==false;$('physicsToggle').disabled=!e.physics;$('physicsKick').disabled=!e.physics;$('physicsStatus').textContent=e.physics?(e.physicsKind==='standard'?'标准动态参数随角色保存，可跨页面导入':'已加载该角色原始物理模块'):'无可用动态参数';
  $('singleName').value=e.record.name;$('singleStats').textContent=`${e.triangles.toLocaleString()} 三角面 · ${e.bones.size} 骨骼 · ${e.clips.length} 个自带动画`;
  $('clip').replaceChildren(new Option('选择模型自带动画…',''));for(const clip of e.clips)$('clip').add(new Option(clip.name,clip.name));
  $('expressionButtons').replaceChildren();for(const [key,name]of Object.entries(expressionNames)){const b=document.createElement('button');b.textContent=name;b.dataset.expression=key;b.disabled=!e.expr;b.onclick=()=>setExpression(e,key,true);$('expressionButtons').append(b);}
@@ -293,8 +296,9 @@ document.querySelectorAll('[data-action]').forEach(b=>b.onclick=()=>{if(!selecte
 $('clip').onchange=e=>{if(selected&&e.target.value){settings.paused=false;setAction(selected,'clip:'+e.target.value);refreshUI();}};
 $('singleName').onchange=e=>{if(!selected)return;selected.record.name=e.target.value.trim().slice(0,100)||selected.record.name;e.target.value=selected.record.name;selected.label.textContent=selected.record.name;refreshUI();};
 $('autoBlink').onchange=e=>{if(selected){selected.blink=e.target.checked;selected.expr?.setBlinkEnabled(selected.blink);}};
-$('physicsToggle').onchange=ev=>{if(selected){selected.physicsEnabled=ev.target.checked;selected.record.physicsEnabled=ev.target.checked;selected.physicsReset=true;updatePhysics(selected,0);}};
-$('physicsKick').onclick=()=>{if(selected?.physics){selected.physicsEnabled=true;selected.record.physicsEnabled=true;$('physicsToggle').checked=true;settings.paused=false;kickPhysics(selected);refreshUI();}};
+$('globalPhysics').onclick=()=>{settings.physics=!settings.physics;for(const e of entries){e.physicsReset=true;updatePhysics(e,0,settings.physics);}refreshUI();};
+$('physicsToggle').onchange=ev=>{if(selected){selected.physicsEnabled=ev.target.checked;selected.record.physicsEnabled=ev.target.checked;selected.physicsReset=true;updatePhysics(selected,0,settings.physics);}};
+$('physicsKick').onclick=()=>{if(selected?.physics){selected.physicsEnabled=true;selected.record.physicsEnabled=true;settings.physics=true;$('physicsToggle').checked=true;settings.paused=false;kickPhysics(selected);refreshUI();}};
 $('blinkOnce').onclick=()=>{if(selected?.expr){setExpression(selected,'Normal',true);selected.expr.blink();}};
 $('randomExpression').onclick=()=>{if(!selected?.expr)return;const choices=Object.keys(expressionNames).filter(name=>name!=='Normal'&&name!==selected.expr.state.expression);settings.paused=false;setExpression(selected,choices[Math.floor(Math.random()*choices.length)]);refreshUI();};
 $('rareExpression').onclick=()=>{if(!selected)return;selected.rare=!selected.rare;setExpression(selected,'Normal');syncInspectorState();};
@@ -313,7 +317,7 @@ function draw(now){
  if(mode!=='table'&&!settings.paused){simulationClock+=dt;while(simulationClock>=1/120){simulationClock-=1/120;if(mode==='playground'&&settings.random)updateCrowd(1/120);for(const e of entries){if(mode==='single'?e!==selected:!e.display)continue;updateActor(e,1/120);}}}else simulationClock=0;
  controls.update();if(mode!=='table'){if(settings.scene==='hongkong'&&mode==='playground')renderCalls=blueHourFX.render(scene,camera);else{renderer.render(scene,camera);renderCalls=renderer.info.render.calls;}}
  labelsTime+=raw;if(labelsTime>.1){labelsTime=0;for(const e of entries){e.label.hidden=mode!=='playground'||!e.display||!settings.labels;if(e.label.hidden)continue;v.copy(e.slot.position).add(new T.Vector3(0,4.35,0)).project(camera);e.label.hidden=v.z>1||v.z< -1||Math.abs(v.x)>1.1||Math.abs(v.y)>1.1;e.label.style.left=(v.x*.5+.5)*host.clientWidth+'px';e.label.style.top=(-v.y*.5+.5)*host.clientHeight+'px';}if(mode==='single')syncInspectorState();}
- perfFrames++;perfTime+=elapsed;if(perfTime>.8){$('perf').textContent=`${Math.round(perfFrames/perfTime)} FPS · ${renderCalls} draws`;perfFrames=0;perfTime=0;}
+ perfFrames++;perfTime+=elapsed;if(perfTime>.8){const fps=perfFrames/perfTime,shown=mode==='single'?[selected]:entries.filter(e=>e.display),active=shown.filter(e=>e.physics&&e.physicsEnabled&&settings.physics).length;$('perf').textContent=`${Math.round(fps)} FPS · ${(1000/fps).toFixed(1)} ms/帧 · ${shown.length} 人 · 物理 ${active}/${shown.length}${settings.paused?' · 已暂停':''}`;$('perf').title=`${renderCalls} 绘制调用；受屏幕刷新率与当前设备限制，比较时保持场景和视角相同`; perfFrames=0;perfTime=0;}
 }
 resize();rebuildStage();frameAll();refreshUI();requestAnimationFrame(draw);
 if(initial.models?.length){loading=true;$('loading').hidden=false;for(const [index,r]of initial.models.entries()){try{$('loading').textContent=`恢复模型集合 ${index+1} / ${initial.models.length}`;await addRecord(r);}catch(error){log('恢复失败：'+(r.name||'模型')+' '+error.message);}}loading=false;$('loading').hidden=true;arrange(true);if(initial.customScene){try{const savedScene=settings.scene;await loadScene(fromBase64(initial.customScene.glb),initial.customScene.name);settings.scene=savedScene;rebuildStage();}catch(error){log('场景恢复失败：'+error.message);settings.scene='garden';rebuildStage();}}refreshUI();initial.camera?restoreCamera(initial.camera):frameAll();}
