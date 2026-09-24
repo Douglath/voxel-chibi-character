@@ -1,3 +1,4 @@
+import {attachPhysics,updatePhysics,kickPhysics,supportsPhysics} from './character-physics.mjs';
 import {captureArmFrames,applyArmSwing} from './arm-motion.mjs';
 import * as T from 'three';
 import {GLTFLoader} from 'three/addons/loaders/GLTFLoader.js';
@@ -14,6 +15,7 @@ const initial=JSON.parse($('library-data').textContent),entries=[],logs=[],hashe
 const settings={scene:'studio',random:true,paused:false,speed:1,grid:true,labels:false,...initial.settings};
 let mode='playground',selected=null,serial=0,loading=false,worldRadius=28,customScene=null,environment=null,toastTimer,dragDepth=0,citySet=null,renderCalls=0;
 const crowd=new Crowd({extent:28,halfWidth:10.55,cross:true});
+let simulationClock=0;
 let cameraMemory=null,lastFrame=performance.now(),perfTime=0,perfFrames=0,totalTime=0,labelsTime=0;
 const host=$('viewport'),renderer=new T.WebGLRenderer({antialias:true,alpha:false,preserveDrawingBuffer:true});
 renderer.setPixelRatio(Math.min(devicePixelRatio,1.35));renderer.outputColorSpace=T.SRGBColorSpace;renderer.setClearColor('#e7eddf');renderer.shadowMap.enabled=true;renderer.shadowMap.type=T.PCFSoftShadowMap;host.append(renderer.domElement);
@@ -57,9 +59,10 @@ async function parseFile(file){
  const paletteText=model.match(/(?:export\s+)?const\s+palette\s*=\s*\{([^}]+)\}/)?.[1]??'';
  for(const match of paletteText.matchAll(/["']?([A-Za-z]\w*)["']?\s*:\s*["'](#[a-fA-F0-9]{6})["']/g))palette[match[1]]=match[2];
  const signature=expression?await digest(canonical(expression)):null;
+ const physicsSignature=module('hair-physics.mjs')?await digest(module('hair-physics.mjs')):null;
  const profile=signature&&Object.hasOwn(expressionProfiles,signature)?expressionProfiles[signature]:null;
  let name=(doc.querySelector('h1')?.textContent||doc.title||file.name).trim().replace(/\s+/g,' ').replace(/\s*[·/|]\s*(?:体素小人|体素角色|角色动态测试|Voxel).*$/i,'').slice(0,100);
- return [{name:name||file.name,source:file.name,glb,palette,expression:profile,expressionNote:profile===null?(expression?'未识别表情版本，保留原始脸部':'源文件未携带兼容表情系统'):'v5 表情与自然眨眼'}];
+ return [{name:name||file.name,source:file.name,glb,palette,physics:supportsPhysics(physicsSignature)?physicsSignature:null,expression:profile,expressionNote:profile===null?(expression?'未识别表情版本，保留原始脸部':'源文件未携带兼容表情系统'):'v5 表情与自然眨眼'}];
 }
 
 function disposeTree(root){const geos=new Set(),mats=new Set(),textures=new Set(),skeletons=new Set();root.traverse(o=>{if(o.geometry)geos.add(o.geometry);if(o.skeleton)skeletons.add(o.skeleton);for(const m of (Array.isArray(o.material)?o.material:[o.material]).filter(Boolean)){mats.add(m);for(const value of Object.values(m))if(value?.isTexture)textures.add(value);}});geos.forEach(x=>x.dispose());textures.forEach(x=>x.dispose());mats.forEach(x=>x.dispose());skeletons.forEach(x=>x.dispose());}
@@ -76,7 +79,7 @@ async function addRecord(raw){
  if(sourceBox.isEmpty()||!sourceSize.toArray().every(Number.isFinite)||sourceSize.y<=0){disposeTree(rig);throw Error('模型没有可显示的有限几何');}
  const bones=new Map(),rest=[];let triangles=0,meshCount=0;
  rig.traverse(o=>{rest.push([o,o.position.clone(),o.quaternion.clone(),o.scale.clone()]);if(o.isBone)bones.set(normalizeBone(o.name),o);if(o.isMesh){meshCount++;triangles+=(o.geometry.index?.count??o.geometry.attributes.position.count)/3;o.frustumCulled=false;o.castShadow=true;o.receiveShadow=true;}});
- const record={name:String(raw.name||raw.source||'未命名角色').slice(0,100),source:String(raw.source||'模型集合').slice(0,200),glb:raw.glb,palette,expression,expressionNote:String(raw.expressionNote||'').slice(0,160)};
+ const record={name:String(raw.name||raw.source||'未命名角色').slice(0,100),source:String(raw.source||'模型集合').slice(0,200),glb:raw.glb,palette,expression,physics:supportsPhysics(raw.physics)?raw.physics:null,physicsEnabled:raw.physicsEnabled!==false,expressionNote:String(raw.expressionNote||'').slice(0,160)};
  let expr=null;
  if(expression&&rig.getObjectByName('Face')&&rig.getObjectByName('head')){
   try{expr=attachExpressions(rig,palette,expression);expr.set('Normal');}catch(error){record.expression=null;record.expressionNote='表情挂接不兼容：'+error.message;log(record.name+'：'+record.expressionNote);}
@@ -87,6 +90,7 @@ async function addRecord(raw){
  const shadow=new T.Mesh(new T.CircleGeometry(Math.max(.45,Math.min(1.4,sourceSize.x*scale*.36)),24),new T.MeshBasicMaterial({color:0x63795d,transparent:true,opacity:.12,depthWrite:false}));shadow.rotation.x=-Math.PI/2;shadow.position.y=.016;slot.add(shadow);
  const e={id:++serial,record,identity,hash,rig,slot,offset,scale,shadow,expr,bones,rest,triangles,meshCount,clips:gltf.animations,mixer:new T.AnimationMixer(rig),state:'idle',actionTime:0,actionUntil:0,home:new T.Vector3(),goal:new T.Vector3(),display:raw.display!==false,random:true,rare:raw.rare!==false,blink:raw.blink!==false,exprWait:7+Math.random()*10,exprUntil:0,hasRun:['thigh.L','thigh.R','shin.L','shin.R','upper_arm.L','upper_arm.R','forearm.L','forearm.R'].every(n=>bones.has(normalizeBone(n))),color:swatches[serial%swatches.length],height:4,width:sourceSize.x*scale,depth:sourceSize.z*scale};
  e.armFrames=captureArmFrames(rig,n=>bone(e,n));
+ try{attachPhysics(e);}catch(error){log(e.record.name+' 物理加载失败：'+error.message);e.physics=null;}
  const label=document.createElement('div');label.className='actor-label';label.textContent=record.name;$('labels').append(label);e.label=label;
  e.skeleton=new T.SkeletonHelper(rig);e.skeleton.visible=false;scene.add(e.skeleton);slot.userData.actor=e;rig.traverse(o=>{if(o.isMesh)o.userData.actor=e;});
  entries.push(e);hashes.add(identity);e.expr?.setBlinkEnabled(e.blink);setAction(e,'idle');e.nextDecision=2+Math.random()*9;
@@ -98,6 +102,7 @@ function resetPose(e){e.mixer.stopAllAction();for(const [o,p,r,s]of e.rest){o.po
 function playClip(e,name){resetPose(e);const clip=e.clips.find(c=>c.name===name);if(clip)e.mixer.clipAction(clip).reset().play();return !!clip;}
 function setAction(e,action){
  if(['run','walk'].includes(action)&&!e.hasRun)action='idle';
+ e.physicsReset=true;
  e.state=action;e.actionTime=0;e.gaitTime=0;e.rig.position.y=e.rest[0][1].y;
  if(action==='bind'){resetPose(e);}else if(action.startsWith('clip:')){playClip(e,action.slice(5));}else{playClip(e,e.clips.find(c=>/idle/i.test(c.name))?.name??'');}
  if(action==='drop'||action==='jump'){e.dropHeight=Number($('dropHeight').value)||6;frameSingle(e,'three',e.dropHeight*e.scale);}
@@ -126,6 +131,7 @@ function updateActor(e,dt){
   e.rig.position.y=e.rest[0][1].y+Math.max(0,h+velocity*t-9*t*t);
   if(t>(velocity+Math.sqrt(velocity*velocity+36*h))/18+1.5){setAction(e,'idle');if(mode==='single')frameSingle(e,'three');}
  }
+ updatePhysics(e,dt);
  if(e.expr){
   if(e.rare&&e.exprUntil!==Infinity){e.exprWait-=dt;if(e.exprWait<=0){e.exprWait=7+Math.random()*11;if(Math.random()<.1&&e.expr.state.expression==='Normal'){const list=['Happy','Confused','Hungry','Scared'];setExpression(e,list[Math.floor(Math.random()*list.length)]);}}}
   if(e.exprUntil>0&&e.exprUntil!==Infinity){e.exprUntil-=dt;if(e.exprUntil<=0)e.expr.set('Normal');}
@@ -237,8 +243,9 @@ function renderTable(){
   const c6=document.createElement('td'),preview=document.createElement('button'),remove=document.createElement('button');preview.textContent='测试';preview.onclick=()=>setMode('single',e);remove.textContent='移除';remove.className='ghost';remove.onclick=()=>removeEntry(e);c6.append(preview,remove);row.append(c1,c2,c3,c4,c5,c6);body.append(row);
  }
 }
-function removeEntry(e){if(selected===e&&mode==='single')setMode('playground');if(selected===e)selected=null;entries.splice(entries.indexOf(e),1);crowd.remove(e.id);hashes.delete(e.identity);e.mixer.stopAllAction();e.mixer.uncacheRoot(e.rig);e.slot.removeFromParent();e.skeleton.removeFromParent();e.label.remove();disposeTree(e.slot);e.skeleton.geometry.dispose();e.skeleton.material.dispose();refreshUI();}
+function removeEntry(e){if(selected===e&&mode==='single')setMode('playground');if(selected===e)selected=null;entries.splice(entries.indexOf(e),1);crowd.remove(e.id);hashes.delete(e.identity);e.mixer.stopAllAction();e.mixer.uncacheRoot(e.rig);e.slot.removeFromParent();e.skeleton.removeFromParent();e.label.remove();disposeTree(e.slot);if(e.physics?.hair.helpers)disposeTree(e.physics.hair.helpers);e.skeleton.geometry.dispose();e.skeleton.material.dispose();refreshUI();}
 function buildInspector(e){
+ $('physicsToggle').checked=e.physicsEnabled!==false;$('physicsToggle').disabled=!e.physics;$('physicsKick').disabled=!e.physics;$('physicsStatus').textContent=e.physics?'已加载该角色原始物理模块':'未识别原始物理模块';
  $('singleName').value=e.record.name;$('singleStats').textContent=`${e.triangles.toLocaleString()} 三角面 · ${e.bones.size} 骨骼 · ${e.clips.length} 个自带动画`;
  $('clip').replaceChildren(new Option('选择模型自带动画…',''));for(const clip of e.clips)$('clip').add(new Option(clip.name,clip.name));
  $('expressionButtons').replaceChildren();for(const [key,name]of Object.entries(expressionNames)){const b=document.createElement('button');b.textContent=name;b.dataset.expression=key;b.disabled=!e.expr;b.onclick=()=>setExpression(e,key,true);$('expressionButtons').append(b);}
@@ -286,6 +293,8 @@ document.querySelectorAll('[data-action]').forEach(b=>b.onclick=()=>{if(!selecte
 $('clip').onchange=e=>{if(selected&&e.target.value){settings.paused=false;setAction(selected,'clip:'+e.target.value);refreshUI();}};
 $('singleName').onchange=e=>{if(!selected)return;selected.record.name=e.target.value.trim().slice(0,100)||selected.record.name;e.target.value=selected.record.name;selected.label.textContent=selected.record.name;refreshUI();};
 $('autoBlink').onchange=e=>{if(selected){selected.blink=e.target.checked;selected.expr?.setBlinkEnabled(selected.blink);}};
+$('physicsToggle').onchange=ev=>{if(selected){selected.physicsEnabled=ev.target.checked;selected.record.physicsEnabled=ev.target.checked;selected.physicsReset=true;updatePhysics(selected,0);}};
+$('physicsKick').onclick=()=>{if(selected?.physics){selected.physicsEnabled=true;selected.record.physicsEnabled=true;$('physicsToggle').checked=true;settings.paused=false;kickPhysics(selected);refreshUI();}};
 $('blinkOnce').onclick=()=>{if(selected?.expr){setExpression(selected,'Normal',true);selected.expr.blink();}};
 $('randomExpression').onclick=()=>{if(!selected?.expr)return;const choices=Object.keys(expressionNames).filter(name=>name!=='Normal'&&name!==selected.expr.state.expression);settings.paused=false;setExpression(selected,choices[Math.floor(Math.random()*choices.length)]);refreshUI();};
 $('rareExpression').onclick=()=>{if(!selected)return;selected.rare=!selected.rare;setExpression(selected,'Normal');syncInspectorState();};
@@ -300,7 +309,8 @@ window.addEventListener('dragenter',e=>{if([...e.dataTransfer.types].includes('F
 document.addEventListener('visibilitychange',()=>{lastFrame=performance.now();});window.addEventListener('error',e=>log('运行错误：'+e.message));window.addEventListener('unhandledrejection',e=>{log('运行错误：'+String(e.reason));toast('遇到问题，请查看导入记录。');});
 function draw(now){
  requestAnimationFrame(draw);if(document.hidden){lastFrame=now;return;}const elapsed=(now-lastFrame)/1000,raw=Math.min(elapsed,.05);lastFrame=now;const dt=raw*settings.speed;totalTime+=dt;
- if(mode!=='table'&&!settings.paused){if(mode==='playground'&&settings.random)updateCrowd(dt);for(const e of entries){if(mode==='single'?e!==selected:!e.display)continue;updateActor(e,dt);}}
+ if(elapsed>.2){simulationClock=0;for(const e of entries)e.physicsReset=true;}
+ if(mode!=='table'&&!settings.paused){simulationClock+=dt;while(simulationClock>=1/120){simulationClock-=1/120;if(mode==='playground'&&settings.random)updateCrowd(1/120);for(const e of entries){if(mode==='single'?e!==selected:!e.display)continue;updateActor(e,1/120);}}}else simulationClock=0;
  controls.update();if(mode!=='table'){if(settings.scene==='hongkong'&&mode==='playground')renderCalls=blueHourFX.render(scene,camera);else{renderer.render(scene,camera);renderCalls=renderer.info.render.calls;}}
  labelsTime+=raw;if(labelsTime>.1){labelsTime=0;for(const e of entries){e.label.hidden=mode!=='playground'||!e.display||!settings.labels;if(e.label.hidden)continue;v.copy(e.slot.position).add(new T.Vector3(0,4.35,0)).project(camera);e.label.hidden=v.z>1||v.z< -1||Math.abs(v.x)>1.1||Math.abs(v.y)>1.1;e.label.style.left=(v.x*.5+.5)*host.clientWidth+'px';e.label.style.top=(-v.y*.5+.5)*host.clientHeight+'px';}if(mode==='single')syncInspectorState();}
  perfFrames++;perfTime+=elapsed;if(perfTime>.8){$('perf').textContent=`${Math.round(perfFrames/perfTime)} FPS · ${renderCalls} draws`;perfFrames=0;perfTime=0;}
@@ -312,4 +322,4 @@ if(initial.openSingle&&entries.length===1)setMode('single',entries[0]);
 async function exportCityGLB(){
  if(!citySet)citySet=createHongKongScene(Math.max(28,worldRadius));const copy=citySet.root.clone(true);copy.traverse(o=>{if(o.userData.webEffect)o.visible=false;});copy.updateMatrixWorld(true);return new GLTFExporter().parseAsync(copy,{binary:true,onlyVisible:true,maxTextureSize:1024});
 }
-window.playground={get entries(){return entries;},get mode(){return mode;},get selected(){return selected;},get city(){return citySet;},crowd,settings,logs,importFiles,exportHtml,exportCityGLB,setMode,setAction,setExpression,frameAll,renderer,camera,controls,scene,ready:true};
+window.playground={get entries(){return entries;},get mode(){return mode;},get selected(){return selected;},get city(){return citySet;},crowd,settings,logs,importFiles,exportHtml,exportCityGLB,setMode,setAction,setExpression,updateActor,updatePhysics,kickPhysics,frameAll,renderer,camera,controls,scene,ready:true};
