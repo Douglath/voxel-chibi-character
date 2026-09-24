@@ -96,3 +96,10 @@ html += '<script type="module">import ' + json.dumps(entry) + ';</script></html>
 args.output.parent.mkdir(parents=True, exist_ok=True)
 args.output.write_text(html, encoding='utf-8')
 print(json.dumps({'output':str(args.output),'bytes':args.output.stat().st_size,'embeddedModules':len(modules),'externalDependencies':0,**model_stats}))
+
+# Preserve the full character-specific dynamics viewer as a companion artifact.
+from build_playground import build as build_playground
+specialized=args.output.with_name(args.output.stem+'-dynamics.html')
+specialized.write_text(html,encoding='utf-8')
+build_playground(args.output,args.title or model_id,source=specialized)
+print(json.dumps({'playground':str(args.output),'specializedDynamics':str(specialized)}))
