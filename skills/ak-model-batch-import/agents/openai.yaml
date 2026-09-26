@@ -1,0 +1,4 @@
+interface:
+  display_name: "方舟模型批量导入与修正"
+  short_description: "批量标准化名称标签、修正方块肢体、接入 Playground 并回写数据库链接"
+  default_prompt: "使用 $ak-model-batch-import 将我指定目录中的模型批量检查修正并导入 Playground，完成标准化名称、标签及本地数据库关联。"

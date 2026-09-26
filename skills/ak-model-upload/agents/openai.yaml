@@ -1,0 +1,4 @@
+interface:
+  display_name: "明日方舟 · 批量上传建模"
+  short_description: "按数据库条件准备四视图并提交网页建模，确认启动后保存交接结束"
+  default_prompt: "使用 $ak-model-upload，按我指定的数据库条件筛选角色，准备四视图并提交 GPT-6 Pro，确认开始处理后保存下载交接。"

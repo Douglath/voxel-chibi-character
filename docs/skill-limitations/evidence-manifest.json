@@ -1,0 +1,124 @@
+{
+  "date": "2026-09-27",
+  "images": [
+    {
+      "file": "evidence/chen-original.png",
+      "origin": "playground/characters/ak-sixstarfresh/char_1013_chen2/source/chen-holiday-project/evidence/front.png",
+      "sha256": "2a10cf223953d5edae1fe3a97f1e54c45b4605b3ea2a0f6e076b2644dc3df650",
+      "bytes": 32840,
+      "review": "Viewed individually in SU-002; copied unchanged"
+    },
+    {
+      "file": "evidence/hoshiguma-original.png",
+      "origin": "playground/characters/ak-sixstarfresh/char_1044_hsgma2/source/Hoshiguma_Karma_Project/previews/front.png",
+      "sha256": "1a8dab19484c3ad19e5c971201dc6ae3d83f81d6e769f7669758515bdc93f5c4",
+      "bytes": 25432,
+      "review": "Viewed individually in SU-002; copied unchanged"
+    },
+    {
+      "file": "evidence/blaze-alt-original.png",
+      "origin": "playground/characters/ak-sixstarfresh/char_1040_blaze2/source/Zhuhuang_Default_Editable/character/front.png",
+      "sha256": "286f65bef7e8ec62710b754a26c3d0fc4e0b12cf520537470dc89580eb4c9226",
+      "bytes": 46832,
+      "review": "Viewed individually in SU-002; copied unchanged"
+    },
+    {
+      "file": "evidence/blaze-original.png",
+      "origin": "playground/characters/ak-sixstarfresh/char_017_huang/source/huang-default/validation/static-view-front.png",
+      "sha256": "aca2d038e7a61c41df0bca3fe8031e33cbef58cfc8a0f0765bb0d95bd1ba70e2",
+      "bytes": 41165,
+      "review": "Viewed individually in SU-002; copied unchanged"
+    },
+    {
+      "file": "evidence/swire-original.png",
+      "origin": "playground/characters/ak-sixstarfresh/char_1033_swire2/source/Swire_Elegant_Editable_Project/validation/front.png",
+      "sha256": "2b64297e1c347abfb2c4f05e2284bb1da342323b80ec9b70219134a6356f16d4",
+      "bytes": 55561,
+      "review": "Viewed individually in SU-002; copied unchanged"
+    },
+    {
+      "file": "evidence/leizi-original.png",
+      "origin": "playground/characters/ak-sixstarfresh/char_1043_leizi2/source/jingzhe-project/validation/model-front.png",
+      "sha256": "94fbdae8a06cc2cf29ff9cf2ccf641f8482ab49a79540667a5dcc428342b853b",
+      "bytes": 28640,
+      "review": "Viewed individually in SU-002; copied unchanged"
+    },
+    {
+      "file": "evidence/hand-example-1.png",
+      "origin": "skills/ak-model-batch-import/references/hand-thresholds/example-1.png",
+      "sha256": "88db900e093b2c8562e66fea9cb9193efd78b8c00ddd8385b098ac4fca85a14d",
+      "bytes": 48177,
+      "review": "Viewed individually in SU-002; copied unchanged"
+    },
+    {
+      "file": "evidence/hand-example-2.png",
+      "origin": "skills/ak-model-batch-import/references/hand-thresholds/example-2.png",
+      "sha256": "74018879c45eb4344e78c4e5d3406af6a349121e2259f3cddbe6d0b9192da9cb",
+      "bytes": 76689,
+      "review": "Viewed individually in SU-002; copied unchanged"
+    },
+    {
+      "file": "evidence/hand-example-3.png",
+      "origin": "skills/ak-model-batch-import/references/hand-thresholds/example-3.png",
+      "sha256": "d457bb1b3f9ed81fb9931f1c8e437239d535e01b88da807979c696b1db8df0c8",
+      "bytes": 46161,
+      "review": "Viewed individually in SU-002; copied unchanged"
+    },
+    {
+      "file": "evidence/hand-example-4.png",
+      "origin": "skills/ak-model-batch-import/references/hand-thresholds/example-4.png",
+      "sha256": "a30f07c7d7f1e299f6d7a4e0f596d9350166560847b8c4f7216950236270c3a9",
+      "bytes": 66688,
+      "review": "Viewed individually in SU-002; copied unchanged"
+    },
+    {
+      "file": "evidence/hoshiguma-v3-side.png",
+      "origin": "playground/validation/straight-arms-v3/char_1044_hsgma2/char_1044_hsgma2-side.png",
+      "sha256": "d84d1e99e5d53d9bfb3a992318c6ebd1107c2097205db972d1e9fc69af8fb709",
+      "bytes": 43390,
+      "review": "Viewed individually in SU-002; copied unchanged"
+    },
+    {
+      "file": "evidence/hoshiguma-v4-side.png",
+      "origin": "playground/validation/glove-wrap-v4/char_1044_hsgma2-side.png",
+      "sha256": "c991b41ca9d7fd410476faf2065718fd489db74c716311d7fed4e8a88d34b2a8",
+      "bytes": 43263,
+      "review": "Viewed individually in SU-002; copied unchanged"
+    },
+    {
+      "file": "evidence/kaltsit-shoulder-v1-v2.png",
+      "origin": "skillupdate/output/kaltsit-angled-preview-20260924/comparison.png",
+      "sha256": "45f014adf41b8c66d1b81f7a0dfaf2be743ee70d230678d2cf695a538ad71354",
+      "bytes": 116163,
+      "review": "Viewed individually in SU-002; copied unchanged"
+    },
+    {
+      "file": "evidence/kaltsit-hair-v2-v3.png",
+      "origin": "skillupdate/output/kaltsit-hair-preview-20260924/comparison.png",
+      "sha256": "7e69912f6d5a87280bdd8f1493daf3aed4d1f7952eb3720b0e1a1767005cd5d9",
+      "bytes": 165083,
+      "review": "Viewed individually in SU-002; copied unchanged"
+    },
+    {
+      "file": "evidence/kaltsit-v2-refined.png",
+      "origin": "skillupdate/output/kaltsit-refined-20260924/comparison.png",
+      "sha256": "d981dd56062f5e2014ea05c90dddefc0f24164005478a45eef9566437640af43",
+      "bytes": 104898,
+      "review": "Viewed individually in SU-002; copied unchanged"
+    },
+    {
+      "file": "evidence/kaltsit-forward-start.png",
+      "origin": "skillupdate/output/kaltsit-refined-20260924/character/forward-start.png",
+      "sha256": "7c439f8ed428728d89980f4b0bd1d0acee9d06c0a8455fbe1655a29a1c100dcd",
+      "bytes": 78819,
+      "review": "Viewed individually in SU-002; copied unchanged"
+    },
+    {
+      "file": "evidence/kaltsit-forward-cruise.png",
+      "origin": "skillupdate/output/kaltsit-refined-20260924/character/forward-cruise.png",
+      "sha256": "1e81c6802e61a707e4c001d099af0121985b71977515cd055e38c3e9da1e15c8",
+      "bytes": 92390,
+      "review": "Viewed individually in SU-002; copied unchanged"
+    }
+  ]
+}

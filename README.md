@@ -37,7 +37,7 @@ node scripts/verify-examples.mjs
 
 本地一体化流程仍可使用 [character-sheet-to-voxel](skills/character-sheet-to-voxel/SKILL.md)，不放入这两个单阶段 ZIP。[跨环境说明](skills/voxel-chibi-character/references/portable-use.md) · [统一脚手架](skills/voxel-chibi-character/scripts/scaffold.mjs) · [离线 HTML 打包](skills/voxel-chibi-character/scripts/build_html.py)。
 
-运行 `python scripts/package-skill.py` 从源码生成两个 ZIP 及 dist/checksums.json；ZIP 内每个文件均与同名 skill 源文件一致，不另维护网页版规则或模型。旧网页插件仍已退役，历史可从 Git 提交 0ba7424 恢复。
+运行 `python scripts/package-skill.py` 生成本轮五个发布包及 dist/checksums.json、dist/SHA256SUMS（未变动的出图包不重建）；也可传单个技能名选择打包。ZIP 内每个文件均与同名 skill 源文件一致，不另维护网页版规则或模型。旧网页插件仍已退役，历史可从 Git 提交 0ba7424 恢复。
 
 ## 迭代与检查
 
@@ -48,6 +48,26 @@ node scripts/verify-examples.mjs
 按 [渐进检查](skills/voxel-chibi-character/references/validation.md) 执行：造型迭代只看改动与基本运行，外形稳定后检查相关功能，交付前集中验收最终 GLB 和实际预览。验收后小修只重测受影响项；未改依赖可复用注明版本与范围的专项证据。测试成功简短汇总，失败才展开日志，不逐轮重读全文、全截图或重写完整报告。
 
 建模入口只保留流程与默认范围，专题维护构造技术；动态模式与完整精修统一位于建模 skill，两个网页包各自可用。无文件/哈希能力的出图环境允许简版交接，不编造路径或校验值。默认道具过滤与最终实际产物验收仍独立执行。
+
+## 本地方舟可选流程与独立安装
+
+| 技能 | 职责 | 外部依赖与说明 |
+| --- | --- | --- |
+| [ak-model-upload](skills/ak-model-upload/README.md) | 资料库筛选、四视图准备、单图网页提交 | 本地方舟资料库、已登录 ChatGPT；缺图时才需要出图技能与图像工具 |
+| [ak-model-download](skills/ak-model-download/README.md) | 从原会话回收交付与下载记账 | batch-handoff.json、浏览器；不验模型或写入数据库 |
+| [ak-model-batch-import](skills/ak-model-batch-import/README.md) | 精确形态匹配、必要修订、Playground 集成及验收回写 | 指定 Playground/specialty 接口、Python、建模和浏览器工具 |
+
+三个辅助技能位于同仓 skills/，分别提供 ZIP；通用建模包不强制依赖它们。`character-sheet-to-voxel.zip` 是组合入口包，需要同时安装 `voxel-chibi-character`；其内置出图流程仍可单独工作，外部图像工具另备。
+
+在 [Releases](https://github.com/Douglath/voxel-chibi-character-skill-silver-wolf/releases) 下载所需 ZIP，解压后将顶层技能目录复制至 Codex skills 目录。升级前备份已修改文件，保留本机 `settings.local.json`。公开包只附通用路径说明，账号、个人路径、私密批次均不随包发布。各辅助包 README 列出配置字段、职责和能力限制。
+
+维护者可运行 `python scripts/package-skill.py ak-model-download` 只重建一个包，或不传名称构建本轮五包；出图包须显式指定 `chibi-character-sheet` 才重建。打包排除缓存、本地设置和 node_modules，固定 ZIP 时间戳，逐文件回读对比来源；校验和索引保留未重建但字节仍匹配的已有包。Windows 可用 `Get-FileHash <zip> -Algorithm SHA256` 与 `dist/SHA256SUMS` 对照。包内 bundled Three.js 是正式依赖，保留许可证。
+
+## 四肢规则与已知边界
+
+建模包包含 [直方肢体转换](skills/voxel-chibi-character/references/modeling.md#静态肢体与手部)、[手部四图标尺](skills/voxel-chibi-character/references/hand-thresholds.md) 和静态风格/配件可见验收。蓬袖、整体 A pose 和动画弯肘保留；不推广角色专属缩腿、无手指或全身方块化。
+
+[历史问题与能力边界演示](docs/skill-limitations/README.md) 提供可复制的 Markdown 和原始截图，来源快照日期为 2026-09-27。文档及独立行为审查不等于新模型效果验证；本轮没有重新生成或修订任何角色模型。
 
 ## 快速入口
 

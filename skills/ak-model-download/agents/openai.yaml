@@ -1,0 +1,4 @@
+interface:
+  display_name: "明日方舟 · 仅下载模型"
+  short_description: "按原会话下载模型到统一下载文件夹，记录进度，不自动入库或关联界面"
+  default_prompt: "使用 $ak-model-download，按 batch-handoff.json 下载已完成模型到 Downloads/Arknights-Models，按角色整理并记录未完成项。"
