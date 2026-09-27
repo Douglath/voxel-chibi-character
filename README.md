@@ -37,7 +37,7 @@ node scripts/verify-examples.mjs
 
 本地一体化流程仍可使用 [character-sheet-to-voxel](skills/character-sheet-to-voxel/SKILL.md)，不放入这两个单阶段 ZIP。[跨环境说明](skills/voxel-chibi-character/references/portable-use.md) · [统一脚手架](skills/voxel-chibi-character/scripts/scaffold.mjs) · [离线 HTML 打包](skills/voxel-chibi-character/scripts/build_html.py)。
 
-运行 `python scripts/package-skill.py` 生成本轮五个发布包及 dist/checksums.json、dist/SHA256SUMS（未变动的出图包不重建）；也可传单个技能名选择打包。ZIP 内每个文件均与同名 skill 源文件一致，不另维护网页版规则或模型。旧网页插件仍已退役，历史可从 Git 提交 0ba7424 恢复。
+运行 `python scripts/package-skill.py` 生成六个独立发布包及 dist/checksums.json、dist/SHA256SUMS；也可传单个技能名选择打包。ZIP 内每个文件均与同名 skill 源文件一致，不另维护网页版规则或模型。旧网页插件仍已退役，历史可从 Git 提交 0ba7424 恢复。
 
 ## 迭代与检查
 
@@ -61,7 +61,7 @@ node scripts/verify-examples.mjs
 
 在 [Releases](https://github.com/Douglath/voxel-chibi-character-skill-silver-wolf/releases) 下载所需 ZIP，解压后将顶层技能目录复制至 Codex skills 目录。升级前备份已修改文件，保留本机 `settings.local.json`。公开包只附通用路径说明，账号、个人路径、私密批次均不随包发布。各辅助包 README 列出配置字段、职责和能力限制。
 
-维护者可运行 `python scripts/package-skill.py ak-model-download` 只重建一个包，或不传名称构建本轮五包；出图包须显式指定 `chibi-character-sheet` 才重建。打包排除缓存、本地设置和 node_modules，固定 ZIP 时间戳，逐文件回读对比来源；校验和索引保留未重建但字节仍匹配的已有包。Windows 可用 `Get-FileHash <zip> -Algorithm SHA256` 与 `dist/SHA256SUMS` 对照。包内 bundled Three.js 是正式依赖，保留许可证。
+维护者可运行 `python scripts/package-skill.py ak-model-download` 只重建一个包，或不传名称构建六包。打包排除缓存、本地设置和 node_modules，固定 ZIP 时间戳，逐文件回读对比来源；校验和索引保留未重建但字节仍匹配的已有包。Windows 可用 `Get-FileHash <zip> -Algorithm SHA256` 与 `dist/SHA256SUMS` 对照。包内 bundled Three.js 是正式依赖，保留许可证。
 
 ## 四肢规则与已知边界
 
@@ -84,3 +84,9 @@ node scripts/verify-examples.mjs
 安装：将 skills 下所需目录复制到本地 Codex skills 目录；三个入口分别用于出图、建模与一体化流程。使用原调用名称。Node.js 与 Three.js 0.180.0；仅维护母版/脚手架时在仓库根运行相关回归。脚手架复制可编辑母版，必须按新参考改造型、附件、绑定与测试，并非自动识图建模服务。
 
 GLB含基础动画，弹簧和重力依赖运行时代码。完整网格自碰撞、自动LOD、多角色性能、其他引擎物理迁移尚未验证。不附用户原始插画，不额外授予角色IP权利。
+
+## 许可与署名
+
+本项目有权许可的通用代码、技能指令和软件文档采用标准 [Apache-2.0](LICENSE)，允许商业使用；作者与维护者为 [@Douglath](https://space.bilibili.com/15438401)。[许可范围](LICENSING.md) 明确排除角色设计、官方素材、衍生模型/图片/截图及嵌入的角色造型数据；它们的权利归相应权利人，本项目及相关衍生内容为非官方作品。Three.js 保留 [MIT 及原通知](THIRD_PARTY_NOTICES.md)。本次未给模型新增 CC 或非商业许可。
+
+再分发复制的软件时保留 LICENSE、适用 NOTICE 与其他声明，并注明修改。独立生成结果可自愿署名“使用技能：技能名与版本，来源 @Douglath（https://space.bilibili.com/15438401）”。中英模板与两类义务的区别见 [CREDITS.md](CREDITS.md)。每个独立 ZIP 均带完整许可、通知和范围说明；许可选择不改变仓库现有可见性。

@@ -31,3 +31,7 @@ description: 将本地明日方舟模型批次导入 Playground：匹配干员�
 `python -X utf8 <本 skill>/scripts/scan_batch.py <批次目录或单文件> --output <项目>/validation/<batch-id>/inventory.json`
 
 脚本只解析已知内嵌 GLB、列出 zip 成员和重复 GLB 哈希，不执行 HTML、不解压、不改模型或数据库。输出存在时拒绝覆盖；续跑读取已有结果并对变动源重新盘点到新文件。大文件延后检查可调整 `--max-mb`。压缩包内的 GLB 去重需在安全解压到独立 staging 后再次扫描；解压前验证每个最终路径均位于 staging 内，并限制总解压体积。
+
+## 许可与署名
+
+[许可范围](LICENSING.md) · [LICENSE](LICENSE) · [NOTICE](NOTICE) · [署名模板](CREDITS.md)。后续交付复制本包代码/模板时，保留适用许可与来源通知、第三方原声明，并注明修改；角色/图片/模型权利单独判断。独立生成结果的工具 credit 为自愿。

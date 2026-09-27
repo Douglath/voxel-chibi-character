@@ -3,13 +3,16 @@ from pathlib import Path
 import argparse, hashlib, json, zipfile
 ROOT = Path(__file__).resolve().parents[1]
 NAMES = ('voxel-chibi-character', 'character-sheet-to-voxel', 'ak-model-upload', 'ak-model-download', 'ak-model-batch-import', 'chibi-character-sheet')
-DEFAULT = NAMES[:-1]
+DEFAULT = NAMES
 EXCLUDED = {'__pycache__', 'node_modules', '.git', 'settings.local.json'}
 def package(name, dest):
     source = ROOT / 'skills' / name
     archive = dest / (name + '.zip')
     files = sorted(p for p in source.rglob('*') if p.is_file() and not EXCLUDED.intersection(p.relative_to(source).parts))
     assert (source / 'SKILL.md') in files
+    for required in ('LICENSE', 'NOTICE', 'LICENSING.md', 'CREDITS.md', 'THIRD_PARTY_NOTICES.md'):
+        assert (source / required) in files, f'Missing package notice: {name}/{required}'
+    assert (source / 'LICENSE').read_bytes() == (ROOT / 'LICENSE').read_bytes(), f'License drift: {name}'
     with zipfile.ZipFile(archive, 'w', zipfile.ZIP_DEFLATED, compresslevel=9) as z:
         for p in files:
             if p.is_symlink(): raise ValueError(f'Symlink is not a portable asset: {p}')
@@ -24,7 +27,7 @@ def package(name, dest):
     return {'file': archive.name, 'files': len(files), 'sha256': hashlib.sha256(archive.read_bytes()).hexdigest(), 'bytes': archive.stat().st_size}
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('skills', nargs='*', help='Skill names; default: current release set, excluding unchanged image skill')
+    parser.add_argument('skills', nargs='*', help='Skill names; default: all six independently licensed skill packages')
     parser.add_argument('--output', type=Path, default=ROOT / 'dist')
     args = parser.parse_args()
     names = args.skills or DEFAULT

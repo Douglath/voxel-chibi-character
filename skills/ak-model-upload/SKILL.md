@@ -56,3 +56,7 @@ Skill 路径：使用用户提供或 `settings.local.json` 已确认的 `skill_f
 更新 `transfers/<job_id>/batch-handoff.json`，记录已启动、跳过、待准备及真实异常；使用本地脚本完成机械记账。图片与 skill 路径就是新请求的输入，勿重新套用旧三附件/七文件/哈希锁协议。
 
 最终给上传数量和交接路径。之后通过 `ak-model-download` 回收实际生成的工程、GLB 和离线 HTML；不强制网页提供自定义 manifest 或固定七文件命名。
+
+## 许可与署名
+
+[许可范围](LICENSING.md) · [LICENSE](LICENSE) · [NOTICE](NOTICE) · [署名模板](CREDITS.md)。后续交付复制本包代码/模板时，保留适用许可与来源通知、第三方原声明，并注明修改；角色/图片/模型权利单独判断。独立生成结果的工具 credit 为自愿。

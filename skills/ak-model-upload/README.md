@@ -16,3 +16,7 @@
 - 确认提交后复用原会话；发送不明先恢复现场，不重复付出生成成本。上传成功不代表模型质量已通过。
 
 后续分别使用 `ak-model-download` 下载、`ak-model-batch-import` 在用户授权范围内入库。通用 `voxel-chibi-character` 包不依赖这些辅助技能。
+
+## 许可与来源
+
+本包有权许可的通用软件/指令采用 [Apache-2.0](LICENSE)，允许商用；角色资产及第三方材料另论。作者 [@Douglath](https://space.bilibili.com/15438401)。详见 [许可范围](LICENSING.md)、[NOTICE](NOTICE) 与 [中英署名模板](CREDITS.md)。独立输出工具 credit 为自愿。
