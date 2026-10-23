@@ -1,0 +1,17 @@
+<!doctype html><meta charset="utf-8"><title>部件结构样例</title>
+<style>body{margin:0;background:#e5e9ef;color:#263445;font:16px system-ui}header{padding:20px 30px}h1{font-size:23px}button{padding:6px 14px}.labels{display:flex;text-align:center}.labels span{width:33.33%}</style>
+<header><h1>耳朵与衣物 · 体素结构样例</h1><p><a href="../part-style-kit/index.html">新版：耳朵、开襟、蓬袖、长袖及裙摆风格对照 →</a></p>演示结构，不是角色成品；不含骨架与物理。拖动可旋转检查内凹、开口和内壁。<p><a href="example.html">返回侧发对照</a>　<button onclick="setView(0)">正面</button> <button onclick="setView(.8)">斜视</button> <button onclick="setView(1.5708)">侧面</button> <button onclick="setView(3.14159)">背面</button></p></header>
+<div class="labels" id="labels"></div>
+<script type="module">
+import * as THREE from '../dependencies/three/build/three.module.js';
+import {makeParts,step} from './part-recipes.mjs';
+const r=new THREE.WebGLRenderer({antialias:true});r.setSize(innerWidth,580);r.setClearColor(0xe5e9ef);document.body.append(r.domElement);
+const scene=new THREE.Scene(),camera=new THREE.OrthographicCamera(-5,5,2,-2,.1,50);camera.position.set(0,3,14);camera.lookAt(0,0,0);
+scene.add(new THREE.HemisphereLight(0xffffff,0x778094,2.4));const light=new THREE.DirectionalLight(0xffffff,3);light.position.set(-3,6,8);scene.add(light);
+const mats=[0xd5dce8,0xc1a7c3,0x9bc765,0x333d42].map(color=>new THREE.MeshStandardMaterial({color,roughness:.85}));const groups=[];
+makeParts().forEach((part,i)=>{const label=document.createElement('span');label.textContent=part.label;document.querySelector('#labels').append(label);const group=new THREE.Group();group.position.x=(i-1)*3.2;groups.push(group);scene.add(group);
+ for(let m=0;m<mats.length;m++){const cells=part.cells.filter(c=>c.material===m);if(!cells.length)continue;const mesh=new THREE.InstancedMesh(new THREE.BoxGeometry(step,step,step),mats[m],cells.length),matrix=new THREE.Matrix4();cells.forEach((c,j)=>{matrix.makeTranslation(...c.cell.map(v=>v*step));mesh.setMatrixAt(j,matrix)});group.add(mesh);}
+});
+let angle=.55,down=false,old=0;function render(){groups.forEach(g=>g.rotation.y=angle);r.render(scene,camera)}
+window.setView=a=>{angle=a;render()};r.domElement.onpointerdown=e=>{down=true;old=e.clientX;r.domElement.setPointerCapture(e.pointerId)};r.domElement.onpointermove=e=>{if(down){angle+=(e.clientX-old)*.008;old=e.clientX;render()}};r.domElement.onpointerup=()=>down=false;render();window.fixtureReady=true;
+</script>

@@ -1,0 +1,58 @@
+<!doctype html><meta charset="utf-8"><title>Hair construction comparison</title>
+<style>body{margin:0;background:#e5e9ef;color:#263445;font:16px system-ui}header{padding:18px 30px}h1{font-size:22px;margin:0 0 8px}.labels{display:flex;text-align:center}.labels div{width:33.333%}canvas{display:block}small{color:#526070}</style>
+<header><h1>侧发体积与薄鬓角 · 构造对照</h1>左为等厚直板反例；中/右保持薄鬓角，同时增加外侧发的分层体积。技术样例，不代表角色审美通过。<br><small>拖动横向旋转 · 左：直条结构反例　中：按发流体素化　右：少量硬边斜面（需符合参考）</small></header>
+<div style="text-align:center;margin:10px"><button onclick="setView(0)">正面</button> <button onclick="setView(1.5708)">侧面</button> <button onclick="setView(.7)">斜视</button> <button onclick="setView(3.14159)">背面</button> <button onclick="toggleHairColor()">统一发色／分层发色</button></div>
+<p style="text-align:center"><a href="parts.html">查看耳朵、开襟与扩口袖的结构样例</a></p><div class="labels"><div>直条：无内收、层次不足</div><div>体素：薄鬓角＋饱满侧发</div><div>硬边：相同体积、有限折面</div></div>
+<script type="module">
+import * as THREE from '../dependencies/three/build/three.module.js';
+import {createLockGeometry,mirrorSections,voxelizeLock} from './lock-geometry.mjs';
+const renderer=new THREE.WebGLRenderer({antialias:true}); renderer.setSize(innerWidth,640); renderer.setPixelRatio(1); document.body.append(renderer.domElement);
+renderer.setClearColor(0xe5e9ef); renderer.outputColorSpace=THREE.SRGBColorSpace;
+const scene=new THREE.Scene(),camera=new THREE.OrthographicCamera(-5.5,5.5,2.5,-2.5,.1,50);
+camera.position.set(0,1,14);camera.lookAt(0,.05,0);
+scene.add(new THREE.HemisphereLight(0xffffff,0x7a8094,2.5)); const light=new THREE.DirectionalLight(0xffffff,3);light.position.set(-4,7,8);scene.add(light);
+const mats=[0xb1b9cc,0xd0d5e1,0xe4e8f2].map(color=>new THREE.MeshStandardMaterial({color,roughness:.9}));
+const skin=new THREE.MeshStandardMaterial({color:0xffd9c5,roughness:1});
+const eye=new THREE.MeshStandardMaterial({color:0x74638f});
+function box(g,w,h,d,x,y,z,mat){const m=new THREE.Mesh(new THREE.BoxGeometry(w,h,d),mat);m.position.set(x,y,z);g.add(m);return m;}
+const groups=[];
+const lock=[{x:.65,y:1.02,z:.49,width:.34,depth:.19},{x:.78,y:.52,z:.61,width:.38,depth:.17},{x:.75,y:-.04,z:.66,width:.29,depth:.15},{x:.51,y:-.5,z:.68,width:.12,depth:.1}];
+function addLock(g,sections,mode,mat){
+ if(mode!==1){g.add(new THREE.Mesh(createLockGeometry(THREE,sections),mat));return;}
+ const step=.085,cells=voxelizeLock(sections,step),occupied=new Set(cells.map(c=>c.join(','))),pos=[];
+ const dirs=[[1,0,0],[-1,0,0],[0,1,0],[0,-1,0],[0,0,1],[0,0,-1]];
+ // Closed voxel union: discard interior faces within this lock only.
+ const cube=new THREE.BoxGeometry(step,step,step).toNonIndexed();const a=cube.attributes.position;
+ for(const c of cells)for(let f=0;f<6;f++){
+  if(occupied.has(c.map((v,i)=>v+dirs[f][i]).join(',')))continue;
+  for(let k=f*6;k<f*6+6;k++)pos.push(a.getX(k)+c[0]*step,a.getY(k)+c[1]*step,a.getZ(k)+c[2]*step);
+ }
+ cube.dispose();const geom=new THREE.BufferGeometry();geom.setAttribute('position',new THREE.Float32BufferAttribute(pos,3));geom.computeVertexNormals();g.add(new THREE.Mesh(geom,mat));
+}
+for(let mode=0;mode<3;mode++){
+ const g=new THREE.Group();g.position.x=(mode-1)*3.5;scene.add(g);groups.push(g);
+ box(g,1.4,1.55,.9,0,.25,0,skin);
+ if(mode===0) box(g,1.65,1.9,.38,0,.32,-.56,mats[0]);
+ else addLock(g,[{x:0,y:1.2,z:-.42,width:1.45,depth:.45},{x:0,y:.75,z:-.53,width:1.65,depth:.48},{x:0,y:.05,z:-.55,width:1.7,depth:.44},{x:0,y:-.57,z:-.5,width:1.48,depth:.26}],mode,mats[0]);
+ box(g,1.66,.32,1.2,0,1.12,-.04,mats[1]);
+ for(const sign of [-1,1]){
+  if(mode===0) box(g,.2,1.7,1.02,sign*.75,.25,-.07,mats[0]);
+  else {
+   const outer=[{x:.69,y:1.16,z:-.08,width:.32,depth:1.02},{x:.84,y:.63,z:-.12,width:.46,depth:1.12},{x:.88,y:.03,z:-.16,width:.43,depth:1.06},{x:.77,y:-.62,z:-.12,width:.19,depth:.67}];
+   addLock(g,sign===1?outer:mirrorSections(outer),mode,mats[0]);
+   const layer=[{x:.78,y:.84,z:.29,width:.27,depth:.24},{x:.94,y:.31,z:.29,width:.29,depth:.25},{x:.91,y:-.16,z:.3,width:.25,depth:.21},{x:.73,y:-.48,z:.32,width:.12,depth:.12}];
+   addLock(g,sign===1?layer:mirrorSections(layer),mode,mats[1]);
+  }
+  box(g,.17,.22,.04,sign*.3,.18,.47,eye);
+  const s=mode===0?[{x:.73,y:1.04,z:.62,width:.3,depth:.24},{x:.73,y:-.5,z:.62,width:.3,depth:.24}]:lock;
+  addLock(g,sign===1?s:mirrorSections(s),mode,mats[1]);
+  addLock(g,[{x:sign*.4,y:1.15,z:.62,width:.62,depth:.18},{x:sign*.53,y:.71,z:.7,width:.48,depth:.14},{x:sign*.63,y:.43,z:.69,width:.2,depth:.12}],mode,mats[2]);
+ }
+ addLock(g,[{x:0,y:1.16,z:.61,width:.5,depth:.16},{x:0,y:.55,z:.67,width:.24,depth:.13}],mode,mats[1]);
+}
+let angle=.25,drag=false,old=0;renderer.domElement.onpointerdown=e=>{drag=true;old=e.clientX;renderer.domElement.setPointerCapture(e.pointerId)};
+renderer.domElement.onpointermove=e=>{if(drag){angle+=(e.clientX-old)*.008;old=e.clientX;render()}};renderer.domElement.onpointerup=()=>drag=false;
+function render(){groups.forEach(g=>g.rotation.y=angle);renderer.render(scene,camera)}
+let sameColor=false;const originalColors=mats.map(m=>m.color.clone());window.toggleHairColor=()=>{sameColor=!sameColor;mats.forEach((m,i)=>m.color.copy(originalColors[sameColor?1:i]));render()};
+window.setView=a=>{angle=a;render()}; render(); window.fixtureReady=true;
+</script>

@@ -1,0 +1,38 @@
+<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>耳朵与衣服造型范式</title>
+<style>body{margin:0;background:#e7ebf1;color:#253247;font:16px system-ui}header{padding:20px 28px 8px}h1{margin:0 0 12px;font-size:25px}nav{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}button{border:1px solid #adbac9;border-radius:7px;padding:8px 14px;background:#f7f9fc;color:#253247;cursor:pointer}button.active{background:#314c65;color:white}p{margin:10px 0;line-height:1.6}.labels{display:flex;text-align:center;margin-top:14px}.labels span{width:33.333%}canvas{display:block}small{color:#586879}a{color:#315681}</style>
+<header><h1>耳朵与衣服 · 像素造型范式</h1><small>可复用构造样例，不是角色成品。选择参考对应的设计，不将右侧自动视为所有角色的最佳方案。</small>
+<nav id="categories"></nav><p id="description"></p>
+<nav><button onclick="setView(0)">正面</button><button onclick="setView(.75)">斜视</button><button onclick="setView(Math.PI/2)">侧面</button><button onclick="setView(Math.PI)">背面</button><button onclick="setUnder()">看内壁／下缘</button><button onclick="toggleColor()">统一色／分层色</button></nav>
+<small>拖动旋转 · <a href="../hair-kit/example.html">头发对照</a> · <span id="stats"></span></small></header><div class="labels" id="labels"></div>
+<script type="module">
+import * as THREE from '../dependencies/three/build/three.module.js';
+import {collections,sample,step} from './style-recipes.mjs';
+const renderer=new THREE.WebGLRenderer({antialias:true});renderer.setClearColor(0xe7ebf1);renderer.setPixelRatio(Math.min(devicePixelRatio,1.5));document.body.append(renderer.domElement);
+const scene=new THREE.Scene(),camera=new THREE.OrthographicCamera(-4.7,4.7,1.9,-1.9,.1,50);camera.position.set(0,1.7,12);camera.lookAt(0,0,0);
+scene.add(new THREE.HemisphereLight(0xffffff,0x758093,2));const light=new THREE.DirectionalLight(0xffffff,2.5);light.position.set(-4,6,8);scene.add(light);
+const materials=[0xd5dce7,0xb49eae,0x9bc46e,0x3e4955,0xaab6c8].map(color=>new THREE.MeshStandardMaterial({color,roughness:1}));const colors=materials.map(m=>m.color.clone());let single=false;
+const groups=[];let angle=.65,tilt=0;
+function makeMesh(cells){
+ const occupied=new Set(cells.map(c=>c.cell.join(','))),out=materials.map(()=>[]),cube=new THREE.BoxGeometry(step,step,step).toNonIndexed(),a=cube.attributes.position;
+ const directions=[[1,0,0],[-1,0,0],[0,1,0],[0,-1,0],[0,0,1],[0,0,-1]];
+ for(const {cell:c,material:m} of cells)for(let f=0;f<6;f++){
+  if(occupied.has(c.map((v,i)=>v+directions[f][i]).join(',')))continue;
+  for(let k=f*6;k<f*6+6;k++)out[m].push(a.getX(k)+c[0]*step,a.getY(k)+c[1]*step,a.getZ(k)+c[2]*step);
+ }
+ cube.dispose();const group=new THREE.Group();out.forEach((pos,i)=>{if(!pos.length)return;const g=new THREE.BufferGeometry();g.setAttribute('position',new THREE.Float32BufferAttribute(pos,3));g.computeVertexNormals();group.add(new THREE.Mesh(g,materials[i]))});return group;
+}
+function render(){groups.forEach(g=>g.rotation.set(tilt,angle,0));renderer.render(scene,camera)}
+window.setView=a=>{angle=a;tilt=0;render()};window.setUnder=()=>{angle=.5;tilt=-.75;render()};window.toggleColor=()=>{single=!single;materials.forEach((m,i)=>m.color.copy(colors[single?0:i]));render()};
+window.showCategory=key=>{
+ const c=collections[key];if(!c)throw Error('Unknown category');
+ for(const g of groups){scene.remove(g);g.traverse(o=>o.geometry?.dispose())}groups.length=0;
+ document.querySelector('#labels').replaceChildren();let count=0;
+ c.items.forEach(([label,predicate],i)=>{const el=document.createElement('span');el.textContent=label;document.querySelector('#labels').append(el);const cells=sample(predicate),g=makeMesh(cells);count+=cells.length;g.position.x=(i-1)*3.1;groups.push(g);scene.add(g)});
+ document.querySelector('#description').textContent=c.note;document.querySelector('#stats').textContent='当前：'+c.title+' · '+count+' 格';
+ document.querySelectorAll('[data-key]').forEach(b=>b.classList.toggle('active',b.dataset.key===key));render();
+};
+for(const [key,label]of [['ears','耳朵'],['coats','开襟外套'],['sleeves','蓬袖与长袖'],['layers','裙摆与肩披']]){const b=document.createElement('button');b.textContent=label;b.dataset.key=key;b.onclick=()=>showCategory(key);document.querySelector('#categories').append(b)}
+function resize(){const w=innerWidth,h=Math.max(340,Math.min(600,w*.43));renderer.setSize(w,h);const half=4.7*h/w;camera.top=half;camera.bottom=-half;camera.updateProjectionMatrix();render()}addEventListener('resize',resize);
+let drag=false,last=0;renderer.domElement.onpointerdown=e=>{drag=true;last=e.clientX;renderer.domElement.setPointerCapture(e.pointerId)};renderer.domElement.onpointermove=e=>{if(drag){angle+=(e.clientX-last)*.009;last=e.clientX;render()}};renderer.domElement.onpointerup=()=>drag=false;renderer.domElement.onpointercancel=()=>drag=false;
+showCategory('ears');resize();window.fixtureReady=true;
+</script></html>

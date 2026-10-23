@@ -37,7 +37,10 @@ description: 根据角色参考制作或迭代像素体素 Q 版模型，支持�
 
 ## 制作与迭代
 
-1. 开工时查看角色图与母版 rig-front/side/three.png，读取 character-baseline.mjs 的实际尺寸。记录少量身份锚点和部件关系，执行 [造型与绑定](references/modeling.md)。输入及源码保留可恢复版本，不覆盖唯一母版。
+**继续已有角色时先恢复状态：**读取实际工程的 character-spec.json（或已存在的等效状态文件）、其中指向的当前模型/源码及本轮用户纠正，再按 [持续迭代](references/part-iteration.md#持续迭代的读取与回写) 执行。读取 currentModel、有效要求、已认可部分及 rejected/superseded 记录后才修改；文件缺失时从当前工程和可用对话补最小状态，不重跑脚手架。涉及头发必须读取 [hair.md](references/hair.md)，特别是侧发体积与贴脸厚度的区别。结束时更新工程状态，不能只把结论留在聊天里。调用同一 skill 不代表自动拥有其他聊天历史。
+
+
+1. 开工时查看角色图与母版 rig-front/side/three.png，读取 character-baseline.mjs 的实际尺寸。按 [部件结构与局部迭代](references/part-iteration.md) 记录少量身份锚点、根部/末端地标、遮挡与运动关系，执行 [造型与绑定](references/modeling.md)。输入及源码保留可恢复版本，不覆盖唯一母版。
 2. 新建工程时在未存在的目录运行脚手架；若 design 已占角色目录，使用其新的 model 子目录。已有工程继续局部修改，不删除旧目录重跑。
 
    ```text
@@ -63,7 +66,9 @@ description: 根据角色参考制作或迭代像素体素 Q 版模型，支持�
 
 | 涉及内容 | 读取位置 |
 |---|---|
+| 参考拆解、保留已认可部分及局部修改 | [part-iteration.md](references/part-iteration.md) |
 | 头发组织与配色 | [hair.md](references/hair.md) |
+| 衣领、开襟、蓬袖、过手长袖与裙摆 | [garments.md](references/garments.md) |
 | 兽耳、尾巴、绑带与飘带 | [ears-tails-straps.md](references/ears-tails-straps.md) |
 | 确定保留的组合配件 | [accessories.md](references/accessories.md) |
 | 完整精修动态 | [refined-dynamics.md](references/refined-dynamics.md) |
