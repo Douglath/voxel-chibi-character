@@ -89,4 +89,4 @@ GLB含基础动画，弹簧和重力依赖运行时代码。完整网格自碰�
 
 本项目有权许可的通用代码、技能指令和软件文档采用标准 [Apache-2.0](LICENSE)，允许商业使用；作者与维护者为 [@Douglath](https://space.bilibili.com/15438401)。[许可范围](LICENSING.md) 明确排除角色设计、官方素材、衍生模型/图片/截图及嵌入的角色造型数据；它们的权利归相应权利人，本项目及相关衍生内容为非官方作品。Three.js 保留 [MIT 及原通知](THIRD_PARTY_NOTICES.md)。本次未给模型新增 CC 或非商业许可。
 
-再分发复制的软件时保留 LICENSE、适用 NOTICE 与其他声明，并注明修改。独立生成结果可自愿署名“使用技能：技能名与版本，来源 @Douglath（https://space.bilibili.com/15438401）”。中英模板与两类义务的区别见 [CREDITS.md](CREDITS.md)。每个独立 ZIP 均带完整许可、通知和范围说明；许可选择不改变仓库现有可见性。
+再分发复制的软件时保留 LICENSE、适用 NOTICE 与其他声明，并注明修改。独立生成结果可自愿署名“使用技能：技能名与版本，来源 @Douglath（<https://space.bilibili.com/15438401>）”。中英模板与两类义务的区别见 [CREDITS.md](CREDITS.md)。每个独立 ZIP 均带完整许可、通知和范围说明；许可选择不改变仓库现有可见性。
