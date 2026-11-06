@@ -66,6 +66,7 @@ description: 根据角色参考制作或迭代像素体素 Q 版模型，支持�
 
 | 涉及内容 | 读取位置 |
 |---|---|
+| 首次外形预览与交付前的整体风格、细节保留及局部复核 | [风格参考与外形自检](references/visual-self-check.md)；沿用现有检查时机，不新增制作流程 |
 | 参考拆解、保留已认可部分及局部修改 | [part-iteration.md](references/part-iteration.md) |
 | 头发组织与配色 | [hair.md](references/hair.md) |
 | 衣领、开襟、蓬袖、过手长袖与裙摆 | [garments.md](references/garments.md) |

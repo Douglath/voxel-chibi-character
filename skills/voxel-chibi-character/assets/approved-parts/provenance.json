@@ -1,0 +1,12 @@
+{
+  "sourceDirectory": "research/sui/20261105-voxel-v1/model",
+  "approval": "User accepted V4 appearance and dynamics on 2026-11-05",
+  "hashes": {
+    "character/model.mjs": "1d5c9ffd7a82dc891dd602c66f04f1b9720d41206b2968a5f202dd65a206a484",
+    "character/spiral-ponytails.mjs": "1047e0761ad150e7b3326300f70dcaf31c3afa8e553d157905c50cf4b5d25052",
+    "character/sui-rigged.glb": "47ecdaa164560a66a5ab1bf2167c88908a2be4665fe0c5d78f7b19b704827174"
+  },
+  "scope": "Only spiral, beret group and halo. Character appearance rights are separate from code licensing.",
+  "derivation": "Spiral source credits Hazel rear-wrap construction as already recorded in Sui V4; no other character files accessed.",
+  "geometry": "Inverse authored pose to recover local geometry; placement is applied once after shaping."
+}

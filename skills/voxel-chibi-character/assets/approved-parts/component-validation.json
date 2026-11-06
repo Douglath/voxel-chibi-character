@@ -1,0 +1,20 @@
+[
+  {
+    "kind": "spiral",
+    "reproductionMaxError": 7.450580596923828e-9,
+    "wholePoseMaxError": 1.028492935177536e-7,
+    "mirrorWinding": "pass"
+  },
+  {
+    "kind": "beret",
+    "reproductionMaxError": 2.9802322387695312e-8,
+    "wholePoseMaxError": 1.3388121971193922e-7,
+    "mirrorWinding": "pass"
+  },
+  {
+    "kind": "halo",
+    "reproductionMaxError": 2.9802322387695312e-8,
+    "wholePoseMaxError": 1.3058892420889844e-7,
+    "mirrorWinding": "pass"
+  }
+]
