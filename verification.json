@@ -42,7 +42,7 @@
       "pass": true
     }
   ],
-  "scaffold": "D:\\Documents\\ChatGPT\\pixelChar\\voxel-chibi-character-skill-silver-wolf\\.smoke\\1789900403717\\renamed",
-  "lab": "D:\\Documents\\ChatGPT\\pixelChar\\voxel-chibi-character-skill-silver-wolf\\.smoke\\1789900403717\\lab",
+  "scaffold": ".smoke/1795586270066/renamed",
+  "lab": ".smoke/1795586270066/lab",
   "scope": "Actual GLB and production physics in Node; browser checked separately. No full self collision or load benchmark."
 }

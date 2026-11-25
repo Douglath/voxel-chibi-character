@@ -19,5 +19,6 @@ const results=[];
 for(const test of tests){try{run(path.join(scaffold,'character',test));results.push({test,pass:true});}catch(e){console.error(test,String(e.stdout),String(e.stderr));throw e;}}
 const lab=path.join(work,'lab');run(path.join(root,'skills/voxel-chibi-character/scripts/scaffold-lab.mjs'),[lab,'4218']);
 if(!fs.existsSync(path.join(lab,'silver-wolf-dynamics/silver-wolf-rigged.glb')))throw Error('Lab baseline missing');
-const report={exactBaselineReproduction:true,renamedScaffoldBuild:true,labScaffold:true,triangles:stats.triangles,bones:43,results,scaffold,lab,scope:'Actual GLB and production physics in Node; browser checked separately. No full self collision or load benchmark.'};
+const rel=p=>path.relative(root,p).split(path.sep).join('/');
+const report={exactBaselineReproduction:true,renamedScaffoldBuild:true,labScaffold:true,triangles:stats.triangles,bones:43,results,scaffold:rel(scaffold),lab:rel(lab),scope:'Actual GLB and production physics in Node; browser checked separately. No full self collision or load benchmark.'};
 fs.writeFileSync(path.join(root,'verification.json'),JSON.stringify(report,null,2));console.log(JSON.stringify(report));

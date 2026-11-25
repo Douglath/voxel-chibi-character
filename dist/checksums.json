@@ -3,38 +3,38 @@
     {
       "file": "ak-model-batch-import.zip",
       "files": 16,
-      "sha256": "c8d57d14a78d19fbce8de82d6fc5d1c32f4f45539c84482c752630f4f9a5783e",
-      "bytes": 261496
+      "sha256": "a5b135d5b0eaed36c076f9cc15a6df867ed75e13e16603d555782e3004e569a4",
+      "bytes": 261391
     },
     {
       "file": "ak-model-download.zip",
       "files": 8,
-      "sha256": "6acddae5b1b331e5c6d7171f8e50d0516a5a239567064f2b9b4cf9b24337eea9",
-      "bytes": 13925
+      "sha256": "84f46f8356c6189a18b642c095064704915e1584d247b497619a43f7dd837b35",
+      "bytes": 13838
     },
     {
       "file": "ak-model-upload.zip",
       "files": 9,
-      "sha256": "902cff402210a418f1403d29fd233420e811bf0d521bc2d04dbeccc13721fda4",
-      "bytes": 16704
+      "sha256": "a2ec71b0b5daf5b70d174e1d7cabc4581824bc3b723ae5178716db22f9b1db5d",
+      "bytes": 16614
     },
     {
       "file": "character-sheet-to-voxel.zip",
       "files": 17,
-      "sha256": "e73c84d5c5bd164e8f009d499975d24c2fa2b957d7db48e842b4336a30ac4381",
-      "bytes": 4995281
+      "sha256": "fa7041c1dc1f18bb354dc88de4960388c0731f9da97128c6bee29b306d0ba3f9",
+      "bytes": 4995244
     },
     {
       "file": "chibi-character-sheet.zip",
       "files": 13,
-      "sha256": "192e63d74c41101d365522e1ef348426607d143451aabcbf853a647fd341d221",
-      "bytes": 4986520
+      "sha256": "40d92e2d7761871cb8fda0d289c085f118fdb1d9d2b014a007f4f83fefb21e77",
+      "bytes": 4986483
     },
     {
       "file": "voxel-chibi-character.zip",
       "files": 138,
-      "sha256": "646fccf5c7b954d3de682f938c9179f8d7aa7cf13e84919e028444a097134e2a",
-      "bytes": 2349057
+      "sha256": "cf7132b47e0735c91de730b3b9efc7e72df5f413a365e44a944d035a3c0c8c88",
+      "bytes": 2344575
     }
   ]
 }

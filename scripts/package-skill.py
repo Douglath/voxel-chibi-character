@@ -42,7 +42,7 @@ def main():
         p = args.output / row['file']
         if p.name not in current and p.is_file() and hashlib.sha256(p.read_bytes()).hexdigest() == row['sha256']: current[p.name] = row
     rows = sorted(current.values(), key=lambda r:r['file'])
-    index.write_text(json.dumps({'packages': rows}, indent=2) + '\n', encoding='utf8')
-    (args.output / 'SHA256SUMS').write_text(''.join(f"{r['sha256']}  {r['file']}\n" for r in rows), encoding='utf8')
+    index.write_text(json.dumps({'packages': rows}, indent=2) + '\n', encoding='utf8', newline='\n')
+    (args.output / 'SHA256SUMS').write_text(''.join(f"{r['sha256']}  {r['file']}\n" for r in rows), encoding='utf8', newline='\n')
     print(json.dumps({'built': reports}, ensure_ascii=False))
 if __name__ == '__main__': main()

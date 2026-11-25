@@ -10,6 +10,7 @@ import {technicalKit,wristKit} from '../skills/voxel-chibi-character/assets/acce
 import {AccessoryDynamics} from '../skills/voxel-chibi-character/assets/accessory-kit/accessory-dynamics.mjs';
 
 const root=fileURLToPath(new URL('../',import.meta.url));
+const rel=p=>path.relative(root,p).split(path.sep).join('/');
 const work=path.join(root,'.smoke','accessories',String(Date.now()));
 const run=(file,args=[])=>execFileSync(process.execPath,[file,...args],{encoding:'utf8',stdio:'pipe'});
 const scaffold=path.join(root,'skills/voxel-chibi-character/scripts/scaffold.mjs');
@@ -87,7 +88,7 @@ for(const [name,spec,port] of [['technical-kit',technicalKit(),4237],['wrist-kit
   const stats=JSON.parse(fs.readFileSync(path.join(project,'character/stats.json')));
   let actualTriangles=0;rig.traverse(m=>{if(m.isMesh)actualTriangles+=m.geometry.index.count/3;});
   assert.equal(stats.triangles,actualTriangles,'Stats must include actual accessory geometry');
-  results.push({name,project,preview:`http://localhost:${port}/character/rig.html`,glb:file,sha256:hash(file),parts:spec.parts.length,bones:skeleton.bones.length,triangles:stats.triangles,preservedMeshes,clips:animations.map(a=>a.name),fpsResults,runResponse,pass:true});
+  results.push({name,project:rel(project),preview:`http://localhost:${port}/character/rig.html`,glb:rel(file),sha256:hash(file),parts:spec.parts.length,bones:skeleton.bones.length,triangles:stats.triangles,preservedMeshes,clips:animations.map(a=>a.name),fpsResults,runResponse,pass:true});
 }
 const invalidProject=path.join(work,'invalid-anchor');
 run(scaffold,[invalidProject,'invalid-anchor','无效挂点拒绝测试','4239']);

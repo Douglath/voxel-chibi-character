@@ -1,7 +1,7 @@
 # 来源与署名 / Credits
 
 作者与维护者 / Author and maintainer: **@Douglath** — [B站主页](https://space.bilibili.com/15438401)。
-软件来源 / Software source: [voxel-chibi-character-skill-silver-wolf](https://github.com/Douglath/voxel-chibi-character-skill-silver-wolf)。
+软件来源 / Software source: [voxel-chibi-character](https://github.com/Douglath/voxel-chibi-character)。
 
 ## 再分发软件 / Redistributing software
 
@@ -11,9 +11,9 @@ When redistributing covered software or derivatives, include LICENSE, retain app
 
 可用的来源说明 / Suggested source note (does not replace the full license or notices):
 
-> 软件来源：@Douglath · https://space.bilibili.com/15438401；项目：https://github.com/Douglath/voxel-chibi-character-skill-silver-wolf。适用软件许可：Apache-2.0；修改说明：填写实际改动。
+> 软件来源：@Douglath · https://space.bilibili.com/15438401；项目：https://github.com/Douglath/voxel-chibi-character。适用软件许可：Apache-2.0；修改说明：填写实际改动。
 
-> Software source: @Douglath · https://space.bilibili.com/15438401; project: https://github.com/Douglath/voxel-chibi-character-skill-silver-wolf. Covered software: Apache-2.0. Changes: describe actual modifications.
+> Software source: @Douglath · https://space.bilibili.com/15438401; project: https://github.com/Douglath/voxel-chibi-character. Covered software: Apache-2.0. Changes: describe actual modifications.
 
 ## 独立生成作品 / Independent outputs
 

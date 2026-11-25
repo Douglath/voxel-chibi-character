@@ -3,7 +3,7 @@
   "method": "Independent approved-v5 versus freshly rebuilt sample comparison. Exact named mesh indices and every attribute including colors/normals/weights/joints; all accessor payloads, entire BIN, structural nodes, skins/animations/materials and runtime source bytes. GLB metadata differences recorded separately. Default baseline inspected from actual rigged GLB.",
   "pass": true,
   "approved": {
-    "path": "D:/Documents/ChatGPT/pixelChar/local-iterations/technical-kit-eyes-v5/character/technical-kit-rigged.glb",
+    "path": "../local-iterations/technical-kit-eyes-v5/character/technical-kit-rigged.glb",
     "sha256": "4feca8f2ca3461d56882eb1a9c4aa005fe4a08039fbc0584108e5cfdb49b0b1c",
     "fileBytes": 670396,
     "jsonBytes": 88160,
@@ -23,7 +23,7 @@
     ]
   },
   "rebuilt": {
-    "path": "D:/Documents/ChatGPT/pixelChar/voxel-chibi-character-skill-silver-wolf/.smoke/accessories/1789896706277/technical-kit/character/technical-kit-rigged.glb",
+    "path": ".smoke/accessories/1789896706277/technical-kit/character/technical-kit-rigged.glb",
     "sha256": "4feca8f2ca3461d56882eb1a9c4aa005fe4a08039fbc0584108e5cfdb49b0b1c",
     "fileBytes": 670396,
     "jsonBytes": 88160,
@@ -1710,7 +1710,7 @@
     }
   ],
   "defaultBaseline": {
-    "path": "D:/Documents/ChatGPT/pixelChar/voxel-chibi-character-skill-silver-wolf/skills/voxel-chibi-character/assets/silver-wolf-refined-dynamics/silver-wolf-rigged.glb",
+    "path": "skills/voxel-chibi-character/assets/silver-wolf-refined-dynamics/silver-wolf-rigged.glb",
     "sha256": "272765ec896df061184c9ab3400be1851dd7b097783b7ecef307aaf770aa8225",
     "fileBytes": 520464,
     "jsonBytes": 56020,

@@ -1,5 +1,19 @@
 # Silver Wolf Voxel Chibi Skill
 
+一组给 AI 编码助手（Codex 等支持 skill 的环境）使用的技能包：把一张角色图变成 Q 版四视图设定，再做成带骨骼、表情和头发/配件动态的低面数体素风 GLB 模型，并附可离线打开的 Three.js 预览页。
+
+## 这是什么
+
+| 你想做的事 | 用哪个技能 | 产出 |
+| --- | --- | --- |
+| 角色原图 → Q 版四视图设定 | [chibi-character-sheet](skills/chibi-character-sheet/SKILL.md) | 四视图参考图与设计交接 |
+| 参考图 → 体素模型 | [voxel-chibi-character](skills/voxel-chibi-character/SKILL.md) | 静态或带骨骼动画的 GLB、三视图、预览页 |
+| 本地一步到位 | [character-sheet-to-voxel](skills/character-sheet-to-voxel/SKILL.md) | 以上两步串联 |
+
+快速开始：在 [Releases](https://github.com/Douglath/voxel-chibi-character/releases) 下载所需 ZIP，解压后把顶层技能目录复制到 skills 目录，然后对助手说“用 voxel-chibi-character，快速预览模式，根据这张参考图建模”。建模需要 Node.js，打包离线 HTML 需要 Python；Three.js 0.180.0 已随包附带。这是一套由助手执行的规则、母版和脚手架，不是自动识图建模服务；每个新角色都要按参考调整造型、绑定并验收。详细安装、模式和限制见下文。
+
+## 当前版本
+
 以当前银灰狼耳少女为唯一基准的第二版体素角色 skill。保留调用名称 `voxel-chibi-character`，同时包含独立出图 `chibi-character-sheet` 与本地一体化 `character-sheet-to-voxel` 入口。
 
 ## 已确认的模型与规则
@@ -59,7 +73,7 @@ node scripts/verify-examples.mjs
 
 三个辅助技能位于同仓 skills/，分别提供 ZIP；通用建模包不强制依赖它们。`character-sheet-to-voxel.zip` 是组合入口包，需要同时安装 `voxel-chibi-character`；其内置出图流程仍可单独工作，外部图像工具另备。
 
-在 [Releases](https://github.com/Douglath/voxel-chibi-character-skill-silver-wolf/releases) 下载所需 ZIP，解压后将顶层技能目录复制至 Codex skills 目录。升级前备份已修改文件，保留本机 `settings.local.json`。公开包只附通用路径说明，账号、个人路径、私密批次均不随包发布。各辅助包 README 列出配置字段、职责和能力限制。
+在 [Releases](https://github.com/Douglath/voxel-chibi-character/releases) 下载所需 ZIP，解压后将顶层技能目录复制至 Codex skills 目录。升级前备份已修改文件，保留本机 `settings.local.json`。公开包只附通用路径说明，账号、个人路径、私密批次均不随包发布。各辅助包 README 列出配置字段、职责和能力限制。
 
 维护者可运行 `python scripts/package-skill.py ak-model-download` 只重建一个包，或不传名称构建六包。打包排除缓存、本地设置和 node_modules，固定 ZIP 时间戳，逐文件回读对比来源；校验和索引保留未重建但字节仍匹配的已有包。Windows 可用 `Get-FileHash <zip> -Algorithm SHA256` 与 `dist/SHA256SUMS` 对照。包内 bundled Three.js 是正式依赖，保留许可证。
 
@@ -76,8 +90,6 @@ node scripts/verify-examples.mjs
 - **动态与验收**：[动态强度与成本](skills/voxel-chibi-character/references/dynamics.md) · [掉落测试](skills/voxel-chibi-character/references/drop-testing.md) · [验证与交付](skills/voxel-chibi-character/references/validation.md) · [多模型试验室](skills/voxel-chibi-character/references/model-lab.md)
 - **基准模型**：[源码与完整资源](skills/voxel-chibi-character/assets/silver-wolf-refined-dynamics/) · [骨骼 GLB](skills/voxel-chibi-character/assets/silver-wolf-refined-dynamics/silver-wolf-rigged.glb) · [静态 GLB](skills/voxel-chibi-character/assets/silver-wolf-refined-dynamics/silver-wolf.glb) · [正面](skills/voxel-chibi-character/assets/silver-wolf-refined-dynamics/rig-front.png) · [侧面](skills/voxel-chibi-character/assets/silver-wolf-refined-dynamics/rig-side.png) · [背面](skills/voxel-chibi-character/assets/silver-wolf-refined-dynamics/rig-back.png) · [斜视](skills/voxel-chibi-character/assets/silver-wolf-refined-dynamics/rig-three.png)
 - **工程工具**：[角色脚手架](skills/voxel-chibi-character/scripts/scaffold.mjs) · [多模型脚手架](skills/voxel-chibi-character/scripts/scaffold-lab.mjs) · [回归检查脚本](scripts/verify-examples.mjs) · [验证报告](verification.json)
-
-旧版及此前规则已保存于 https://github.com/Douglath/voxel-chibi-character-skill ，冻结点 31d6e56。新版独立维护，不覆盖旧仓库历史。
 
 基础母版：3186 三角面、6800 顶点、43 骨骼、38 网格；完整配件范例：4026 三角面、8480 顶点、46 骨骼、55 网格。两者均为一个顶点色材质、无图像贴图。头发和服装重着色没有新增拓扑，虹膜色界较旧母版增加 4 三角面、8 顶点；这些是当前范例统计，不能代替其他角色的实测。
 

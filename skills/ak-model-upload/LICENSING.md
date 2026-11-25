@@ -1,6 +1,6 @@
 # 许可范围 / Licensing scope
 
-作者与维护者：[@Douglath](https://space.bilibili.com/15438401) · [项目来源](https://github.com/Douglath/voxel-chibi-character-skill-silver-wolf)。
+作者与维护者：[@Douglath](https://space.bilibili.com/15438401) · [项目来源](https://github.com/Douglath/voxel-chibi-character)。
 
 ## 适用的软件许可 / Covered software
 
